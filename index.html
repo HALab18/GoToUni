@@ -1,4 +1,4 @@
-<title>建築系大学 比較ガイド</title>
+<title>GoToUni 建築系大学ガイド</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <meta name="theme-color" content="#2B5F8E">
@@ -9,540 +9,238 @@
 
 <style>
 :root {
-  --bg: #F5F3EF;
-  --bg-card: #FFFFFF;
-  --bg-muted: #E8E4DC;
-  --text: #1A1A1A;
-  --text-muted: #5A5A5A;
-  --text-light: #888888;
-  --accent: #2B5F8E;
-  --accent-light: #D6E4F0;
-  --gold: #C8A96E;
-  --gold-light: #F5EDD8;
+  --bg: #F5F3EF; --bg-card: #FFFFFF; --bg-muted: #E8E4DC;
+  --text: #1A1A1A; --text-muted: #5A5A5A; --text-light: #888888;
+  --accent: #2B5F8E; --accent-light: #D6E4F0;
+  --gold: #C8A96E; --gold-light: #F5EDD8;
   --border: #D8D4CC;
-  --national: #2B5F8E;
-  --national-bg: #D6E4F0;
-  --public: #3A7D6E;
-  --public-bg: #D4EDE8;
-  --private: #8E4A2B;
-  --private-bg: #F0DDD6;
+  --national: #2B5F8E; --national-bg: #D6E4F0;
+  --public: #3A7D6E; --public-bg: #D4EDE8;
+  --private: #8E4A2B; --private-bg: #F0DDD6;
   --tag-radius: 4px;
   color-scheme: light;
 }
-
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #111111;
-    --bg-card: #1E1E1E;
-    --bg-muted: #2A2A2A;
-    --text: #F0EDE8;
-    --text-muted: #AAAAAA;
-    --text-light: #777777;
-    --accent: #5A9BC8;
-    --accent-light: #1A2E3E;
-    --gold: #D4B57A;
-    --gold-light: #2A2010;
-    --border: #383838;
-    --national: #5A9BC8;
-    --national-bg: #1A2E3E;
-    --public: #5AB8A8;
-    --public-bg: #1A2E2B;
-    --private: #C87B5A;
-    --private-bg: #2E1A12;
+    --bg:#111; --bg-card:#1E1E1E; --bg-muted:#2A2A2A;
+    --text:#F0EDE8; --text-muted:#AAAAAA; --text-light:#777;
+    --accent:#5A9BC8; --accent-light:#1A2E3E;
+    --gold:#D4B57A; --gold-light:#2A2010;
+    --border:#383838;
+    --national:#5A9BC8; --national-bg:#1A2E3E;
+    --public:#5AB8A8; --public-bg:#1A2E2B;
+    --private:#C87B5A; --private-bg:#2E1A12;
     color-scheme: dark;
   }
 }
-
 :root[data-theme="dark"] {
-  --bg: #111111;
-  --bg-card: #1E1E1E;
-  --bg-muted: #2A2A2A;
-  --text: #F0EDE8;
-  --text-muted: #AAAAAA;
-  --text-light: #777777;
-  --accent: #5A9BC8;
-  --accent-light: #1A2E3E;
-  --gold: #D4B57A;
-  --gold-light: #2A2010;
-  --border: #383838;
-  --national: #5A9BC8;
-  --national-bg: #1A2E3E;
-  --public: #5AB8A8;
-  --public-bg: #1A2E2B;
-  --private: #C87B5A;
-  --private-bg: #2E1A12;
+  --bg:#111; --bg-card:#1E1E1E; --bg-muted:#2A2A2A;
+  --text:#F0EDE8; --text-muted:#AAAAAA; --text-light:#777;
+  --accent:#5A9BC8; --accent-light:#1A2E3E;
+  --gold:#D4B57A; --gold-light:#2A2010;
+  --border:#383838;
+  --national:#5A9BC8; --national-bg:#1A2E3E;
+  --public:#5AB8A8; --public-bg:#1A2E2B;
+  --private:#C87B5A; --private-bg:#2E1A12;
   color-scheme: dark;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:1.7;padding-inline:16px}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* HEADER */
+.site-header{padding-block:28px 16px;border-bottom:2px solid var(--accent);margin-bottom:20px}
+.site-header h1{font-family:'Noto Serif JP',serif;font-size:clamp(18px,4vw,26px);font-weight:700;color:var(--text);letter-spacing:.02em;text-wrap:balance}
+.site-header .subtitle{margin-top:5px;color:var(--text-muted);font-size:12px}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:var(--tag-radius);font-size:11px;font-weight:500}
+.badge-national{background:var(--national-bg);color:var(--national)}
+.badge-public{background:var(--public-bg);color:var(--public)}
+.badge-private{background:var(--private-bg);color:var(--private)}
+.badge-dorm{background:var(--gold-light);color:var(--gold)}
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.7;
-  padding-inline: 16px;
-}
+/* FILTER BAR */
+.filter-bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:10px;border-bottom:1px solid var(--border);z-index:100;margin-bottom:16px}
+.filter-bar-inner{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filter-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
+.filter-group{display:flex;flex-wrap:wrap;gap:4px}
+.filter-btn{border:1px solid var(--border);background:var(--bg-card);color:var(--text-muted);padding:3px 10px;border-radius:20px;font-size:12px;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .15s}
+.filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.result-count{margin-left:auto;font-size:12px;color:var(--text-light);white-space:nowrap}
 
-/* ─── HEADER ─── */
-.site-header {
-  padding-block: 32px 20px;
-  border-bottom: 2px solid var(--accent);
-  margin-bottom: 24px;
-}
-.site-header h1 {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(20px, 4vw, 28px);
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 0.02em;
-  line-height: 1.3;
-  text-wrap: balance;
-}
-.site-header .subtitle {
-  margin-top: 6px;
-  color: var(--text-muted);
-  font-size: 13px;
-}
-.site-header .badge-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 10px;
-  border-radius: var(--tag-radius);
-  font-size: 12px;
-  font-weight: 500;
-}
-.badge-national { background: var(--national-bg); color: var(--national); }
-.badge-public   { background: var(--public-bg);   color: var(--public);   }
-.badge-private  { background: var(--private-bg);  color: var(--private);  }
-.badge-dorm     { background: var(--gold-light);  color: var(--gold);     }
+/* QUICK FILTERS */
+.quick-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;padding-block:8px;border-bottom:1px solid var(--border)}
+.quick-label{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--text-muted);align-self:center;white-space:nowrap}
+.qf-btn{border:1px solid var(--border);background:var(--bg-card);color:var(--text-muted);padding:3px 10px;border-radius:20px;font-size:12px;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .15s}
+.qf-btn:hover{border-color:var(--gold);color:var(--gold)}
+.qf-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
 
-/* ─── FILTERS ─── */
-.filter-bar {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  background: var(--bg);
-  padding-block: 12px;
-  border-bottom: 1px solid var(--border);
-  z-index: 100;
-  margin-bottom: 20px;
-}
-.filter-bar-inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-.filter-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-.filter-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.filter-btn {
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-muted);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-.filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.result-count {
-  margin-left: auto;
-  font-size: 12px;
-  color: var(--text-light);
-  white-space: nowrap;
-}
+/* SEARCH */
+.search-sort-row{display:flex;gap:8px;margin-bottom:14px;align-items:center}
+.search-wrap{flex:1}
+.search-wrap input{width:100%;padding:7px 13px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:14px;outline:none}
+.search-wrap input:focus{border-color:var(--accent)}
+.search-wrap input::placeholder{color:var(--text-light)}
+.sort-select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:12px;cursor:pointer;white-space:nowrap}
 
-/* ─── SEARCH ─── */
-.search-wrap {
-  margin-bottom: 16px;
-}
-.search-wrap input {
-  width: 100%;
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--bg-card);
-  color: var(--text);
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px;
-  outline: none;
-}
-.search-wrap input:focus { border-color: var(--accent); }
-.search-wrap input::placeholder { color: var(--text-light); }
+/* VIEW TABS */
+.view-tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:14px}
+.view-tab{padding:7px 16px;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;border:none;background:none;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
+.view-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.view-tab:hover:not(.active){color:var(--text)}
 
-/* ─── GRID ─── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
-  padding-bottom: 48px;
-}
+/* GRID / CARD */
+#grid-view{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding-bottom:48px}
+#grid-view.hidden-view{display:none}
+#table-view{display:none;padding-bottom:48px}
+#table-view.visible{display:block}
+#timeline-view{display:none;padding-bottom:48px}
+#timeline-view.visible{display:block}
 
-/* ─── CARD ─── */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.2s;
-}
-.card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.card-header{padding:14px 14px 10px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
+.card-rank{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--accent);min-width:34px;font-variant-numeric:tabular-nums;line-height:1;padding-top:2px}
+.card-title-block{flex:1;min-width:0}
+.card-univ{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:1.3;color:var(--text);text-wrap:balance}
+.card-dept{font-size:11px;color:var(--text-muted);margin-top:2px;line-height:1.4}
+.card-type-badge{flex-shrink:0;padding:2px 7px;border-radius:var(--tag-radius);font-size:11px;font-weight:700}
+.type-national{background:var(--national-bg);color:var(--national)}
+.type-public{background:var(--public-bg);color:var(--public)}
+.type-private{background:var(--private-bg);color:var(--private)}
 
-.card-header {
-  padding: 16px 16px 12px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-.card-rank {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent);
-  min-width: 36px;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-  padding-top: 3px;
-}
-.card-title-block { flex: 1; min-width: 0; }
-.card-univ {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--text);
-  text-wrap: balance;
-}
-.card-dept {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-top: 2px;
-  line-height: 1.4;
-}
-.card-type-badge {
-  flex-shrink: 0;
-  padding: 2px 8px;
-  border-radius: var(--tag-radius);
-  font-size: 11px;
-  font-weight: 700;
-}
-.type-national { background: var(--national-bg); color: var(--national); }
-.type-public   { background: var(--public-bg);   color: var(--public);   }
-.type-private  { background: var(--private-bg);  color: var(--private);  }
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.stat-cell{padding:9px 10px;border-right:1px solid var(--border);text-align:center}
+.stat-cell:last-child{border-right:none}
+.stat-val{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;line-height:1}
+.stat-val.accent{color:var(--accent)}
+.stat-val.gold{color:var(--gold)}
+.stat-lbl{font-size:10px;color:var(--text-light);margin-top:2px;letter-spacing:.04em}
 
-/* ─── STATS ROW ─── */
-.stats-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border-bottom: 1px solid var(--border);
-}
-.stat-cell {
-  padding: 10px 12px;
-  border-right: 1px solid var(--border);
-  text-align: center;
-}
-.stat-cell:last-child { border-right: none; }
-.stat-val {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-.stat-val.accent { color: var(--accent); }
-.stat-val.gold   { color: var(--gold);   }
-.stat-lbl {
-  font-size: 10px;
-  color: var(--text-light);
-  margin-top: 3px;
-  letter-spacing: 0.04em;
-}
+/* CARD BODY */
+.card-body{padding:12px 14px;display:flex;flex-direction:column;gap:9px;flex:1}
+.info-row{display:flex;gap:8px;align-items:flex-start;font-size:13px}
+.info-label{min-width:54px;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--text-light);padding-top:1px;white-space:nowrap}
+.info-val{color:var(--text-muted);line-height:1.5}
+.info-val a{color:var(--accent);text-decoration:none}
+.info-val a:hover{text-decoration:underline}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.tag{padding:2px 7px;border-radius:var(--tag-radius);font-size:11px;background:var(--bg-muted);color:var(--text-muted)}
+.tag-blue{background:var(--accent-light);color:var(--accent)}
+.tag-gold{background:var(--gold-light);color:var(--gold)}
+.tag-green{background:var(--public-bg);color:var(--public)}
+.point-box{background:var(--bg-muted);border-left:3px solid var(--gold);padding:8px 11px;border-radius:0 4px 4px 0;font-size:12px;color:var(--text-muted);line-height:1.6}
+.point-box strong{color:var(--text);display:block;font-size:11px;font-weight:700;letter-spacing:.04em;margin-bottom:2px}
+.dorm-pill{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:11px;font-weight:700}
+.dorm-yes{background:var(--gold-light);color:var(--gold)}
+.dorm-part{background:var(--accent-light);color:var(--accent)}
+.dorm-no{background:var(--bg-muted);color:var(--text-light)}
+.city-chip{display:inline-block;padding:1px 6px;border-radius:3px;font-size:11px;background:var(--accent-light);color:var(--accent);margin-right:4px}
 
-/* ─── CARD BODY ─── */
-.card-body {
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-}
+/* SECTION DIVIDER */
+.section-divider{display:flex;align-items:center;gap:12px;margin-block:24px 12px}
+.section-divider h2{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;white-space:nowrap;color:var(--text)}
+.section-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 
-.info-row {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  font-size: 13px;
-}
-.info-label {
-  min-width: 56px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--text-light);
-  padding-top: 1px;
-  white-space: nowrap;
-}
-.info-val { color: var(--text-muted); line-height: 1.5; }
+/* NO RESULT */
+.no-result{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--text-muted)}
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 2px;
-}
-.tag {
-  padding: 2px 8px;
-  border-radius: var(--tag-radius);
-  font-size: 11px;
-  background: var(--bg-muted);
-  color: var(--text-muted);
-}
-.tag-blue   { background: var(--accent-light); color: var(--accent); }
-.tag-gold   { background: var(--gold-light);   color: var(--gold);   }
-.tag-green  { background: var(--public-bg);    color: var(--public); }
+/* TABLE VIEW */
+.tbl-wrap{overflow-x:auto}
+table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+.univ-table colgroup col:nth-child(1){width:200px}
+.univ-table colgroup col:nth-child(2){width:64px}
+.univ-table colgroup col:nth-child(3){width:48px}
+.univ-table colgroup col:nth-child(4){width:60px}
+.univ-table colgroup col:nth-child(5){width:72px}
+.univ-table colgroup col:nth-child(6){width:72px}
+.univ-table colgroup col:nth-child(7){width:64px}
+.univ-table colgroup col:nth-child(8){width:64px}
+.univ-table colgroup col:nth-child(9){width:auto}
+.univ-table th{background:var(--bg-muted);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.05em;padding:7px 9px;text-align:left;border-bottom:2px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap;overflow:hidden}
+.univ-table th:hover{color:var(--accent)}
+.univ-table th.sort-asc::after{content:' ▲';font-size:10px}
+.univ-table th.sort-desc::after{content:' ▼';font-size:10px}
+.univ-table td{padding:7px 9px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.univ-table tr:hover td{background:var(--bg-muted)}
+.td-name{white-space:normal}
+.td-name strong{color:var(--text);font-size:13px;display:block}
+.td-name small{color:var(--text-light);font-size:11px;white-space:normal}
+.td-num{text-align:right;font-variant-numeric:tabular-nums;color:var(--text)}
+.td-dorm-yes{color:var(--gold);font-weight:700}
+.td-dorm-part{color:var(--accent)}
+.td-dorm-no{color:var(--text-light)}
+.univ-table tbody tr{cursor:pointer}
 
-/* ─── POINT BOX ─── */
-.point-box {
-  background: var(--bg-muted);
-  border-left: 3px solid var(--gold);
-  padding: 8px 12px;
-  border-radius: 0 4px 4px 0;
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-.point-box strong {
-  color: var(--text);
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: 3px;
-}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--bg-card);border-radius:10px;width:100%;max-width:620px;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.modal-close{position:sticky;top:0;float:right;margin:10px 10px 0 0;background:var(--bg-muted);border:none;border-radius:50%;width:30px;height:30px;font-size:17px;cursor:pointer;color:var(--text-muted);line-height:30px;text-align:center;z-index:1}
+.modal-close:hover{background:var(--border)}
+.modal-card .card{border:none;border-radius:0;box-shadow:none}
 
-/* ─── DORM PILL ─── */
-.dorm-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-}
-.dorm-yes  { background: var(--gold-light);  color: var(--gold);       }
-.dorm-part { background: var(--accent-light); color: var(--accent);    }
-.dorm-no   { background: var(--bg-muted);    color: var(--text-light); }
+/* EXAM GUIDE */
+.exam-guide{margin-top:12px;padding:14px;background:var(--bg-muted);border-radius:8px}
+.exam-guide h3{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.exam-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:10px 12px}
+.exam-card .ec-title{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.exam-card .ec-body{font-size:12px;color:var(--text-muted);line-height:1.6}
+.exam-card .ec-body strong{color:var(--text)}
 
-/* ─── SECTION DIVIDER ─── */
-.section-divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-block: 28px 16px;
-}
-.section-divider h2 {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 16px;
-  font-weight: 700;
-  white-space: nowrap;
-  color: var(--text);
-}
-.section-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+/* TIMELINE TAB */
+.timeline-section{margin-bottom:32px}
+.timeline-section h2{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+.timeline-section .tl-sub{font-size:12px;color:var(--text-muted);margin-bottom:16px}
+.tl-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tl-tab{padding:5px 14px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;background:var(--bg-card);color:var(--text-muted);transition:all .15s;font-family:'Noto Sans JP',sans-serif}
+.tl-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tl-content{display:none}
+.tl-content.active{display:block}
+.tl-month-grid{display:flex;flex-direction:column;gap:0}
+.tl-month{display:grid;grid-template-columns:64px 1fr;gap:0;border-left:3px solid var(--border);margin-left:20px}
+.tl-month.highlight{border-left-color:var(--accent)}
+.tl-month.urgent{border-left-color:#c0392b}
+.tl-month-label{padding:8px 12px;font-family:'Noto Serif JP',serif;font-size:13px;font-weight:700;color:var(--text-muted);white-space:nowrap;position:relative}
+.tl-month-label::before{content:'';position:absolute;left:-9px;top:12px;width:14px;height:14px;border-radius:50%;background:var(--bg-muted);border:2px solid var(--border)}
+.tl-month.highlight .tl-month-label{color:var(--accent)}
+.tl-month.highlight .tl-month-label::before{background:var(--accent);border-color:var(--accent)}
+.tl-month.urgent .tl-month-label::before{background:#c0392b;border-color:#c0392b}
+.tl-month-body{padding:8px 0 8px 12px}
+.tl-item{font-size:13px;color:var(--text-muted);margin-bottom:3px;padding-left:12px;position:relative}
+.tl-item::before{content:'▸';position:absolute;left:0;color:var(--text-light);font-size:11px;top:2px}
+.tl-item strong{color:var(--text);font-weight:700}
+.tl-item .badge-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px;vertical-align:middle}
+.badge-ao{background:var(--accent-light);color:var(--accent)}
+.badge-suisen{background:var(--gold-light);color:var(--gold)}
+.badge-ippan{background:var(--public-bg);color:var(--public)}
+.badge-shitei{background:var(--private-bg);color:var(--private)}
+.tl-warn{background:var(--private-bg);border:1px solid var(--private);border-radius:6px;padding:10px 12px;margin-top:10px;font-size:12px;color:var(--text-muted);line-height:1.7}
+.tl-warn strong{color:var(--private);display:block;margin-bottom:3px}
+.tl-info{background:var(--accent-light);border:1px solid var(--accent);border-radius:6px;padding:10px 12px;margin-top:10px;font-size:12px;color:var(--text-muted);line-height:1.7}
+.tl-info strong{color:var(--accent);display:block;margin-bottom:3px}
+.tl-gold{background:var(--gold-light);border:1px solid var(--gold);border-radius:6px;padding:10px 12px;margin-top:10px;font-size:12px;color:var(--text-muted);line-height:1.7}
+.tl-gold strong{color:var(--gold);display:block;margin-bottom:3px}
+.prereq-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.prereq-table th{background:var(--bg-muted);padding:6px 10px;text-align:left;border:1px solid var(--border);font-weight:700;font-size:11px;color:var(--text-muted)}
+.prereq-table td{padding:6px 10px;border:1px solid var(--border);color:var(--text-muted);vertical-align:top}
+.prereq-table tr:hover td{background:var(--bg-muted)}
 
-/* ─── NO RESULT ─── */
-.no-result {
-  grid-column: 1/-1;
-  text-align: center;
-  padding: 48px 16px;
-  color: var(--text-muted);
-}
+/* NOTE */
+.note{font-size:12px;color:var(--text-light);border-top:1px solid var(--border);padding-block:14px 32px;line-height:1.8}
+.note strong{color:var(--text-muted)}
 
-/* ─── VIEW TABS ─── */
-.view-tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 2px solid var(--border);
-  margin-bottom: 16px;
-}
-.view-tab {
-  padding: 8px 20px;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
-  transition: all 0.15s;
-}
-.view-tab.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-.view-tab:hover:not(.active) { color: var(--text); }
-
-/* ─── TABLE VIEW ─── */
-#table-view { display: none; padding-bottom: 48px; }
-#table-view.visible { display: block; }
-#grid-view { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; padding-bottom: 48px; }
-#grid-view.hidden-view { display: none; }
-
-.tbl-wrap { overflow-x: auto; }
-table.univ-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  white-space: nowrap;
-}
-.univ-table {
-  table-layout: fixed;
-  width: 100%;
-}
-.univ-table colgroup col:nth-child(1) { width: 220px; }
-.univ-table colgroup col:nth-child(2) { width: 72px; }
-.univ-table colgroup col:nth-child(3) { width: 52px; }
-.univ-table colgroup col:nth-child(4) { width: 68px; }
-.univ-table colgroup col:nth-child(5) { width: 84px; }
-.univ-table colgroup col:nth-child(6) { width: 80px; }
-.univ-table colgroup col:nth-child(7) { width: 72px; }
-.univ-table colgroup col:nth-child(8) { width: auto; }
-.univ-table th {
-  background: var(--bg-muted);
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  padding: 8px 10px;
-  text-align: left;
-  border-bottom: 2px solid var(--border);
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.univ-table th:hover { color: var(--accent); }
-.univ-table th.sort-asc::after  { content: ' ▲'; font-size: 10px; }
-.univ-table th.sort-desc::after { content: ' ▼'; font-size: 10px; }
-.univ-table td {
-  padding: 8px 10px;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-muted);
-  vertical-align: middle;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.univ-table tr:hover td { background: var(--bg-muted); }
-.td-name { white-space: normal; }
-.td-name strong { color: var(--text); font-size: 13px; display: block; }
-.td-name small { color: var(--text-light); font-size: 11px; white-space: normal; }
-.td-num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
-.td-dorm-yes  { color: var(--gold); font-weight: 700; }
-.td-dorm-part { color: var(--accent); }
-.td-dorm-no   { color: var(--text-light); }
-
-.univ-table tbody tr { cursor: pointer; }
-
-/* ─── MODAL ─── */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-.modal-overlay.open { display: flex; }
-.modal-box {
-  background: var(--bg-card);
-  border-radius: 10px;
-  width: 100%;
-  max-width: 600px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-}
-.modal-close {
-  position: sticky;
-  top: 0;
-  float: right;
-  margin: 12px 12px 0 0;
-  background: var(--bg-muted);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 18px;
-  cursor: pointer;
-  color: var(--text-muted);
-  line-height: 32px;
-  text-align: center;
-  z-index: 1;
-}
-.modal-close:hover { background: var(--border); }
-.modal-card { padding: 0; }
-.modal-card .card {
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-/* ─── NOTE ─── */
-.note {
-  font-size: 12px;
-  color: var(--text-light);
-  border-top: 1px solid var(--border);
-  padding-block: 16px 32px;
-  line-height: 1.8;
-}
-.note strong { color: var(--text-muted); }
-
-@media (max-width: 480px) {
-  .stats-row { grid-template-columns: 1fr 1fr 1fr; }
-  .stat-val { font-size: 15px; }
-  .card-rank { font-size: 18px; }
+@media (max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr 1fr}
+  .stat-val{font-size:14px}
+  .card-rank{font-size:18px}
+  .exam-grid{grid-template-columns:1fr}
+  .search-sort-row{flex-direction:column}
 }
 </style>
-
-<!-- ═══════════════ HTML ═══════════════ -->
+<!-- ═══ HTML ═══ -->
 
 <header class="site-header">
   <h1>一級建築士受験資格取得可能な建築系大学 総合ガイド</h1>
@@ -570,7 +268,7 @@ table.univ-table {
       <button class="filter-btn" data-area="kyushu">九州</button>
       <button class="filter-btn" data-area="hokkaido">北海道</button>
     </div>
-    <span class="filter-label" style="margin-left:8px">設置</span>
+    <span class="filter-label" style="margin-left:6px">設置</span>
     <div class="filter-group" id="type-filters">
       <button class="filter-btn active" data-type="all">すべて</button>
       <button class="filter-btn" data-type="national">国立</button>
@@ -581,31 +279,40 @@ table.univ-table {
   </div>
 </div>
 
-<div class="search-wrap">
-  <input type="search" id="search" placeholder="大学名・都市名・キーワードで検索…" autocomplete="off">
+<div class="quick-filters">
+  <span class="quick-label">クイック</span>
+  <button class="qf-btn" data-qf="dorm">★ 寮あり</button>
+  <button class="qf-btn" data-qf="kokko">国公立のみ</button>
+  <button class="qf-btn" data-qf="hensa60">偏差値60以上</button>
+  <button class="qf-btn" data-qf="toshi">都市部</button>
+</div>
+
+<div class="search-sort-row">
+  <div class="search-wrap">
+    <input type="search" id="search" placeholder="大学名・都市名・キーワードで検索…" autocomplete="off">
+  </div>
+  <select class="sort-select" id="card-sort">
+    <option value="area">エリア順</option>
+    <option value="dev_desc" selected>偏差値▼</option>
+    <option value="dev_asc">偏差値▲</option>
+    <option value="tuition_asc">学費▲</option>
+    <option value="tuition_desc">学費▼</option>
+  </select>
 </div>
 
 <div class="view-tabs">
   <button class="view-tab active" id="tab-card" onclick="switchView('card')">🗂 カード表示</button>
   <button class="view-tab" id="tab-table" onclick="switchView('table')">📋 一覧表示</button>
+  <button class="view-tab" id="tab-timeline" onclick="switchView('timeline')">📅 受験タイムライン</button>
 </div>
 
 <div id="grid-view"></div>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay">
-  <div class="modal-box">
-    <button class="modal-close" id="modal-close">×</button>
-    <div class="modal-card" id="modal-card"></div>
-  </div>
-</div>
-
+<!-- TABLE VIEW -->
 <div id="table-view">
   <div class="tbl-wrap">
     <table class="univ-table" id="univ-table">
-      <colgroup>
-        <col><col><col><col><col><col><col><col>
-      </colgroup>
+      <colgroup><col><col><col><col><col><col><col><col><col></colgroup>
       <thead>
         <tr>
           <th data-col="univ">大学・学部</th>
@@ -614,6 +321,7 @@ table.univ-table {
           <th data-col="deviation" class="sort-desc">偏差値</th>
           <th data-col="tuition_1st">初年度(万)</th>
           <th data-col="tuition_4y">4年間(万)</th>
+          <th data-col="city_level">都市度</th>
           <th data-col="dorm">寮</th>
           <th data-col="exam">入試方式</th>
         </tr>
@@ -623,22 +331,44 @@ table.univ-table {
   </div>
 </div>
 
+<!-- TIMELINE VIEW -->
+<div id="timeline-view">
+  <!-- content injected by JS -->
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">×</button>
+    <div class="modal-card" id="modal-card"></div>
+  </div>
+</div>
+
 <p class="note">
   <strong>⚠️ データ出典・注意事項：</strong>
-  偏差値は be Architect（総合資格学院）・河合塾Kei-Net 2027年度入試予想値（目安）。学費は2026年度入学者用データをベースとし、国立大学は文部科学省告示標準額（入学金28.2万＋授業料53.58万）。
-  寮費・入試方式は各大学公式HP・河合塾Kei-Netより調査（2026年9月時点）。
-  一級建築士受験資格の可否は入学年度・履修単位により異なる場合があります。<strong>必ず各大学の最新募集要項で確認してください。</strong>
-  学費・入試科目・寮の条件は年度ごとに変更されることがあります。
+  偏差値は河合塾Kei-Net 2027年度入試予想値（目安）。学費は2026年度入学者用データ。国立大学は文部科学省告示標準額（入学金28.2万＋授業料53.58万）。
+  家賃目安は周辺1K相場（2026年9月調査）。一級建築士合格率は各大学・総合資格学院公表データ等（非公表校はハイフン）。
+  入試方式・寮・オープンキャンパスは各大学公式HP（2026年9月時点）。一級建築士受験資格の可否は履修内容により異なる場合があります。
+  <strong>必ず各大学の最新募集要項で確認してください。</strong>
 </p>
-
 <script>
+// city_level: 'seirei'=政令市, 'chukaku'=地方中核市, 'chiho'=地方都市, 'kogai'=郊外・小都市
+// rent: 周辺1K目安（万円/月）
+// pass_rate: 一級建築士合格率（%文字列）or 合格者数
+// open_campus: オープンキャンパス情報（簡略）
+// url: 大学公式サイト
+
 const DATA = [
   // ─── 東北 ───
   {
     id:1, area:'tohoku', type:'national', univ:'東北大学', dept:'工学部 建築・社会環境工学科',
     pref:'宮城県仙台市', deviation:66, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:4.5,
+    pass_rate:'非公表（院修了後高率）',
     dorm:'yes', dorm_note:'直営学寮6棟＋ユニバーシティハウス。月4,300円台（光熱費別）',
     exam:'一般前期／AO II期（共テ不要）／AO III期', exam_subjects:'前期：数学・理科・英語（筆記）。AOは面接・書類',
+    open_campus:'8月上旬（要予約）。学科個別説明会あり',
+    url:'https://www.tohoku.ac.jp/',
     one_aa:true, access:'仙台市内（川内・青葉山キャンパス）',
     points:'東北随一の国立。大手ゼネコン・官公庁・研究職への就職実績トップ。AO II期は共通テスト不要で面接・書類勝負。大学院進学率も高い。',
     tags:['研究型','大手就職◎','院進率高','AO可'],
@@ -646,8 +376,12 @@ const DATA = [
   {
     id:2, area:'tohoku', type:'national', univ:'山形大学', dept:'工学部 建築・デザイン学科',
     pref:'山形県山形市', deviation:52, tuition_1st:82, tuition_4y:242,
+    city_level:'chukaku', rent:3.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'清明寮・北辰寮・紫苑寮あり（国立標準学費水準）',
     exam:'一般前期／総合型選抜II', exam_subjects:'前期：共通テスト＋面接・口頭試問のみ（筆記なし）',
+    open_campus:'7月下旬〜8月（学科見学会あり）',
+    url:'https://www.yamagata-u.ac.jp/',
     one_aa:true, access:'仙台から新幹線約25分。山形市内',
     points:'仙台から最も近い国立建築系。個別試験が面接のみで数学・理科の筆記なし。工学・デザイン両面から学べる。文系コース出身者でも挑戦しやすい国立。',
     tags:['面接のみ◎','仙台近い','文系OK','デザイン系'],
@@ -655,8 +389,12 @@ const DATA = [
   {
     id:3, area:'tohoku', type:'private', univ:'東北芸術工科大学', dept:'デザイン工学部 建築・環境デザイン学科',
     pref:'山形県山形市', deviation:58, tuition_1st:162, tuition_4y:570,
+    city_level:'chukaku', rent:3.0,
+    pass_rate:'非公表',
     dorm:'part', dorm_note:'準学生寮＋家賃補助（最大月4万円）。直営寮なし',
     exam:'総合型選抜（専願・併願）／一般選抜／学校推薦型', exam_subjects:'一般：デッサン または 英・国・数（実技なしで受験可）。総合型：ミニ講義＋レポート＋面接',
+    open_campus:'7月・8月・10月（複数回）',
+    url:'https://www.tuad.ac.jp/',
     one_aa:true, access:'仙台から高速バス約1時間。山形市内',
     points:'東北私立最上位の建築デザイン系。設計・意匠・デザイン事務所就職に強い。実技なし選択肢あり。家賃補助制度が充実。建築＋芸術の融合カリキュラム。',
     tags:['デザイン重視','家賃補助◎','実技なし可','意匠系就職◎'],
@@ -664,8 +402,12 @@ const DATA = [
   {
     id:4, area:'tohoku', type:'private', univ:'東北工業大学', dept:'建築学部 建築学科',
     pref:'宮城県仙台市', deviation:48, tuition_1st:165, tuition_4y:576,
+    city_level:'seirei', rent:4.5,
+    pass_rate:'非公表',
     dorm:'no', dorm_note:'直営寮なし。提携学生会館あり',
     exam:'一般A・B日程／共通テスト利用（1・2期）／学校推薦型・総合型', exam_subjects:'一般A：英・数・国/理から3教科。B：2教科。9都市で受験可',
+    open_campus:'6月・8月・10月（複数回）',
+    url:'https://www.tohtech.ac.jp/',
     one_aa:true, access:'仙台市内（八木山・長町キャンパス）',
     points:'東北工学系私立でトップクラスの就職率（99%超）。東北の建設・施工会社中心に就職。一般B日程は2教科で受験可。仙台在住なら自宅通学可能。',
     tags:['就職率99%','仙台市内','2教科可','地域就職◎'],
@@ -673,8 +415,12 @@ const DATA = [
   {
     id:5, area:'tohoku', type:'private', univ:'東北学院大学', dept:'工学部 環境建設工学科',
     pref:'宮城県多賀城市', deviation:48, tuition_1st:175, tuition_4y:622,
+    city_level:'seirei', rent:4.0,
+    pass_rate:'非公表',
     dorm:'part', dorm_note:'提携専用寮（ドーミー等）＋家賃割引。2027年4月TG Global House新設予定',
     exam:'一般前期A・B日程／共通テスト利用／学校推薦型・総合型', exam_subjects:'全方式Web出願。詳細は公式HP確認',
+    open_campus:'7月〜8月（複数回）',
+    url:'https://www.tohoku-gakuin.ac.jp/',
     one_aa:true, access:'仙台市内（五橋）または多賀城キャンパス。仙台近郊',
     points:'東北の伝統私立。幅広い就職先。提携寮の家賃割引制度あり。2027年に国際交流寮新設予定。',
     tags:['仙台近郊','伝統校','提携寮割引'],
@@ -682,8 +428,12 @@ const DATA = [
   {
     id:6, area:'tohoku', type:'private', univ:'東北文化学園大学', dept:'工学部 建築環境学科',
     pref:'宮城県仙台市', deviation:46, tuition_1st:130, tuition_4y:420,
+    city_level:'seirei', rent:4.5,
+    pass_rate:'非公表',
     dorm:'no', dorm_note:'直営寮なし。提携学生会館あり',
     exam:'一般選抜／共通テスト利用／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認',
+    open_campus:'7月・8月・10月',
+    url:'https://www.tbgu.ac.jp/',
     one_aa:true, access:'仙台市内（八木山キャンパス）',
     points:'私立の中では学費が比較的抑えめ。仙台市内で自宅通学可能。少人数制で丁寧な指導。',
     tags:['学費抑えめ','仙台市内','少人数制'],
@@ -691,8 +441,12 @@ const DATA = [
   {
     id:7, area:'tohoku', type:'private', univ:'日本大学（工学部）', dept:'工学部 建築学科',
     pref:'福島県郡山市', deviation:49, tuition_1st:155, tuition_4y:540,
+    city_level:'chukaku', rent:3.0,
+    pass_rate:'グループ全体で年間100人超（全国1位）',
     dorm:'yes', dorm_note:'大学直営寮あり',
     exam:'一般・N全学統一・共通テスト利用・推薦型・総合型', exam_subjects:'N全学統一で一括受験可',
+    open_campus:'8月（郡山キャンパス）',
+    url:'https://www.ce.nihon-u.ac.jp/',
     one_aa:true, access:'福島県郡山市。仙台から東北新幹線で約25分',
     points:'日大グループの一級建築士合格者数は全国1位（年間100人超）。一括受験制度が充実。仙台から新幹線通学も選択肢。',
     tags:['一級合格者数No.1','新幹線圏内','一括受験','直営寮あり'],
@@ -700,8 +454,12 @@ const DATA = [
   {
     id:8, area:'tohoku', type:'public', univ:'宮城大学', dept:'事業構想学群 価値創造デザイン学類',
     pref:'宮城県大和町', deviation:50, tuition_1st:82, tuition_4y:242,
+    city_level:'kogai', rent:3.5,
+    pass_rate:'⚠️建築専門学科でないため参考値なし',
     dorm:'no', dorm_note:'直営寮なし',
     exam:'一般前期・後期／共通テスト利用／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認。⚠️要注意：指定科目の取得が必要',
+    open_campus:'8月（要確認）',
+    url:'https://www.myu.ac.jp/',
     one_aa:true, access:'宮城県大和町。仙台から電車＋バス約1時間',
     points:'⚠️注意：建築学科ではなくデザイン系の総合学類のため、一級受験資格を得るには指定科目の履修が必要で厳しい可能性あり。入学前に大学へ要確認。公立大学として学費は国立並み。',
     tags:['公立＝学費安い','⚠️資格要確認'],
@@ -709,8 +467,12 @@ const DATA = [
   {
     id:9, area:'tohoku', type:'public', univ:'秋田県立大学', dept:'システム科学技術学部 建築環境システム学科',
     pref:'秋田県秋田市', deviation:49, tuition_1st:82, tuition_4y:242,
+    city_level:'chukaku', rent:2.8,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'学生寮あり（公立水準）',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'共通テスト＋個別試験（詳細公式HP確認）',
+    open_campus:'8月',
+    url:'https://www.akita-pu.ac.jp/',
     one_aa:true, access:'秋田市内。仙台から新幹線約1.5時間',
     points:'環境・設備工学に強い建築系。公立で学費が安い。東北北部地域への就職に有利。',
     tags:['公立＝学費安い','環境工学','寮あり'],
@@ -718,8 +480,12 @@ const DATA = [
   {
     id:10, area:'tohoku', type:'private', univ:'八戸工業大学', dept:'工学部 土木建築工学科',
     pref:'青森県八戸市', deviation:45, tuition_1st:130, tuition_4y:430,
+    city_level:'chiho', rent:2.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般A・B／共通テスト利用／学校推薦型・総合型', exam_subjects:'一般：2〜3教科',
+    open_campus:'8月',
+    url:'https://www.hi-tech.ac.jp/',
     one_aa:true, access:'青森県八戸市。仙台から新幹線約1時間',
     points:'東北北部の建設業就職に強い。土木・建築一体のカリキュラム。偏差値帯が低めで入りやすい。直営寮あり。',
     tags:['偏差値低め','寮あり','土木建築一体'],
@@ -727,8 +493,12 @@ const DATA = [
   {
     id:11, area:'tohoku', type:'private', univ:'郡山女子大学', dept:'家政学部 建築デザインコース',
     pref:'福島県郡山市', deviation:45, tuition_1st:130, tuition_4y:435,
+    city_level:'chukaku', rent:3.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'学生寮あり',
     exam:'一般選抜／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認',
+    open_campus:'7月・8月',
+    url:'https://www.koriyama-kgc.ac.jp/',
     one_aa:true, access:'福島県郡山市。仙台から新幹線約25分',
     points:'女子大学。インテリア・住宅・生活空間デザインに強みがある建築系。仙台から新幹線圏内。',
     tags:['女子大学','インテリア系','新幹線圏内','寮あり'],
@@ -738,8 +508,12 @@ const DATA = [
   {
     id:12, area:'kanto', type:'national', univ:'東京科学大学（旧東工大）', dept:'環境・社会理工学院 建築学科',
     pref:'東京都目黒区', deviation:67, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:8.5,
+    pass_rate:'非公表（院修了後高率）',
     dorm:'yes', dorm_note:'直営学生寮あり（すずかけ台・大岡山）',
     exam:'一般前期／学校推薦型', exam_subjects:'共通テスト＋数学・理科・英語（筆記）',
+    open_campus:'8月（オープンラボ）',
+    url:'https://www.titech.ac.jp/',
     one_aa:true, access:'東急目黒線 大岡山駅直結',
     points:'旧東工大。理工系トップ国立。建築・構造・設備の研究で国内最高峰。大学院進学率が非常に高い。研究・設計の最前線を学びたい人向け。',
     tags:['最難関','研究型','院進率最高','構造・設備◎'],
@@ -747,8 +521,12 @@ const DATA = [
   {
     id:13, area:'kanto', type:'national', univ:'横浜国立大学', dept:'都市科学部 建築学科',
     pref:'神奈川県横浜市', deviation:67, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:7.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり（常盤台キャンパス近辺）',
     exam:'一般前期・後期／総合型選抜', exam_subjects:'前期：共通テスト＋理科・数学・英語。総合型：空間感受性重視の選考',
+    open_campus:'8月（オープンキャンパス）',
+    url:'https://www.ynu.ac.jp/',
     one_aa:true, access:'横浜市保土ケ谷区。相鉄線 和田町駅徒歩10分',
     points:'世界トップクラスの建築家が指導。意匠・設計中心のカリキュラム。院に大学院建築都市スクールY-GSA（設計特化）あり。横浜市フィールドの地域連携演習が特徴。',
     tags:['意匠◎','Y-GSA','世界的建築家指導','総合型あり'],
@@ -756,8 +534,12 @@ const DATA = [
   {
     id:14, area:'kanto', type:'national', univ:'筑波大学', dept:'理工学群 工学システム学類',
     pref:'茨城県つくば市', deviation:64, tuition_1st:82, tuition_4y:242,
+    city_level:'chiho', rent:4.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営学生宿舎多数あり（つくばキャンパス内）',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（筑波大学オープンキャンパス）',
+    url:'https://www.tsukuba.ac.jp/',
     one_aa:true, access:'茨城県つくば市。TX つくば駅バス',
     points:'建築＋都市計画・芸術専門学群と連携できる独自のカリキュラム体制。学生宿舎が充実しており、キャンパス内で生活が完結。研究・スポーツ・芸術と建築を組み合わせた学習が可能。',
     tags:['学生宿舎充実','総合大学','芸術連携','都市計画◎'],
@@ -765,8 +547,12 @@ const DATA = [
   {
     id:15, area:'kanto', type:'national', univ:'東京藝術大学', dept:'美術学部 建築学科',
     pref:'東京都台東区', deviation:58, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:9.0,
+    pass_rate:'非公表（少人数精鋭）',
     dorm:'yes', dorm_note:'学生宿舎あり',
     exam:'一般前期', exam_subjects:'共通テスト＋鉛筆デッサン・立体表現・面接',
+    open_campus:'8月（学科説明会・実技講習）',
+    url:'https://www.geidai.ac.jp/',
     one_aa:true, access:'東京上野。JR・東京メトロ',
     points:'⚠️実技試験必須（デッサン・立体表現）。意匠・芸術的感性を重視した日本唯一の芸大建築。卒業生が著名建築家・アーティストに多い。芸術×建築を極めたい人向け。',
     tags:['実技必須','芸術×建築','少人数精鋭','意匠最高峰'],
@@ -774,8 +560,12 @@ const DATA = [
   {
     id:16, area:'kanto', type:'national', univ:'埼玉大学', dept:'工学部 環境社会デザイン学科',
     pref:'埼玉県さいたま市', deviation:55, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:5.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'学生宿舎あり',
     exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科',
+    open_campus:'8月',
+    url:'https://www.saitama-u.ac.jp/',
     one_aa:true, access:'埼玉県さいたま市。JR北浦和駅バス',
     points:'環境・都市・建築を総合的に学ぶ。比較的入りやすい関東国立。大宮・東京へのアクセスも良好。',
     tags:['関東国立','環境工学','入りやすい'],
@@ -783,8 +573,12 @@ const DATA = [
   {
     id:17, area:'kanto', type:'national', univ:'宇都宮大学', dept:'地域デザイン科学部 建築都市デザイン学科',
     pref:'栃木県宇都宮市', deviation:52, tuition_1st:82, tuition_4y:242,
+    city_level:'chukaku', rent:3.8,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'学生宿舎あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・英語or面接',
+    open_campus:'8月',
+    url:'https://www.utsunomiya-u.ac.jp/',
     one_aa:true, access:'栃木県宇都宮市。JR宇都宮大学駅前',
     points:'建築×都市デザイン×地域計画の融合学科。仙台から新幹線1時間圏内。地域に根ざした実践的教育。',
     tags:['都市デザイン◎','地域計画','仙台から近め','国立'],
@@ -792,8 +586,12 @@ const DATA = [
   {
     id:18, area:'kanto', type:'public', univ:'東京都立大学', dept:'都市環境学部 建築学科',
     pref:'東京都南大沢市', deviation:63, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:7.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'学生宿舎あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月',
+    url:'https://www.tmu.ac.jp/',
     one_aa:true, access:'東京都八王子市南大沢。京王相模原線 南大沢駅',
     points:'首都圏公立大学の雄。都市・環境建築の研究に強み。学費が国立同様。東京都のプロジェクト連携が多い。',
     tags:['首都圏公立','都市環境◎','学費安い','公立'],
@@ -801,8 +599,12 @@ const DATA = [
   {
     id:19, area:'kanto', type:'public', univ:'前橋工科大学', dept:'工学部 建築学群',
     pref:'群馬県前橋市', deviation:50, tuition_1st:82, tuition_4y:242,
+    city_level:'chiho', rent:3.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'学生宿舎あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・面接',
+    open_campus:'8月',
+    url:'https://www.maebashi-it.ac.jp/',
     one_aa:true, access:'群馬県前橋市。JR前橋駅バス',
     points:'公立で学費が安い。比較的入りやすい首都圏近郊の建築系。',
     tags:['公立＝学費安い','入りやすい','首都圏近郊'],
@@ -810,8 +612,12 @@ const DATA = [
   {
     id:20, area:'kanto', type:'private', univ:'早稲田大学', dept:'創造理工学部 建築学科',
     pref:'東京都新宿区', deviation:67, tuition_1st:185, tuition_4y:660,
+    city_level:'seirei', rent:9.0,
+    pass_rate:'非公表（大手設計・院進が多数）',
     dorm:'yes', dorm_note:'直営・提携寮多数',
     exam:'一般選抜（共通テスト＋独自問題）／AO（創成入試）', exam_subjects:'数学・理科・英語＋建築に関する記述・面接',
+    open_campus:'8月（キャンパスツアー＋学科説明）',
+    url:'https://www.waseda.jp/',
     one_aa:true, access:'東京 西早稲田。東西線 早稲田駅',
     points:'設計・意匠系の私立最高峰。大手設計事務所・ゼネコン就職トップ。大学院進学率70%超。建築家を目指す人の第一志望校として長年の実績。',
     tags:['私立最難関','意匠◎','大手設計◎','院進率高'],
@@ -819,8 +625,12 @@ const DATA = [
   {
     id:21, area:'kanto', type:'private', univ:'東京理科大学', dept:'工学部 建築学科',
     pref:'東京都葛飾区', deviation:65, tuition_1st:175, tuition_4y:620,
+    city_level:'seirei', rent:7.5,
+    pass_rate:'年間約110人（全国2位水準）',
     dorm:'yes', dorm_note:'直営・提携寮あり',
     exam:'一般B方式・C方式（共通テスト）・グローバル', exam_subjects:'英語・数学・物理が中心',
+    open_campus:'8月（複数キャンパスで実施）',
+    url:'https://www.tus.ac.jp/',
     one_aa:true, access:'東京葛飾区金町（工学部）',
     points:'一級建築士合格者数2位（年間110人超）。構造・設備・環境工学が強い。ゼネコン・設計会社への就職実績トップクラス。厳しい進級制度で実力が身につく。',
     tags:['一級合格2位','構造◎','就職実績◎','理工系最強'],
@@ -828,8 +638,12 @@ const DATA = [
   {
     id:22, area:'kanto', type:'private', univ:'芝浦工業大学', dept:'建築学部 建築学科',
     pref:'東京都江東区', deviation:64, tuition_1st:170, tuition_4y:600,
+    city_level:'seirei', rent:8.5,
+    pass_rate:'年間103人（2025年度・私立1位）',
     dorm:'yes', dorm_note:'直営・提携寮あり',
     exam:'一般A・B日程／共通テスト利用／AO型', exam_subjects:'英語・数学・物理または化学',
+    open_campus:'8月（豊洲キャンパス）',
+    url:'https://www.shibaura-it.ac.jp/',
     one_aa:true, access:'東京豊洲（建築学部）',
     points:'一級建築士合格者数1位（2025年度103人）。AP・SA・UAの3コースで専門性を早期に選択。大手ゼネコン・設計事務所への就職率が非常に高い。豊洲キャンパスで最新設備完備。',
     tags:['一級合格1位','就職最強','コース選択早期','設備最新'],
@@ -837,8 +651,12 @@ const DATA = [
   {
     id:23, area:'kanto', type:'private', univ:'明治大学', dept:'理工学部 建築学科',
     pref:'神奈川県川崎市', deviation:64, tuition_1st:170, tuition_4y:610,
+    city_level:'seirei', rent:7.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般選抜（学部別・全学部）／共通テスト利用', exam_subjects:'英語・数学・物理または化学',
+    open_campus:'8月（生田キャンパス）',
+    url:'https://www.meiji.ac.jp/',
     one_aa:true, access:'神奈川県川崎市 生田キャンパス',
     points:'設計・計画・構造・環境をバランスよく学べる。関東私立の安定した就職実績。多摩丘陵の緑豊かなキャンパス。',
     tags:['バランス型','関東私立有力','緑のキャンパス'],
@@ -846,8 +664,12 @@ const DATA = [
   {
     id:24, area:'kanto', type:'private', univ:'法政大学', dept:'デザイン工学部 建築学科',
     pref:'東京都千代田区', deviation:60, tuition_1st:165, tuition_4y:600,
+    city_level:'seirei', rent:9.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般T方式・英語外部利用・共通テスト利用', exam_subjects:'英語・数学・物理',
+    open_campus:'8月（市ヶ谷キャンパス）',
+    url:'https://www.hosei.ac.jp/',
     one_aa:true, access:'東京市ヶ谷（デザイン工学部）',
     points:'デザイン工学部として建築×デザインの統合教育。都心キャンパスで立地抜群。',
     tags:['デザイン×建築','都心立地','法政ブランド'],
@@ -855,8 +677,12 @@ const DATA = [
   {
     id:25, area:'kanto', type:'private', univ:'工学院大学', dept:'建築学部 建築学科',
     pref:'東京都新宿区', deviation:59, tuition_1st:170, tuition_4y:580,
+    city_level:'seirei', rent:9.0,
+    pass_rate:'年間50人超（補習プログラムあり）',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般（2月・3月）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    open_campus:'8月（新宿キャンパス）',
+    url:'https://www.kogakuin.ac.jp/',
     one_aa:true, access:'東京新宿（新宿キャンパス）',
     points:'一級建築士合格支援プログラムが非常に充実（学内専門校）。合格者数上位常連。ファースト・ステップ（一級補習）制度が強み。',
     tags:['一級サポート最強','合格者上位','新宿立地'],
@@ -864,8 +690,12 @@ const DATA = [
   {
     id:26, area:'kanto', type:'private', univ:'日本大学（理工学部）', dept:'理工学部 建築学科',
     pref:'東京都千代田区', deviation:57, tuition_1st:155, tuition_4y:560,
+    city_level:'seirei', rent:9.0,
+    pass_rate:'グループ全体で年間100人超（全国1位）',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'N全学統一・A個別・C共通テスト利用・総合型・推薦型', exam_subjects:'英語・数学・物理（N全学で一括出願可）',
+    open_campus:'8月（駿河台キャンパス）',
+    url:'https://www.cst.nihon-u.ac.jp/',
     one_aa:true, access:'東京駿河台（1年）→船橋（2年〜）',
     points:'一級建築士合格者数全国1位のグループ。規模が大きく設備充実。N全学統一で複数学科まとめて出願でき、受験コストが低い。',
     tags:['一級合格者数No.1G','N全学一括','スケール大','コスパ◎'],
@@ -873,8 +703,12 @@ const DATA = [
   {
     id:27, area:'kanto', type:'private', univ:'東京電機大学', dept:'未来科学部 建築学科',
     pref:'東京都足立区', deviation:56, tuition_1st:160, tuition_4y:560,
+    city_level:'seirei', rent:7.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般（前期・後期）／共通テスト利用／推薦型', exam_subjects:'英語・数学・理科または国語',
+    open_campus:'8月（東京千住キャンパス）',
+    url:'https://www.dendai.ac.jp/',
     one_aa:true, access:'東京千住（東京千住キャンパス）',
     points:'ICT・デジタル技術と建築の融合教育。BIM・デジタルファブリケーション教育に力を入れている。',
     tags:['BIM◎','デジタル建築','IT×建築'],
@@ -882,8 +716,12 @@ const DATA = [
   {
     id:28, area:'kanto', type:'private', univ:'神奈川大学', dept:'建築学部 建築学科',
     pref:'神奈川県横浜市', deviation:54, tuition_1st:155, tuition_4y:530,
+    city_level:'seirei', rent:6.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般（給費・A・B）／共通テスト利用／推薦型', exam_subjects:'英語・数学・物理または国語',
+    open_campus:'8月（横浜キャンパス）',
+    url:'https://www.kanagawa-u.ac.jp/',
     one_aa:true, access:'横浜市神奈川区 横浜キャンパス',
     points:'2021年に建築学部として独立。給費生入試で成績優秀者は授業料無料。関東中堅私立で安定した就職実績。',
     tags:['建築学部独立','給費生制度','関東中堅'],
@@ -891,8 +729,12 @@ const DATA = [
   {
     id:29, area:'kanto', type:'private', univ:'千葉工業大学', dept:'創造工学部 建築学科',
     pref:'千葉県習志野市', deviation:54, tuition_1st:155, tuition_4y:530,
+    city_level:'chukaku', rent:5.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    open_campus:'8月（津田沼キャンパス）',
+    url:'https://www.it-chiba.ac.jp/',
     one_aa:true, access:'千葉県習志野市。JR津田沼駅5分',
     points:'関東私立の中でコストパフォーマンスが高い。環境建築・サステナブルデザインに強み。駅近で通いやすい。',
     tags:['コスパ◎','環境建築','駅近'],
@@ -900,8 +742,12 @@ const DATA = [
   {
     id:30, area:'kanto', type:'private', univ:'東洋大学', dept:'理工学部 建築学科',
     pref:'東京都文京区', deviation:52, tuition_1st:150, tuition_4y:530,
+    city_level:'seirei', rent:8.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般（前期・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    open_campus:'8月（川越キャンパス）',
+    url:'https://www.toyo.ac.jp/',
     one_aa:true, access:'埼玉県川越市（建築専攻）',
     points:'関東中堅で入りやすい。建築計画・都市計画の教育が充実。川越キャンパスで落ち着いた環境。',
     tags:['中堅','入りやすい','都市計画'],
@@ -911,8 +757,12 @@ const DATA = [
   {
     id:31, area:'koshinetsu', type:'national', univ:'信州大学', dept:'工学部 建築学科',
     pref:'長野県長野市', deviation:58, tuition_1st:82, tuition_4y:242,
+    city_level:'chukaku', rent:3.5,
+    pass_rate:'偏差値対比コスパ高い（非公表）',
     dorm:'yes', dorm_note:'こまくさ寮（1年生中心）・修己寮あり（国立水準の低廉な費用）',
     exam:'一般前期・後期／学校推薦型I／総合型選抜I', exam_subjects:'前期：共通テスト＋数学・理科。後期：共通テスト＋数学。推薦・総合型：面接・調査書',
+    open_campus:'8月（長野キャンパス）',
+    url:'https://www.shinshu-u.ac.jp/',
     one_aa:true, access:'長野市。JR長野駅バス30分',
     points:'偏差値対比の一級建築士合格率（コスパ）が高く評価されている。長野・東京圏の設計・施工会社に就職。推薦・総合型は面接のみで受験可能。長野の厳しい気候が環境建築の研究に活かされる。',
     tags:['一級コスパ◎','推薦面接のみ','国立','環境建築'],
@@ -920,8 +770,12 @@ const DATA = [
   {
     id:32, area:'koshinetsu', type:'national', univ:'新潟大学', dept:'工学部 建築学プログラム',
     pref:'新潟県新潟市', deviation:56, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:3.2,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮（五十嵐寮 月4,300円／六花寮 月13,000円）＋光熱費別。倍率2〜3倍',
     exam:'一般前期（個別学力重視型・共通テスト重視型）／後期（共通テスト＋面接）', exam_subjects:'前期：共通テスト＋数学・理科・英語。後期：共通テスト＋面接のみ',
+    open_campus:'8月（五十嵐キャンパス）',
+    url:'https://www.niigata-u.ac.jp/',
     one_aa:true, access:'新潟市西区 五十嵐キャンパス。JR内野駅バス',
     points:'後期入試は共通テスト＋面接のみで受験可能。国立で学費が安く、直営寮の費用も格安。新潟・東京圏の建設・設計会社に就職。',
     tags:['国立','後期＝面接のみ','直営寮格安','新潟地域就職'],
@@ -929,8 +783,12 @@ const DATA = [
   {
     id:33, area:'koshinetsu', type:'public', univ:'長岡造形大学', dept:'造形学部 建築・環境デザイン学科',
     pref:'新潟県長岡市', deviation:56, tuition_1st:82, tuition_4y:242,
+    city_level:'chiho', rent:3.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり（公立水準）',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認',
+    open_campus:'8月（長岡キャンパス）',
+    url:'https://www.nagaoka-id.ac.jp/',
     one_aa:true, access:'新潟県長岡市。JR長岡駅バス',
     points:'公立の造形大学として全国唯一。建築×デザイン×アートを融合した教育。学費は国立並みで公立大学のコスパが高い。長岡市の豪雪地帯立地が寒冷地建築・雪国設計の実践的教育に繋がる。',
     tags:['公立造形大学','デザイン×建築','コスパ◎','雪国建築'],
@@ -938,8 +796,12 @@ const DATA = [
   {
     id:34, area:'koshinetsu', type:'private', univ:'新潟工科大学', dept:'工学部 工学科',
     pref:'新潟県柏崎市', deviation:46, tuition_1st:130, tuition_4y:440,
+    city_level:'kogai', rent:2.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般・共通テスト利用・推薦型・総合型', exam_subjects:'2〜3教科',
+    open_campus:'8月',
+    url:'https://www.niit.ac.jp/',
     one_aa:true, access:'新潟県柏崎市。JR柏崎駅バス',
     points:'比較的入りやすい新潟の工学系大学。地域の建設業就職に直結。直営寮完備。',
     tags:['入りやすい','直営寮','地域就職'],
@@ -949,8 +811,12 @@ const DATA = [
   {
     id:35, area:'hokuriku', type:'national', univ:'金沢大学', dept:'理工学域 地球社会基盤学類 建築学',
     pref:'石川県金沢市', deviation:54, tuition_1st:82, tuition_4y:242,
+    city_level:'chukaku', rent:3.5,
+    pass_rate:'非公表',
     dorm:'no', dorm_note:'⚠️直営寮（白梅寮）は2023年3月に閉寮済み。民間アパート・提携寮を利用',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語（詳細公式HP確認）',
+    open_campus:'8月（角間キャンパス）',
+    url:'https://www.kanazawa-u.ac.jp/',
     one_aa:true, access:'石川県金沢市。JR金沢駅バス',
     points:'北陸の国立総合大学。金沢という文化都市での学びが建築の感性を磨く。⚠️直営寮廃止済みのため、居住費は市場価格になる点に注意。',
     tags:['国立','文化都市','⚠️寮なし注意','北陸拠点'],
@@ -958,8 +824,12 @@ const DATA = [
   {
     id:36, area:'hokuriku', type:'national', univ:'福井大学', dept:'工学部 建築・都市環境工学科',
     pref:'福井県福井市', deviation:56, tuition_1st:82, tuition_4y:242,
+    city_level:'chiho', rent:3.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり（国立水準）',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（文京キャンパス）',
+    url:'https://www.u-fukui.ac.jp/',
     one_aa:true, access:'福井県福井市。JR福井駅バス',
     points:'北陸の国立大学。建築×都市環境工学の一体的な教育。北陸新幹線延伸で東京・関西へのアクセスが向上（2024年〜）。コンパクトシティ福井での実践的フィールドワーク。',
     tags:['国立','新幹線延伸◎','都市環境','直営寮あり'],
@@ -967,8 +837,12 @@ const DATA = [
   {
     id:37, area:'hokuriku', type:'private', univ:'金沢工業大学', dept:'建築学部 建築学科',
     pref:'石川県野々市市', deviation:49, tuition_1st:172, tuition_4y:620,
+    city_level:'chukaku', rent:3.5,
+    pass_rate:'非公表（夢考房活動実績が高い）',
     dorm:'no', dorm_note:'直営寮なし。大学指定アパート斡旋あり',
     exam:'一般A・B日程／共通テスト利用（1〜2教科）／学校推薦型・総合型', exam_subjects:'一般A：英語＋数学or国語（2教科）。共通テスト利用：1〜2教科',
+    open_campus:'8月（野々市キャンパス）',
+    url:'https://www.kanazawa-it.ac.jp/',
     one_aa:true, access:'石川県野々市市。IRいしかわ鉄道 野々市工大前駅',
     points:'夢考房（ものづくり実習施設）が充実。工学系実習教育で有名。共通テスト1〜2教科で受験可能なため入りやすい。特別奨学生制度（成績優秀者学費免除）あり。',
     tags:['夢考房◎','2教科可','奨学金制度','工学実習充実'],
@@ -976,8 +850,12 @@ const DATA = [
   {
     id:38, area:'hokuriku', type:'private', univ:'福井工業大学', dept:'工学部 建築土木工学科',
     pref:'福井県福井市', deviation:46, tuition_1st:135, tuition_4y:480,
+    city_level:'chiho', rent:3.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般・共通テスト利用・推薦型・総合型', exam_subjects:'2〜3教科',
+    open_campus:'8月',
+    url:'https://www.fukui-ut.ac.jp/',
     one_aa:true, access:'福井県福井市。JR福井駅バス',
     points:'比較的入りやすい北陸の工学系。土木・建築一体のカリキュラム。直営寮完備で地元就職に強い。',
     tags:['入りやすい','直営寮','土木建築一体','北陸就職'],
@@ -987,8 +865,12 @@ const DATA = [
   {
     id:39, area:'tokai', type:'national', univ:'名古屋大学', dept:'工学部 環境土木・建築学科',
     pref:'愛知県名古屋市', deviation:64, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:5.5,
+    pass_rate:'非公表（旧帝大水準）',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（東山キャンパス）',
+    url:'https://www.nagoya-u.ac.jp/',
     one_aa:true, access:'名古屋市千種区。名城線 名古屋大学駅',
     points:'東海国立の雄。建築学と環境土木工学を融合した学科。旧帝大ブランドで就職・研究ともにトップ水準。',
     tags:['旧帝大','東海トップ','研究型','大手就職◎'],
@@ -996,8 +878,12 @@ const DATA = [
   {
     id:40, area:'tokai', type:'national', univ:'名古屋工業大学', dept:'工学部 社会工学科 建築・デザイン分野',
     pref:'愛知県名古屋市', deviation:65, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:5.0,
+    pass_rate:'非公表（国立工大トップ水準）',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（御器所キャンパス）',
+    url:'https://www.nitech.ac.jp/',
     one_aa:true, access:'名古屋市昭和区。JR鶴舞駅すぐ',
     points:'工学系国立として建築・デザイン教育に強み。一級建築士合格率が国立トップ水準。実践的な設計演習と構造工学の両立。駅近で通いやすい。',
     tags:['国立工業大','一級合格率◎','構造◎','駅近'],
@@ -1005,8 +891,12 @@ const DATA = [
   {
     id:41, area:'tokai', type:'private', univ:'名城大学', dept:'理工学部 建築学科',
     pref:'愛知県名古屋市', deviation:59, tuition_1st:155, tuition_4y:570,
+    city_level:'seirei', rent:5.5,
+    pass_rate:'中部・東海エリアNo.1水準',
     dorm:'yes', dorm_note:'直営・提携寮あり',
     exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理',
+    open_campus:'8月（天白キャンパス）',
+    url:'https://www.meijo-u.ac.jp/',
     one_aa:true, access:'名古屋市天白区。名城線 天白公園・植田駅',
     points:'一級建築士合格者数で中部・東海エリアNo.1クラスの実績。名古屋の大手建設・設計会社への就職実績が安定。中部圏で建築を学ぶ私立としてトップ。',
     tags:['中部私立トップ','一級合格◎','名古屋就職◎'],
@@ -1016,8 +906,12 @@ const DATA = [
   {
     id:42, area:'kansai', type:'national', univ:'京都大学', dept:'工学部 建築学科',
     pref:'京都府京都市', deviation:69, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:6.0,
+    pass_rate:'非公表（院修了後最高水準）',
     dorm:'yes', dorm_note:'直営寮あり（熊野寮ほか）',
     exam:'一般前期のみ', exam_subjects:'共通テスト＋数学・理科・英語・国語（二次配点が高い）',
+    open_campus:'8月（吉田キャンパス）',
+    url:'https://www.kyoto-u.ac.jp/',
     one_aa:true, access:'京都市左京区。市バス 京大正門前',
     points:'国内最高峰の建築学科。歴史的建造物が並ぶ京都での学びが建築観を培う。研究・設計・理論すべてで国内最高水準。大学院進学率が非常に高い。一般前期のみのため合否一発勝負。',
     tags:['国内最難関','研究最高峰','歴史的環境','院進必須'],
@@ -1025,8 +919,12 @@ const DATA = [
   {
     id:43, area:'kansai', type:'national', univ:'神戸大学', dept:'工学部 建築学科',
     pref:'兵庫県神戸市', deviation:68, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:6.0,
+    pass_rate:'年間約50人（国立トップクラス）',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（六甲台キャンパス）',
+    url:'https://www.kobe-u.ac.jp/',
     one_aa:true, access:'神戸市灘区。阪急 六甲駅バス',
     points:'関西難関国立。一級建築士合格者数で国立トップクラス（年間50人）。神戸の港湾都市・復興建築の実例を教材にした教育。後期入試あり。',
     tags:['関西難関国立','一級合格◎','神戸都市建築','後期あり'],
@@ -1034,8 +932,12 @@ const DATA = [
   {
     id:44, area:'kansai', type:'national', univ:'大阪大学', dept:'工学部 地球総合工学科 建築工学科目',
     pref:'大阪府吹田市', deviation:65, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:6.0,
+    pass_rate:'非公表（旧帝大水準）',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（吹田キャンパス）',
+    url:'https://www.osaka-u.ac.jp/',
     one_aa:true, access:'大阪府吹田市。阪急 石橋阪大前駅バス',
     points:'旧帝大。建築工学として構造・環境・設備に強み。大手ゼネコン・設備設計会社への就職実績が高い。理工系総合大学の強みを活かした研究環境。',
     tags:['旧帝大','構造◎','設備工学','大手就職◎'],
@@ -1043,8 +945,12 @@ const DATA = [
   {
     id:45, area:'kansai', type:'public', univ:'大阪公立大学', dept:'工学部 建築学科',
     pref:'大阪府大阪市', deviation:67, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:6.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（中百舌鳥キャンパス）',
+    url:'https://www.omu.ac.jp/',
     one_aa:true, access:'大阪市住吉区。大阪メトロ 我孫子道駅',
     points:'旧大阪市大系統。公立大学として学費は国立並み。都市・建築・都市計画の総合的な教育が強み。大阪市・関西圏の再開発プロジェクトと連携した実践的な学び。',
     tags:['公立＝学費安い','都市計画◎','大阪市連携','関西有力'],
@@ -1052,34 +958,38 @@ const DATA = [
   {
     id:46, area:'kansai', type:'national', univ:'京都工芸繊維大学', dept:'工芸科学部 デザイン・建築学課程',
     pref:'京都府京都市', deviation:58, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:5.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（松ヶ崎キャンパス）',
+    url:'https://www.kit.ac.jp/',
     one_aa:true, access:'京都市左京区。地下鉄 松ヶ崎駅',
     points:'デザイン×建築×工芸の融合教育が特徴。国立でデザイン寄りの建築を学べる数少ない大学。京都という歴史・文化環境が学びに直結。',
     tags:['デザイン×建築','国立','京都環境','工芸融合'],
   },
   {
-    id:47, area:'kansai', type:'private', univ:'早稲田大学（関西）', dept:'— (参考:関西志望者向け)', // 削除して代替
-    pref:'', deviation:0, tuition_1st:0, tuition_4y:0,
-    dorm:'no', dorm_note:'',
-    exam:'', exam_subjects:'',
-    one_aa:false, access:'',
-    points:'', tags:[], hidden:true,
-  },
-  {
-    id:48, area:'kansai', type:'private', univ:'立命館大学', dept:'理工学部 建築都市デザイン学科',
+    id:47, area:'kansai', type:'private', univ:'立命館大学', dept:'理工学部 建築都市デザイン学科',
     pref:'滋賀県草津市', deviation:62, tuition_1st:160, tuition_4y:580,
+    city_level:'chukaku', rent:4.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般（学部個別・全学統一・共通テスト）／推薦型・総合型', exam_subjects:'英語・数学・物理',
+    open_campus:'8月（BKCキャンパス）',
+    url:'https://www.ritsumei.ac.jp/',
     one_aa:true, access:'滋賀県草津市。JR南草津駅バス',
     points:'関西有力私立。都市デザイン・建築の統合的な教育。全学統一入試で一括受験が可能。関西エリアの大手ゼネコン・設計事務所への実績。',
     tags:['関西私立有力','都市デザイン','一括受験可'],
   },
   {
-    id:49, area:'kansai', type:'private', univ:'関西大学', dept:'環境都市工学部 建築学科',
+    id:48, area:'kansai', type:'private', univ:'関西大学', dept:'環境都市工学部 建築学科',
     pref:'大阪府吹田市', deviation:61, tuition_1st:158, tuition_4y:580,
+    city_level:'seirei', rent:6.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'一般（3教科・2教科）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    open_campus:'8月（千里山キャンパス）',
+    url:'https://www.kansai-u.ac.jp/',
     one_aa:true, access:'大阪府吹田市。阪急 関大前駅',
     points:'関西大学の建築学科は環境都市工学部として独立。関西有力私立の就職実績。阪急沿線で関西主要都市へのアクセス良好。',
     tags:['関西私立','独立学部','阪急沿線'],
@@ -1087,10 +997,14 @@ const DATA = [
 
   // ─── 中国 ───
   {
-    id:50, area:'chugoku', type:'national', univ:'広島大学', dept:'工学部 第四類（建設・環境系）',
+    id:49, area:'chugoku', type:'national', univ:'広島大学', dept:'工学部 第四類（建設・環境系）',
     pref:'広島県東広島市', deviation:58, tuition_1st:82, tuition_4y:242,
+    city_level:'chiho', rent:3.5,
+    pass_rate:'約69%（全国最高水準）',
     dorm:'yes', dorm_note:'直営寮あり（東広島キャンパス内）',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（東広島キャンパス）',
+    url:'https://www.hiroshima-u.ac.jp/',
     one_aa:true, access:'広島県東広島市。JR西条駅バス',
     points:'国立大学で一級建築士合格率が約69%と全国最高水準。偏差値対比のコスパが抜群。キャンパス内に直営寮があり生活環境が整っている。地方国立ながら大手就職実績も高い。',
     tags:['一級合格率69%◎','コスパ最高','直営寮充実','全国トップ合格率'],
@@ -1098,37 +1012,53 @@ const DATA = [
 
   // ─── 九州 ───
   {
-    id:51, area:'kyushu', type:'national', univ:'九州大学', dept:'工学部 建築学科',
+    id:50, area:'kyushu', type:'national', univ:'九州大学', dept:'工学部 建築学科',
     pref:'福岡県福岡市', deviation:60, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:4.5,
+    pass_rate:'非公表（旧帝大水準）',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（伊都キャンパス）',
+    url:'https://www.kyushu-u.ac.jp/',
     one_aa:true, access:'福岡市西区 伊都キャンパス。福岡市地下鉄・バス',
     points:'九州の国立建築系最高峰。旧帝大。福岡・九州の建設・設計会社への就職はもちろん、大手全国企業への実績も高い。',
     tags:['旧帝大','九州最高峰','大手就職◎'],
   },
   {
-    id:52, area:'kyushu', type:'national', univ:'鹿児島大学', dept:'工学部 建築学科',
+    id:51, area:'kyushu', type:'national', univ:'鹿児島大学', dept:'工学部 建築学科',
     pref:'鹿児島県鹿児島市', deviation:54, tuition_1st:82, tuition_4y:242,
+    city_level:'chukaku', rent:3.2,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月',
+    url:'https://www.kagoshima-u.ac.jp/',
     one_aa:true, access:'鹿児島市郡元キャンパス。市電 工学部前',
     points:'九州南部の国立建築系。比較的入りやすい国立。南方建築・亜熱帯地域の環境設計に強み。',
     tags:['国立','九州南部','環境設計','比較的入りやすい'],
   },
   {
-    id:53, area:'kyushu', type:'public', univ:'北九州市立大学', dept:'国際環境工学部 建築デザイン学科',
+    id:52, area:'kyushu', type:'public', univ:'北九州市立大学', dept:'国際環境工学部 建築デザイン学科',
     pref:'福岡県北九州市', deviation:51, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:3.8,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科or英語',
+    open_campus:'8月（若松キャンパス）',
+    url:'https://www.kitakyu-u.ac.jp/',
     one_aa:true, access:'北九州市若松区。JR若松線',
     points:'公立で学費が安い。建築デザイン＋国際環境工学の融合カリキュラムが独自。北九州市の産業都市ならではの実践的フィールドワーク。',
     tags:['公立＝学費安い','建築デザイン','国際環境','産業都市連携'],
   },
   {
-    id:54, area:'kyushu', type:'private', univ:'九州産業大学', dept:'建築都市工学部 建築学科',
+    id:53, area:'kyushu', type:'private', univ:'九州産業大学', dept:'建築都市工学部 建築学科',
     pref:'福岡県福岡市', deviation:48, tuition_1st:148, tuition_4y:520,
+    city_level:'seirei', rent:4.5,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'2〜3教科',
+    open_campus:'8月（松崎キャンパス）',
+    url:'https://www.kyusan-u.ac.jp/',
     one_aa:true, access:'福岡市東区 松崎キャンパス。JR九産大前駅',
     points:'九州私立の建築系では比較的評価が高い。就職率が安定。直営寮完備。設計・施工両面のバランス型教育。',
     tags:['直営寮','九州私立','就職安定','バランス型'],
@@ -1136,49 +1066,75 @@ const DATA = [
 
   // ─── 北海道 ───
   {
-    id:55, area:'hokkaido', type:'national', univ:'北海道大学', dept:'工学部 環境社会工学科 建築都市コース',
+    id:54, area:'hokkaido', type:'national', univ:'北海道大学', dept:'工学部 環境社会工学科 建築都市コース',
     pref:'北海道札幌市', deviation:66, tuition_1st:82, tuition_4y:242,
+    city_level:'seirei', rent:4.0,
+    pass_rate:'非公表（旧帝大水準）',
     dorm:'yes', dorm_note:'直営学生寮多数（恵迪寮ほか）。月数千円台',
     exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    open_campus:'8月（札幌キャンパス）',
+    url:'https://www.hokudai.ac.jp/',
     one_aa:true, access:'札幌市北区。地下鉄 北12条駅',
     points:'旧帝大。北方建築・寒冷地工学の研究で世界的に著名。雪・寒冷地・自然環境を活かした建築工学の最前線。大規模キャンパスで直営寮が充実。北海道・全国大手への就職実績が高い。',
     tags:['旧帝大','寒冷地建築◎','直営寮充実','雪国工学'],
   },
   {
-    id:56, area:'hokkaido', type:'private', univ:'北海学園大学', dept:'工学部 建築学科',
+    id:55, area:'hokkaido', type:'private', univ:'北海学園大学', dept:'工学部 建築学科',
     pref:'北海道札幌市', deviation:47, tuition_1st:140, tuition_4y:480,
+    city_level:'seirei', rent:4.0,
+    pass_rate:'非公表',
     dorm:'yes', dorm_note:'直営寮あり',
     exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'2〜3教科',
+    open_campus:'8月（豊平キャンパス）',
+    url:'https://www.hgu.jp/',
     one_aa:true, access:'札幌市豊平区。地下鉄 学園前駅直結',
     points:'北海道私立の建築系。地下鉄直結で通いやすい。北海道の建設会社への就職実績あり。',
     tags:['地下鉄直結','北海道就職','直営寮'],
   },
 ];
 
-// ─── RENDER ───
-function dormPill(d, note) {
-  if (d === 'yes') return `<span class="dorm-pill dorm-yes">★ 直営寮あり</span>`;
-  if (d === 'part') return `<span class="dorm-pill dorm-part">◐ 提携寮あり</span>`;
+// city_levelラベル
+const cityLabel = {
+  seirei: '政令市',
+  chukaku: '地方中核市',
+  chiho: '地方都市',
+  kogai: '郊外'
+};
+const cityColor = {
+  seirei: 'tag-blue',
+  chukaku: 'tag-green',
+  chiho: 'tag',
+  kogai: 'tag'
+};
+</script>
+<script>
+// ─── RENDER HELPERS ───
+function dormPill(d) {
+  if (d==='yes') return `<span class="dorm-pill dorm-yes">★ 直営寮あり</span>`;
+  if (d==='part') return `<span class="dorm-pill dorm-part">◐ 提携寮あり</span>`;
   return `<span class="dorm-pill dorm-no">× 直営寮なし</span>`;
 }
 function typeBadge(t) {
-  const map = { national:'国立', public:'公立', private:'私立' };
+  const map={national:'国立',public:'公立',private:'私立'};
   return `<span class="card-type-badge type-${t}">${map[t]}</span>`;
 }
-
 function renderCard(d) {
   const tags = d.tags.map(t => {
-    let cls = 'tag';
-    if (t.includes('◎') || t.includes('No.1') || t.includes('最')) cls = 'tag tag-gold';
-    else if (t.includes('面接') || t.includes('AO') || t.includes('推薦') || t.includes('合格')) cls = 'tag tag-blue';
-    else if (t.includes('寮') || t.includes('安い') || t.includes('コスパ')) cls = 'tag tag-green';
+    let cls='tag';
+    if (t.includes('◎')||t.includes('No.1')||t.includes('最')) cls='tag tag-gold';
+    else if (t.includes('面接')||t.includes('AO')||t.includes('推薦')||t.includes('合格')) cls='tag tag-blue';
+    else if (t.includes('寮')||t.includes('安い')||t.includes('コスパ')) cls='tag tag-green';
     return `<span class="${cls}">${t}</span>`;
   }).join('');
-
+  const rentStr = d.rent ? `約${d.rent}万円/月` : '—';
+  const passStr = d.pass_rate || '—';
+  const ocStr = d.open_campus || '—';
+  const urlStr = d.url ? `<a href="${d.url}" target="_blank" rel="noopener">公式サイト →</a>` : '';
+  const cityTag = d.city_level ? `<span class="city-chip">${cityLabel[d.city_level]||''}</span>` : '';
   return `
-  <div class="card" data-area="${d.area}" data-type="${d.type}" data-univ="${d.univ}" data-pref="${d.pref}" data-tags="${d.tags.join(' ')}">
+  <div class="card">
     <div class="card-header">
-      <div class="card-rank">${d.deviation}</div>
+      <div class="card-rank">${d.deviation||'—'}</div>
       <div class="card-title-block">
         <div class="card-univ">${d.univ}</div>
         <div class="card-dept">${d.dept}</div>
@@ -1186,23 +1142,22 @@ function renderCard(d) {
       ${typeBadge(d.type)}
     </div>
     <div class="stats-row">
-      <div class="stat-cell">
-        <div class="stat-val accent">${d.deviation}</div>
-        <div class="stat-lbl">偏差値</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-val">${d.tuition_1st}</div>
-        <div class="stat-lbl">初年度（万円）</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-val gold">${d.tuition_4y}</div>
-        <div class="stat-lbl">4年間（万円）</div>
-      </div>
+      <div class="stat-cell"><div class="stat-val accent">${d.deviation||'—'}</div><div class="stat-lbl">偏差値</div></div>
+      <div class="stat-cell"><div class="stat-val">${d.tuition_1st}</div><div class="stat-lbl">初年度（万円）</div></div>
+      <div class="stat-cell"><div class="stat-val gold">${d.tuition_4y}</div><div class="stat-lbl">4年間（万円）</div></div>
     </div>
     <div class="card-body">
       <div class="info-row">
         <span class="info-label">所在地</span>
-        <span class="info-val">${d.pref} / ${d.access}</span>
+        <span class="info-val">${cityTag}${d.pref} / ${d.access}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">家賃目安</span>
+        <span class="info-val">${rentStr}（周辺1K）</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">一級合格</span>
+        <span class="info-val">${passStr}</span>
       </div>
       <div class="info-row">
         <span class="info-label">寮</span>
@@ -1216,6 +1171,11 @@ function renderCard(d) {
         <span class="info-label">試験科目</span>
         <span class="info-val">${d.exam_subjects}</span>
       </div>
+      <div class="info-row">
+        <span class="info-label">OC</span>
+        <span class="info-val">${ocStr}</span>
+      </div>
+      ${urlStr ? `<div class="info-row"><span class="info-label">公式</span><span class="info-val">${urlStr}</span></div>` : ''}
       <div class="tags">${tags}</div>
       <div class="point-box"><strong>▶ 選ぶポイント</strong>${d.points}</div>
     </div>
@@ -1223,30 +1183,34 @@ function renderCard(d) {
 }
 
 // ─── STATE ───
-let currentArea = 'all';
-let currentType = 'all';
-let currentSearch = '';
-let currentView = 'card';
-let sortCol = 'deviation';
-let sortDir = -1; // -1=降順, 1=昇順
+let currentArea='all', currentType='all', currentSearch='';
+let currentView='card';
+let sortCol='deviation', sortDir=-1;
+let quickFilters=new Set();
+let cardSortMode='dev_desc';
 
-const areaOrder = ['tohoku','kanto','koshinetsu','hokuriku','tokai','kansai','chugoku','kyushu','hokkaido'];
-const areaLabel = {
-  tohoku:'東北', kanto:'関東', koshinetsu:'甲信越', hokuriku:'北陸',
-  tokai:'東海', kansai:'関西', chugoku:'中国', kyushu:'九州', hokkaido:'北海道'
+const areaOrder=['tohoku','kanto','koshinetsu','hokuriku','tokai','kansai','chugoku','kyushu','hokkaido'];
+const areaLabel={
+  tohoku:'東北',kanto:'関東',koshinetsu:'甲信越',hokuriku:'北陸',
+  tokai:'東海',kansai:'関西',chugoku:'中国',kyushu:'九州',hokkaido:'北海道'
 };
-const typeLabel = { national:'国立', public:'公立', private:'私立' };
-const dormLabel = d => d === 'yes' ? '★ 直営' : d === 'part' ? '◐ 提携' : '×';
-const dormClass = d => d === 'yes' ? 'td-dorm-yes' : d === 'part' ? 'td-dorm-part' : 'td-dorm-no';
+const typeLabel={national:'国立',public:'公立',private:'私立'};
+const dormLabel=d=>d==='yes'?'★ 直営':d==='part'?'◐ 提携':'×';
+const dormClass=d=>d==='yes'?'td-dorm-yes':d==='part'?'td-dorm-part':'td-dorm-no';
 
 function getFiltered() {
   return DATA.filter(d => {
     if (d.hidden) return false;
     if (!d.one_aa) return false;
-    if (currentArea !== 'all' && d.area !== currentArea) return false;
-    if (currentType !== 'all' && d.type !== currentType) return false;
+    if (currentArea!=='all' && d.area!==currentArea) return false;
+    if (currentType!=='all' && d.type!==currentType) return false;
+    // Quick filters
+    if (quickFilters.has('dorm') && d.dorm==='no') return false;
+    if (quickFilters.has('kokko') && d.type==='private') return false;
+    if (quickFilters.has('hensa60') && d.deviation < 60) return false;
+    if (quickFilters.has('toshi') && d.city_level!=='seirei') return false;
     if (currentSearch) {
-      const q = currentSearch.toLowerCase();
+      const q=currentSearch.toLowerCase();
       if (!`${d.univ}${d.dept}${d.pref}${d.area}${d.tags.join('')}${d.access}${d.points}`.toLowerCase().includes(q)) return false;
     }
     return true;
@@ -1254,129 +1218,560 @@ function getFiltered() {
 }
 
 function update() {
-  const items = getFiltered();
-  document.getElementById('result-count').textContent = `${items.length}校 表示中`;
+  const items=getFiltered();
+  document.getElementById('result-count').textContent=`${items.length}校 表示中`;
   renderCard_view(items);
   renderTable_view(items);
 }
 
 // ─── CARD VIEW ───
 function renderCard_view(items) {
-  const grid = document.getElementById('grid-view');
-  const sorted = [...items].sort((a,b) => {
-    const ai = areaOrder.indexOf(a.area), bi = areaOrder.indexOf(b.area);
-    if (ai !== bi) return ai - bi;
-    return b.deviation - a.deviation;
-  });
-  if (sorted.length === 0) {
-    grid.innerHTML = '<div class="no-result" style="grid-column:1/-1">条件に一致する大学がありません</div>';
+  const grid=document.getElementById('grid-view');
+  let sorted=[...items];
+  switch(cardSortMode) {
+    case 'area':
+      sorted.sort((a,b)=>{
+        const ai=areaOrder.indexOf(a.area),bi=areaOrder.indexOf(b.area);
+        return ai!==bi ? ai-bi : b.deviation-a.deviation;
+      }); break;
+    case 'dev_desc': sorted.sort((a,b)=>b.deviation-a.deviation); break;
+    case 'dev_asc':  sorted.sort((a,b)=>a.deviation-b.deviation); break;
+    case 'tuition_asc':  sorted.sort((a,b)=>a.tuition_4y-b.tuition_4y); break;
+    case 'tuition_desc': sorted.sort((a,b)=>b.tuition_4y-a.tuition_4y); break;
+  }
+  if (sorted.length===0) {
+    grid.innerHTML='<div class="no-result" style="grid-column:1/-1">条件に一致する大学がありません</div>';
     return;
   }
-  let html = '';
-  let lastArea = '';
-  for (const d of sorted) {
-    if (d.area !== lastArea) {
-      html += `<div class="section-divider" style="grid-column:1/-1"><h2>${areaLabel[d.area]}</h2></div>`;
-      lastArea = d.area;
+  let html='';
+  if (cardSortMode==='area') {
+    let lastArea='';
+    for (const d of sorted) {
+      if (d.area!==lastArea) {
+        html+=`<div class="section-divider" style="grid-column:1/-1"><h2>${areaLabel[d.area]}</h2></div>`;
+        lastArea=d.area;
+      }
+      html+=renderCard(d);
     }
-    html += renderCard(d);
+  } else {
+    for (const d of sorted) html+=renderCard(d);
   }
-  grid.innerHTML = html;
+  grid.innerHTML=html;
 }
 
 // ─── TABLE VIEW ───
 function renderTable_view(items) {
-  const tbody = document.getElementById('table-body');
-  const sorted = [...items].sort((a,b) => {
-    let av = a[sortCol], bv = b[sortCol];
-    if (typeof av === 'string') av = av.toLowerCase(), bv = bv.toLowerCase();
-    if (av < bv) return -sortDir;
-    if (av > bv) return sortDir;
+  const tbody=document.getElementById('table-body');
+  const sorted=[...items].sort((a,b)=>{
+    let av=a[sortCol],bv=b[sortCol];
+    if (typeof av==='string') {av=av.toLowerCase();bv=bv.toLowerCase();}
+    if (av<bv) return -sortDir;
+    if (av>bv) return sortDir;
     return 0;
   });
-  tbody.innerHTML = sorted.map(d => `
+  tbody.innerHTML=sorted.map(d=>`
     <tr data-id="${d.id}">
       <td class="td-name"><strong>${d.univ}</strong><small>${d.dept}</small></td>
       <td>${areaLabel[d.area]}</td>
-      <td><span class="card-type-badge type-${d.type}">${typeLabel[d.type]}</span></td>
+      <td>${typeBadge(d.type)}</td>
       <td class="td-num">${d.deviation}</td>
       <td class="td-num">${d.tuition_1st}</td>
       <td class="td-num">${d.tuition_4y}</td>
+      <td><span class="${cityColor[d.city_level]||'tag'}" style="padding:1px 5px;border-radius:3px;font-size:11px">${cityLabel[d.city_level]||'—'}</span></td>
       <td class="${dormClass(d.dorm)}">${dormLabel(d.dorm)}</td>
       <td style="white-space:normal;font-size:12px">${d.exam}</td>
     </tr>`).join('');
-
-  // 行クリックでモーダル表示
-  tbody.querySelectorAll('tr').forEach(tr => {
-    tr.addEventListener('click', () => {
-      const d = DATA.find(x => x.id === +tr.dataset.id);
+  tbody.querySelectorAll('tr').forEach(tr=>{
+    tr.addEventListener('click',()=>{
+      const d=DATA.find(x=>x.id===+tr.dataset.id);
       if (!d) return;
-      document.getElementById('modal-card').innerHTML = `<div style="padding:0">${renderCard(d)}</div>`;
+      document.getElementById('modal-card').innerHTML=`<div style="padding:0">${renderCard(d)}</div>`;
       document.getElementById('modal-overlay').classList.add('open');
     });
   });
 }
 
 // ─── TABLE SORT ───
-document.getElementById('univ-table').querySelector('thead').addEventListener('click', e => {
-  const th = e.target.closest('th[data-col]');
+document.getElementById('univ-table').querySelector('thead').addEventListener('click',e=>{
+  const th=e.target.closest('th[data-col]');
   if (!th) return;
-  const col = th.dataset.col;
-  if (sortCol === col) {
-    sortDir *= -1;
-  } else {
-    sortCol = col;
-    sortDir = (col === 'deviation' || col === 'tuition_1st' || col === 'tuition_4y') ? -1 : 1;
-  }
-  document.querySelectorAll('.univ-table th').forEach(t => t.classList.remove('sort-asc','sort-desc'));
-  th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+  const col=th.dataset.col;
+  if (sortCol===col) sortDir*=-1;
+  else { sortCol=col; sortDir=(col==='deviation'||col==='tuition_1st'||col==='tuition_4y')?-1:1; }
+  document.querySelectorAll('.univ-table th').forEach(t=>t.classList.remove('sort-asc','sort-desc'));
+  th.classList.add(sortDir===1?'sort-asc':'sort-desc');
   renderTable_view(getFiltered());
 });
 
 // ─── VIEW SWITCH ───
 function switchView(v) {
-  currentView = v;
-  document.getElementById('grid-view').classList.toggle('hidden-view', v !== 'card');
-  document.getElementById('table-view').classList.toggle('visible', v === 'table');
-  document.getElementById('tab-card').classList.toggle('active', v === 'card');
-  document.getElementById('tab-table').classList.toggle('active', v === 'table');
+  currentView=v;
+  document.getElementById('grid-view').classList.toggle('hidden-view', v!=='card');
+  document.getElementById('table-view').classList.toggle('visible', v==='table');
+  document.getElementById('timeline-view').classList.toggle('visible', v==='timeline');
+  ['card','table','timeline'].forEach(id=>{
+    document.getElementById('tab-'+id).classList.toggle('active', v===id);
+  });
+  if (v==='timeline') renderTimeline();
+}
+
+// ─── TIMELINE ───
+function renderTimeline() {
+  const el=document.getElementById('timeline-view');
+  if (el.dataset.rendered) return;
+  el.dataset.rendered='1';
+  el.innerHTML=`
+<div class="timeline-section">
+  <h2>📅 受験タイムライン</h2>
+  <p class="tl-sub">高校2年生現在地から — 入試パターン別の月別やるべきことと出願要件</p>
+
+  <div class="tl-tabs">
+    <button class="tl-tab active" onclick="tlSwitch('all',this)">🗓 全体スケジュール</button>
+    <button class="tl-tab" onclick="tlSwitch('ao',this)">🎓 総合型選抜（AO）</button>
+    <button class="tl-tab" onclick="tlSwitch('suisen',this)">📝 学校推薦型（公募・指定校）</button>
+    <button class="tl-tab" onclick="tlSwitch('ippan',this)">✏️ 一般選抜</button>
+    <button class="tl-tab" onclick="tlSwitch('heigan',this)">⚡ 併願戦略</button>
+  </div>
+
+  <div id="tl-all" class="tl-content active">
+    <div class="tl-info"><strong>📌 現在地（高2）</strong>今がスタート地点。志望校リストアップ・入試方式の把握・基礎学力固めを今すぐ始める。</div>
+    <div class="tl-month-grid">
+      <div class="tl-month highlight">
+        <div class="tl-month-label">高2<br>9〜10月</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>志望校リストアップ</strong>（このアプリで比較）<span class="badge-tag badge-ao">AO</span><span class="badge-tag badge-ippan">一般</span></div>
+          <div class="tl-item"><strong>入試方式を確認</strong> — 各大学の入試要項を取り寄せまたは公式HP確認</div>
+          <div class="tl-item">オープンキャンパス下調べ（多くは次の夏に開催）</div>
+          <div class="tl-item">英語・数学・国語の基礎固めを徹底</div>
+        </div>
+      </div>
+      <div class="tl-month">
+        <div class="tl-month-label">高2<br>11〜12月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">模試（全統模試）で現在地確認</div>
+          <div class="tl-item">志望大学の<strong>過去問を1年分</strong>チェック（傾向把握）</div>
+          <div class="tl-item"><strong>AO志望者：</strong>大学の求める人材像を研究開始 <span class="badge-tag badge-ao">AO</span></div>
+          <div class="tl-item">英検・TOEFL対策開始（英語外部検定が使える大学多数）</div>
+        </div>
+      </div>
+      <div class="tl-month">
+        <div class="tl-month-label">高2<br>1〜2月</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>共通テスト本番を見学</strong>（会場の雰囲気確認）</div>
+          <div class="tl-item">1年間の学習を振り返りGW計画を立てる</div>
+          <div class="tl-item">AO志望者：志望理由書の下書き準備 <span class="badge-tag badge-ao">AO</span></div>
+        </div>
+      </div>
+      <div class="tl-month">
+        <div class="tl-month-label">高2<br>3月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">春休みで苦手教科を集中補強</div>
+          <div class="tl-item">志望大学をA・B・C（第1〜3）ランクに整理</div>
+          <div class="tl-item">指定校推薦 検討者：校内成績（評定）の確認 <span class="badge-tag badge-shitei">指定校</span></div>
+        </div>
+      </div>
+      <div class="tl-month highlight">
+        <div class="tl-month-label">高3<br>4〜5月</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>共通テスト出願要件を最終確認</strong>（受験科目・科目数）</div>
+          <div class="tl-item">AO出願書類の準備本格化 <span class="badge-tag badge-ao">AO</span></div>
+          <div class="tl-item">模試（5月全統）で偏差値確認</div>
+          <div class="tl-item">指定校推薦 校内選考エントリー時期確認 <span class="badge-tag badge-shitei">指定校</span></div>
+        </div>
+      </div>
+      <div class="tl-month highlight">
+        <div class="tl-month-label">高3<br>6〜7月</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>オープンキャンパス参加</strong>（多くの大学が7〜8月開催） 🏛</div>
+          <div class="tl-item">総合型選抜 出願開始大学あり（早いところは7月） <span class="badge-tag badge-ao">AO</span></div>
+          <div class="tl-item">公募推薦 出願要件最終確認 <span class="badge-tag badge-suisen">推薦</span></div>
+          <div class="tl-item">共通テスト出願（7月下旬〜8月上旬）</div>
+        </div>
+      </div>
+      <div class="tl-month urgent">
+        <div class="tl-month-label">高3<br>8月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>共通テスト出願締切（8月上旬）</strong> — 見逃し注意！</div>
+          <div class="tl-item"><strong>オープンキャンパス最盛期</strong> — 気になる大学を必ず訪問</div>
+          <div class="tl-item">AO エントリー・書類提出 <span class="badge-tag badge-ao">AO</span></div>
+          <div class="tl-item">過去問演習を本格化</div>
+        </div>
+      </div>
+      <div class="tl-month highlight">
+        <div class="tl-month-label">高3<br>9〜10月</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>AO 選考（書類・面接・プレゼン）</strong> <span class="badge-tag badge-ao">AO</span></div>
+          <div class="tl-item"><strong>AO 合否発表</strong>（早い大学は10月末） <span class="badge-tag badge-ao">AO</span></div>
+          <div class="tl-item">指定校推薦 校内選考結果・校長推薦状発行 <span class="badge-tag badge-shitei">指定校</span></div>
+          <div class="tl-item">公募推薦 出願書類提出準備 <span class="badge-tag badge-suisen">推薦</span></div>
+          <div class="tl-item">模試（10月全統記述）で本番シミュレーション</div>
+        </div>
+      </div>
+      <div class="tl-month urgent">
+        <div class="tl-month-label">高3<br>11月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>公募推薦 出願（11月頃）・試験（11〜12月）</strong> <span class="badge-tag badge-suisen">推薦</span></div>
+          <div class="tl-item">🔥 <strong>指定校推薦 出願・試験</strong>（11月が多い） <span class="badge-tag badge-shitei">指定校</span></div>
+          <div class="tl-item">一般選抜 組：共通テスト最終調整 <span class="badge-tag badge-ippan">一般</span></div>
+        </div>
+      </div>
+      <div class="tl-month urgent">
+        <div class="tl-month-label">高3<br>12月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">推薦系 合否発表・入学手続き（入学金納付期限に注意）</div>
+          <div class="tl-item">🔥 <strong>共通テスト直前対策</strong> — 過去問・模試の徹底復習 <span class="badge-tag badge-ippan">一般</span></div>
+          <div class="tl-item">出願書類（調査書等）の準備完了</div>
+        </div>
+      </div>
+      <div class="tl-month urgent">
+        <div class="tl-month-label">高3<br>1月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>共通テスト本番</strong>（1月中旬・2日間）</div>
+          <div class="tl-item">自己採点 → 出願大学の最終決定</div>
+          <div class="tl-item">私立大学 出願開始（共通テスト後） <span class="badge-tag badge-ippan">一般</span></div>
+        </div>
+      </div>
+      <div class="tl-month urgent">
+        <div class="tl-month-label">高3<br>2月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>私立大学 一般試験</strong>（2月初旬〜中旬） <span class="badge-tag badge-ippan">一般</span></div>
+          <div class="tl-item">国公立大学 2次試験出願（2月初旬締切） <span class="badge-tag badge-ippan">一般</span></div>
+          <div class="tl-item">私立大学 合否発表 → 入学手続き</div>
+        </div>
+      </div>
+      <div class="tl-month urgent">
+        <div class="tl-month-label">高3<br>3月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>国公立大学 2次試験本番</strong>（前期：2月下旬、後期：3月上旬）</div>
+          <div class="tl-item">国公立 合否発表（前期：3月上旬）</div>
+          <div class="tl-item">追加合格・入学手続き完了</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tl-ao" class="tl-content">
+    <div class="tl-info"><strong>🎓 総合型選抜（AO入試）とは？</strong>
+      学力試験だけでなく、志望理由書・面接・プレゼンテーション・課題提出などで選考する入試。<br>
+      <strong>「なぜこの大学・学科を選んだか」「建築への情熱と具体的なビジョン」</strong>が問われる。<br>
+      共通テストが不要な大学も多い（東北大AO IIなど）。早い大学は高3の6月から出願開始。
+    </div>
+    <div class="tl-month-grid">
+      <div class="tl-month"><div class="tl-month-label">高2<br>9月〜</div>
+        <div class="tl-month-body">
+          <div class="tl-item">AO実施大学を確認（東北大・横浜国大・筑波大・信州大・山形大等）</div>
+          <div class="tl-item">各大学の「求める人材像」「アドミッション・ポリシー」を熟読</div>
+          <div class="tl-item"><strong>建築への動機・体験・将来像</strong>を日記や記録に残し始める</div>
+        </div>
+      </div>
+      <div class="tl-month highlight"><div class="tl-month-label">高3<br>4〜6月</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>志望理由書の執筆開始</strong>（なぜ建築か、なぜこの大学か）</div>
+          <div class="tl-item">活動報告書・ポートフォリオ（作品集）の作成</div>
+          <div class="tl-item">学校の先生・担任に推薦書依頼（早めが重要）</div>
+          <div class="tl-item">共通テスト不要型：学力勉強のウェイトをAO書類に振り替え</div>
+        </div>
+      </div>
+      <div class="tl-month urgent"><div class="tl-month-label">高3<br>7〜8月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>出願書類提出</strong>（大学により6〜9月）</div>
+          <div class="tl-item">模擬面接（学校・塾）で練習</div>
+          <div class="tl-item">オープンキャンパス参加 → 教員と話して熱意をアピール</div>
+        </div>
+      </div>
+      <div class="tl-month urgent"><div class="tl-month-label">高3<br>9〜11月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>AO選考本番</strong>（書類選考 → 面接・プレゼン）</div>
+          <div class="tl-item">🔥 <strong>合否発表</strong>（10〜11月が多い）</div>
+          <div class="tl-item">不合格時の一般選抜への切り替え準備も並行して</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-gold"><strong>💡 AO対策のポイント</strong>
+      ・建築への具体的なエピソードを持つ（建物を訪問した体験、設計に挑戦した経験など）<br>
+      ・「建築家になりたい」より「○○という問題を建築で解決したい」と具体的に語れると強い<br>
+      ・東北大AO IIは共通テスト不要・面接のみ。難易度は高いが狙い目
+    </div>
+    <div class="tl-warn"><strong>⚠️ 注意</strong>
+      AOで合格しても入学手続き費用（入学金）が発生する。一般選抜も受ける場合、入学金の二重払いに注意。多くの国立大学はAO合格後も一般を受けられないため、AO受験は慎重に。
+    </div>
+  </div>
+
+  <div id="tl-suisen" class="tl-content">
+    <div class="tl-info"><strong>📝 学校推薦型選抜とは？</strong>
+      <strong>公募推薦</strong>：どの高校からも出願可。評定平均（GPA）や活動実績が問われる。小論文・面接が多い。<br>
+      <strong>指定校推薦</strong>：大学が指定した高校のみ出願可。校内選考で代表に選ばれると合格率はほぼ100%。評定が最重要。<br>
+      いずれも<strong>11〜12月</strong>に合否が出るため、早期に進路確定できる。
+    </div>
+    <div class="tl-month-grid">
+      <div class="tl-month"><div class="tl-month-label">高1〜2<br>全期間</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>定期試験で高評定を維持</strong>（指定校は評定4.0以上が目安） <span class="badge-tag badge-shitei">指定校</span></div>
+          <div class="tl-item">欠席日数も選考基準になる大学あり（年10日未満が望ましい）</div>
+          <div class="tl-item">資格取得・部活・ボランティア等を記録に残す</div>
+        </div>
+      </div>
+      <div class="tl-month highlight"><div class="tl-month-label">高3<br>6〜7月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">進路指導室で<strong>指定校推薦の大学リスト</strong>を確認 <span class="badge-tag badge-shitei">指定校</span></div>
+          <div class="tl-item">校内選考エントリー準備（担任に相談）</div>
+          <div class="tl-item">公募推薦 出願要件（評定・資格）を大学HPで確認 <span class="badge-tag badge-suisen">公募</span></div>
+        </div>
+      </div>
+      <div class="tl-month urgent"><div class="tl-month-label">高3<br>9〜10月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>指定校推薦 校内選考</strong>（9〜10月）<span class="badge-tag badge-shitei">指定校</span></div>
+          <div class="tl-item">校内選考通過後 → 大学へ出願書類提出</div>
+          <div class="tl-item">公募推薦 出願書類準備 <span class="badge-tag badge-suisen">公募</span></div>
+        </div>
+      </div>
+      <div class="tl-month urgent"><div class="tl-month-label">高3<br>11月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>指定校推薦 試験・面接</strong><span class="badge-tag badge-shitei">指定校</span></div>
+          <div class="tl-item">🔥 <strong>公募推薦 出願・試験</strong><span class="badge-tag badge-suisen">公募</span></div>
+        </div>
+      </div>
+      <div class="tl-month"><div class="tl-month-label">高3<br>12月</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>合否発表</strong> → 入学手続き・入学金納付</div>
+          <div class="tl-item">不合格の場合 → 一般選抜に切り替え（共通テストまで約1ヶ月）</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-gold"><strong>💡 評定アップのコツ</strong>
+      定期試験対策を徹底。数学・英語・理科（物理）は建築学部の重要科目なので特に力を入れる。提出物は期限内100%、授業態度も評価対象。
+    </div>
+  </div>
+
+  <div id="tl-ippan" class="tl-content">
+    <div class="tl-info"><strong>✏️ 一般選抜（共通テスト＋個別試験）とは？</strong>
+      最も標準的な入試方式。<strong>共通テスト</strong>（旧センター試験）＋各大学の<strong>個別試験（2次試験）</strong>で選考。<br>
+      国立大学は共通テスト＋2次試験必須。私立大学は共通テスト利用（個別試験なし）も可。<br>
+      建築系は<strong>数学・理科（物理）・英語</strong>が中心。一部大学は国語・面接も課す。
+    </div>
+    <div class="tl-month-grid">
+      <div class="tl-month highlight"><div class="tl-month-label">高2<br>9月〜</div>
+        <div class="tl-month-body">
+          <div class="tl-item"><strong>受験科目を確定</strong>（数IA・IIB・物理基礎・物理・英語が基本）</div>
+          <div class="tl-item">数学は毎日継続して基礎固め（チャート式等）</div>
+          <div class="tl-item">英語：単語2000語レベルを完成させる</div>
+        </div>
+      </div>
+      <div class="tl-month"><div class="tl-month-label">高3<br>4〜7月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">共通テスト対策を本格化（各教科の過去問・共テ模試）</div>
+          <div class="tl-item">国立志望：2次試験科目の論述・記述力を鍛える</div>
+          <div class="tl-item">7月：共通テスト出願書類の入手・記入開始</div>
+        </div>
+      </div>
+      <div class="tl-month urgent"><div class="tl-month-label">高3<br>8月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>共通テスト出願締切（8月上旬）</strong> — 最重要期限！</div>
+          <div class="tl-item">夏期講習・過去問演習で総合力アップ</div>
+          <div class="tl-item">第1〜3志望校の2次試験過去問を1周</div>
+        </div>
+      </div>
+      <div class="tl-month"><div class="tl-month-label">高3<br>9〜12月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">共通テスト対策を週5日ペースで継続</div>
+          <div class="tl-item">私立大学 出願スケジュール確認・書類準備</div>
+          <div class="tl-item">模試（11月全統）で最終偏差値確認 → 出願校調整</div>
+        </div>
+      </div>
+      <div class="tl-month urgent"><div class="tl-month-label">高3<br>1月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>共通テスト本番</strong>（1月中旬）</div>
+          <div class="tl-item">自己採点 → リサーチA〜E判定確認</div>
+          <div class="tl-item">出願校の最終決定（強気/堅実のバランス）</div>
+        </div>
+      </div>
+      <div class="tl-month urgent"><div class="tl-month-label">高3<br>2〜3月</div>
+        <div class="tl-month-body">
+          <div class="tl-item">🔥 <strong>私立一般試験</strong>（2月初〜中旬）</div>
+          <div class="tl-item">🔥 <strong>国公立 2次試験</strong>（前期2月下旬・後期3月上旬）</div>
+          <div class="tl-item">合格 → 入学手続き・入学金納付（期限厳守）</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-gold"><strong>💡 建築系の入試科目対策</strong>
+      数学（IA・IIB）：空間把握・座標系が頻出。毎日1題以上解く習慣を。<br>
+      物理：力学・波動を中心に。高2の終わりまでに物理基礎を完成。<br>
+      英語：リーディング重視。共通テストは時間管理が鍵。
+    </div>
+  </div>
+
+  <div id="tl-heigan" class="tl-content">
+    <div class="tl-info"><strong>⚡ 建築系の最適な併願戦略（高2〜高3向け）</strong>
+      仙台の高2生が一級建築士資格を目標とする場合の推奨パターン。
+    </div>
+
+    <div style="margin-bottom:16px">
+      <h3 style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)">🏆 パターン① 国立本命・私立保険型（最も一般的）</h3>
+      <div class="tl-month-grid">
+        <div class="tl-month highlight"><div class="tl-month-label">11〜12月</div><div class="tl-month-body">
+          <div class="tl-item"><strong>私立推薦</strong>（東北工大・日大工など）で先行確保 <span class="badge-tag badge-suisen">推薦</span></div>
+        </div></div>
+        <div class="tl-month"><div class="tl-month-label">2月</div><div class="tl-month-body">
+          <div class="tl-item"><strong>私立一般</strong>（東北芸工大・芝浦工大等）2〜3校 <span class="badge-tag badge-ippan">一般</span></div>
+        </div></div>
+        <div class="tl-month highlight"><div class="tl-month-label">2月下旬</div><div class="tl-month-body">
+          <div class="tl-item"><strong>国立前期</strong>（山形大・信州大・東北大・新潟大等） <span class="badge-tag badge-ippan">一般</span></div>
+        </div></div>
+        <div class="tl-month"><div class="tl-month-label">3月</div><div class="tl-month-body">
+          <div class="tl-item">前期不合格 → <strong>国立後期</strong>（新潟大後期=面接のみ等） <span class="badge-tag badge-ippan">一般</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <h3 style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)">🎯 パターン② AO先行・一般並行型</h3>
+      <div class="tl-month-grid">
+        <div class="tl-month highlight"><div class="tl-month-label">9〜10月</div><div class="tl-month-body">
+          <div class="tl-item"><strong>AO選考</strong>（東北大AO II・山形大総合型等） <span class="badge-tag badge-ao">AO</span></div>
+        </div></div>
+        <div class="tl-month"><div class="tl-month-label">AO不合格時</div><div class="tl-month-body">
+          <div class="tl-item">一般選抜に切り替え。AO対策で磨いた「建築への想い」が小論文・面接で活きる</div>
+        </div></div>
+        <div class="tl-month highlight"><div class="tl-month-label">2〜3月</div><div class="tl-month-body">
+          <div class="tl-item"><strong>私立一般</strong>（2校）＋<strong>国立前期</strong>（1校） <span class="badge-tag badge-ippan">一般</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <h3 style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)">📚 受験費用の目安</h3>
+      <table class="prereq-table">
+        <thead><tr><th>項目</th><th>費用目安</th><th>注意点</th></tr></thead>
+        <tbody>
+          <tr><td>共通テスト受験料</td><td>18,800円（3教科以上）</td><td>8月に出願</td></tr>
+          <tr><td>国立大学出願料</td><td>17,000円/校</td><td>前期・後期で2校まで</td></tr>
+          <tr><td>私立大学出願料</td><td>30,000〜35,000円/回</td><td>複数日程は割増の場合も</td></tr>
+          <tr><td>国立大学入学金</td><td>282,000円</td><td>合格後に納付</td></tr>
+          <tr><td>私立大学入学金</td><td>20〜30万円</td><td>延納手続きが使える場合も</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h3 style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)">📋 出願要件の概要</h3>
+      <table class="prereq-table">
+        <thead><tr><th>入試方式</th><th>一般的な出願要件</th><th>建築系での特記事項</th></tr></thead>
+        <tbody>
+          <tr><td>総合型選抜（AO）</td><td>志望理由書・推薦書・活動記録等</td><td>ポートフォリオ（作品集）を求める大学あり（東北芸工大等）</td></tr>
+          <tr><td>指定校推薦</td><td>評定平均3.8〜4.2以上（大学により異なる）・欠席日数</td><td>建築系は理系科目の評定を重視する傾向</td></tr>
+          <tr><td>公募推薦</td><td>評定平均3.5以上・調査書・推薦書</td><td>小論文「建築への関心・志望動機」が頻出テーマ</td></tr>
+          <tr><td>一般選抜</td><td>共通テスト（5〜6教科）＋個別試験</td><td>建築系：数学IA・IIB、物理、英語が基本。国立は国語・社会も必要</td></tr>
+          <tr><td>共通テスト利用（私立）</td><td>共通テストの結果のみ（個別試験なし）</td><td>2〜3科目利用の場合は数学・英語が一般的</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tl-warn" style="margin-top:14px"><strong>⚠️ 入学金の二重払いに注意</strong>
+      私立大学の合格後、国立大学の合格発表まで入学金の「入学辞退期限」が問題になる。多くの私立は3月中旬まで延納を認めているが、大学により異なる。事前に各大学の「入学手続き延納制度」を必ず確認すること。
+    </div>
+  </div>
+</div>
+`;
+}
+
+function tlSwitch(id,btn) {
+  document.querySelectorAll('.tl-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tl-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tl-'+id).classList.add('active');
+}
+
+// ─── EXAM GUIDE ───
+function renderExamGuide() {
+  return `
+<div class="exam-guide">
+  <h3>📖 入試方式の解説 — 親でもわかる！</h3>
+  <div class="exam-grid">
+    <div class="exam-card">
+      <div class="ec-title">🎓 総合型選抜（AO入試）</div>
+      <div class="ec-body"><strong>何を見る？</strong> 学力だけでなく「なぜこの大学に行きたいか」「建築で何をしたいか」という熱意・個性・将来像。<br><strong>試験内容：</strong>志望理由書・面接・プレゼン・課題提出など。共通テスト不要の場合も。<br><strong>時期：</strong>秋（9〜11月合否）</div>
+    </div>
+    <div class="exam-card">
+      <div class="ec-title">📝 学校推薦型（公募推薦）</div>
+      <div class="ec-body"><strong>何を見る？</strong> 学校の成績（評定平均）＋小論文・面接。どの高校からも出願可能。<br><strong>評定目安：</strong>3.5〜4.0以上が多い。<br><strong>時期：</strong>11〜12月合否。早期に確定できる。</div>
+    </div>
+    <div class="exam-card">
+      <div class="ec-title">🏫 指定校推薦</div>
+      <div class="ec-body"><strong>何を見る？</strong> 学校の成績（評定）が最重要。大学が「この高校から来てください」と指定した高校の生徒だけが出願可能。<br><strong>合格率：</strong>ほぼ100%（校内選考を通過すれば）。<br><strong>時期：</strong>秋の校内選考→11〜12月合否</div>
+    </div>
+    <div class="exam-card">
+      <div class="ec-title">✏️ 一般選抜</div>
+      <div class="ec-body"><strong>何を見る？</strong> 学力試験の点数のみで判定。<br><strong>国立大：</strong>共通テスト（5〜6教科）＋各大学の2次試験（数学・理科・英語等）。<br><strong>私立大：</strong>英語・数学・物理が中心（2〜3教科）。<br><strong>時期：</strong>1〜3月</div>
+    </div>
+    <div class="exam-card">
+      <div class="ec-title">📊 共通テスト利用（私立）</div>
+      <div class="ec-body"><strong>何を見る？</strong> 共通テスト（センター試験の後継）の点数のみ。個別試験なし。<br>遠くの大学にわざわざ受験に行かなくても合否が出る便利な制度。<br>ただし合格ラインは高め。</div>
+    </div>
+    <div class="exam-card">
+      <div class="ec-title">🎨 実技試験（一部の大学のみ）</div>
+      <div class="ec-body">東京藝大・東北芸工大（デッサン選択）などでは実技（デッサン・立体表現）が課される場合がある。<br>ただし多くの建築系大学は<strong>実技なしで受験可能</strong>。</div>
+    </div>
+  </div>
+</div>`;
 }
 
 // ─── BIND ───
-document.getElementById('area-filters').addEventListener('click', e => {
-  const btn = e.target.closest('.filter-btn');
+document.getElementById('area-filters').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');
   if (!btn) return;
-  document.querySelectorAll('#area-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#area-filters .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  currentArea = btn.dataset.area;
+  currentArea=btn.dataset.area;
   update();
 });
-
-document.getElementById('type-filters').addEventListener('click', e => {
-  const btn = e.target.closest('.filter-btn');
+document.getElementById('type-filters').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');
   if (!btn) return;
-  document.querySelectorAll('#type-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#type-filters .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  currentType = btn.dataset.type;
+  currentType=btn.dataset.type;
+  update();
+});
+document.getElementById('search').addEventListener('input',e=>{
+  currentSearch=e.target.value.trim();
+  update();
+});
+document.getElementById('card-sort').addEventListener('change',e=>{
+  cardSortMode=e.target.value;
+  renderCard_view(getFiltered());
+});
+document.querySelector('.quick-filters').addEventListener('click',e=>{
+  const btn=e.target.closest('.qf-btn');
+  if (!btn) return;
+  const qf=btn.dataset.qf;
+  if (quickFilters.has(qf)) { quickFilters.delete(qf); btn.classList.remove('active'); }
+  else { quickFilters.add(qf); btn.classList.add('active'); }
   update();
 });
 
-document.getElementById('search').addEventListener('input', e => {
-  currentSearch = e.target.value.trim();
-  update();
+// TABLE SORT
+document.getElementById('univ-table').querySelector('thead').addEventListener('click',e=>{
+  const th=e.target.closest('th[data-col]');
+  if (!th) return;
+  const col=th.dataset.col;
+  if (sortCol===col) sortDir*=-1;
+  else { sortCol=col; sortDir=(col==='deviation'||col==='tuition_1st'||col==='tuition_4y')?-1:1; }
+  document.querySelectorAll('.univ-table th').forEach(t=>t.classList.remove('sort-asc','sort-desc'));
+  th.classList.add(sortDir===1?'sort-asc':'sort-desc');
+  renderTable_view(getFiltered());
 });
 
-// ─── MODAL CLOSE ───
-document.getElementById('modal-close').addEventListener('click', () => {
-  document.getElementById('modal-overlay').classList.remove('open');
+// MODAL CLOSE
+document.getElementById('modal-close').addEventListener('click',()=>document.getElementById('modal-overlay').classList.remove('open'));
+document.getElementById('modal-overlay').addEventListener('click',e=>{
+  if (e.target===document.getElementById('modal-overlay')) document.getElementById('modal-overlay').classList.remove('open');
 });
-document.getElementById('modal-overlay').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal-overlay'))
-    document.getElementById('modal-overlay').classList.remove('open');
+document.addEventListener('keydown',e=>{
+  if (e.key==='Escape') document.getElementById('modal-overlay').classList.remove('open');
 });
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.getElementById('modal-overlay').classList.remove('open');
-});
+
+// EXAM GUIDE injection
+document.querySelector('.note').insertAdjacentHTML('beforebegin', renderExamGuide());
 
 update();
 </script>
