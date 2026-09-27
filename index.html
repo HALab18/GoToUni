@@ -429,32 +429,48 @@ table.univ-table {
   font-size: 13px;
   white-space: nowrap;
 }
+.univ-table {
+  table-layout: fixed;
+  width: 100%;
+}
+.univ-table colgroup col:nth-child(1) { width: 220px; }
+.univ-table colgroup col:nth-child(2) { width: 72px; }
+.univ-table colgroup col:nth-child(3) { width: 52px; }
+.univ-table colgroup col:nth-child(4) { width: 68px; }
+.univ-table colgroup col:nth-child(5) { width: 84px; }
+.univ-table colgroup col:nth-child(6) { width: 80px; }
+.univ-table colgroup col:nth-child(7) { width: 72px; }
+.univ-table colgroup col:nth-child(8) { width: auto; }
 .univ-table th {
   background: var(--bg-muted);
   color: var(--text-muted);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 8px 12px;
+  padding: 8px 10px;
   text-align: left;
   border-bottom: 2px solid var(--border);
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
+  overflow: hidden;
 }
 .univ-table th:hover { color: var(--accent); }
 .univ-table th.sort-asc::after  { content: ' ▲'; font-size: 10px; }
 .univ-table th.sort-desc::after { content: ' ▼'; font-size: 10px; }
 .univ-table td {
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-bottom: 1px solid var(--border);
   color: var(--text-muted);
   vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .univ-table tr:hover td { background: var(--bg-muted); }
-.td-name { white-space: normal; min-width: 160px; }
+.td-name { white-space: normal; }
 .td-name strong { color: var(--text); font-size: 13px; display: block; }
-.td-name small { color: var(--text-light); font-size: 11px; }
+.td-name small { color: var(--text-light); font-size: 11px; white-space: normal; }
 .td-num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
 .td-dorm-yes  { color: var(--gold); font-weight: 700; }
 .td-dorm-part { color: var(--accent); }
@@ -587,6 +603,9 @@ table.univ-table {
 <div id="table-view">
   <div class="tbl-wrap">
     <table class="univ-table" id="univ-table">
+      <colgroup>
+        <col><col><col><col><col><col><col><col>
+      </colgroup>
       <thead>
         <tr>
           <th data-col="univ">大学・学部</th>
@@ -596,7 +615,7 @@ table.univ-table {
           <th data-col="tuition_1st">初年度(万)</th>
           <th data-col="tuition_4y">4年間(万)</th>
           <th data-col="dorm">寮</th>
-          <th data-col="exam" style="min-width:180px;white-space:normal">入試方式</th>
+          <th data-col="exam">入試方式</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -1284,7 +1303,7 @@ function renderTable_view(items) {
       <td class="td-num">${d.tuition_1st}</td>
       <td class="td-num">${d.tuition_4y}</td>
       <td class="${dormClass(d.dorm)}">${dormLabel(d.dorm)}</td>
-      <td style="white-space:normal;min-width:180px;font-size:12px">${d.exam}</td>
+      <td style="white-space:normal;font-size:12px">${d.exam}</td>
     </tr>`).join('');
 
   // 行クリックでモーダル表示
