@@ -159,12 +159,14 @@ table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout
 .univ-table colgroup col:nth-child(8){width:64px}
 .univ-table colgroup col:nth-child(9){width:auto}
 .univ-table th{background:var(--bg-muted);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.05em;padding:7px 9px;text-align:left;border-bottom:2px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap;overflow:hidden}
+.univ-table th:nth-child(1){position:sticky;left:0;z-index:2;background:var(--bg-muted)}
 .univ-table th:hover{color:var(--accent)}
 .univ-table th.sort-asc::after{content:' ▲';font-size:10px}
 .univ-table th.sort-desc::after{content:' ▼';font-size:10px}
 .univ-table td{padding:7px 9px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .univ-table tr:hover td{background:var(--bg-muted)}
-.td-name{white-space:normal}
+.td-name{white-space:normal;position:sticky;left:0;background:var(--bg-card);z-index:1;min-width:160px}
+.univ-table tr:hover .td-name{background:var(--bg-muted)}
 .td-name strong{color:var(--text);font-size:13px;display:block}
 .td-name small{color:var(--text-light);font-size:11px;white-space:normal}
 .td-num{text-align:right;font-variant-numeric:tabular-nums;color:var(--text)}
@@ -172,6 +174,44 @@ table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout
 .td-dorm-part{color:var(--accent)}
 .td-dorm-no{color:var(--text-light)}
 .univ-table tbody tr{cursor:pointer}
+
+/* ACTIVE FILTERS */
+.active-filters{display:none;flex-wrap:wrap;gap:5px;align-items:center;padding:6px 0;margin-bottom:8px}
+.active-filters.show{display:flex}
+.af-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 10px;background:var(--accent);color:#fff;border-radius:20px;font-size:11px;font-weight:700}
+.af-chip button{background:none;border:none;color:#fff;cursor:pointer;font-size:13px;line-height:1;padding:0 0 0 2px;opacity:.8}
+.af-chip button:hover{opacity:1}
+.af-reset{background:none;border:1px solid var(--border);color:var(--text-muted);padding:2px 10px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.af-reset:hover{border-color:var(--accent);color:var(--accent)}
+
+/* COMPARE */
+.compare-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--accent);color:#fff;padding:10px 16px;z-index:200;box-shadow:0 -2px 12px rgba(0,0,0,.2)}
+.compare-bar.show{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.compare-bar-label{font-size:12px;font-weight:700;white-space:nowrap}
+.compare-slots{display:flex;gap:6px;flex:1;flex-wrap:wrap}
+.compare-slot{background:rgba(255,255,255,.2);border-radius:4px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:6px}
+.compare-slot button{background:none;border:none;color:#fff;cursor:pointer;font-size:14px;line-height:1;opacity:.8}
+.compare-slot button:hover{opacity:1}
+.compare-btn{background:#fff;color:var(--accent);border:none;padding:5px 14px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;font-family:'Noto Sans JP',sans-serif}
+.compare-btn:hover{background:var(--gold-light)}
+.compare-btn-cancel{background:rgba(255,255,255,.2);color:#fff;border:none;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.card-compare-toggle{margin-top:6px;display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-light);cursor:pointer;user-select:none}
+.card-compare-toggle input{accent-color:var(--accent)}
+.card.compare-selected{outline:2px solid var(--accent);outline-offset:2px}
+
+/* COMPARE MODAL */
+.compare-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1100;overflow-y:auto;padding:16px}
+.compare-modal-overlay.open{display:block}
+.compare-modal-box{background:var(--bg-card);border-radius:10px;max-width:1000px;margin:0 auto;box-shadow:0 8px 40px rgba(0,0,0,.3);overflow:hidden}
+.compare-modal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
+.compare-modal-header h2{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:var(--text)}
+.compare-close{background:var(--bg-muted);border:none;border-radius:50%;width:30px;height:30px;font-size:17px;cursor:pointer;color:var(--text-muted)}
+.compare-grid{display:grid;gap:0;overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
+.compare-table th{background:var(--bg-muted);padding:8px 12px;text-align:left;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text-muted);white-space:nowrap;position:sticky;left:0;z-index:1}
+.compare-table td{padding:8px 12px;border:1px solid var(--border);color:var(--text-muted);vertical-align:top}
+.compare-table tr:nth-child(even) td{background:var(--bg-muted)}
+.compare-univ-head{text-align:center;background:var(--accent-light)!important;color:var(--accent)!important;font-weight:700!important;font-size:13px!important}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;padding:16px}
@@ -286,6 +326,7 @@ table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout
   <button class="qf-btn" data-qf="hensa60">偏差値60以上</button>
   <button class="qf-btn" data-qf="toshi">都市部</button>
 </div>
+<div class="active-filters" id="active-filters"></div>
 
 <div class="search-sort-row">
   <div class="search-wrap">
@@ -334,6 +375,27 @@ table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout
 <!-- TIMELINE VIEW -->
 <div id="timeline-view">
   <!-- content injected by JS -->
+</div>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compare-bar">
+  <span class="compare-bar-label">🔍 比較中</span>
+  <div class="compare-slots" id="compare-slots"></div>
+  <button class="compare-btn" onclick="openCompare()">比較する</button>
+  <button class="compare-btn-cancel" onclick="clearCompare()">クリア</button>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="compare-modal-overlay" id="compare-modal-overlay">
+  <div class="compare-modal-box">
+    <div class="compare-modal-header">
+      <h2>📊 大学比較</h2>
+      <button class="compare-close" onclick="document.getElementById('compare-modal-overlay').classList.remove('open')">×</button>
+    </div>
+    <div style="overflow-x:auto;padding:16px">
+      <table class="compare-table" id="compare-table"></table>
+    </div>
+  </div>
 </div>
 
 <!-- MODAL -->
@@ -442,7 +504,7 @@ const DATA = [
     id:7, area:'tohoku', type:'private', univ:'日本大学（工学部）', dept:'工学部 建築学科',
     pref:'福島県郡山市', deviation:49, tuition_1st:155, tuition_4y:540,
     city_level:'chukaku', rent:3.0,
-    pass_rate:'グループ全体で年間100人超（全国1位）',
+    pass_rate:'日大グループ合算で年間100人超（全国1位 ※複数学部・学科の合計値）',
     dorm:'yes', dorm_note:'大学直営寮あり',
     exam:'一般・N全学統一・共通テスト利用・推薦型・総合型', exam_subjects:'N全学統一で一括受験可',
     open_campus:'8月（郡山キャンパス）',
@@ -626,7 +688,7 @@ const DATA = [
     id:21, area:'kanto', type:'private', univ:'東京理科大学', dept:'工学部 建築学科',
     pref:'東京都葛飾区', deviation:65, tuition_1st:175, tuition_4y:620,
     city_level:'seirei', rent:7.5,
-    pass_rate:'年間約110人（全国2位水準）',
+    pass_rate:'年間約110人（2025年度・学部＋大学院合算・全国2位水準）',
     dorm:'yes', dorm_note:'直営・提携寮あり',
     exam:'一般B方式・C方式（共通テスト）・グローバル', exam_subjects:'英語・数学・物理が中心',
     open_campus:'8月（複数キャンパスで実施）',
@@ -639,7 +701,7 @@ const DATA = [
     id:22, area:'kanto', type:'private', univ:'芝浦工業大学', dept:'建築学部 建築学科',
     pref:'東京都江東区', deviation:64, tuition_1st:170, tuition_4y:600,
     city_level:'seirei', rent:8.5,
-    pass_rate:'年間103人（2025年度・私立1位）',
+    pass_rate:'年間103人（2025年度・学部単体・私立1位）',
     dorm:'yes', dorm_note:'直営・提携寮あり',
     exam:'一般A・B日程／共通テスト利用／AO型', exam_subjects:'英語・数学・物理または化学',
     open_campus:'8月（豊洲キャンパス）',
@@ -691,7 +753,7 @@ const DATA = [
     id:26, area:'kanto', type:'private', univ:'日本大学（理工学部）', dept:'理工学部 建築学科',
     pref:'東京都千代田区', deviation:57, tuition_1st:155, tuition_4y:560,
     city_level:'seirei', rent:9.0,
-    pass_rate:'グループ全体で年間100人超（全国1位）',
+    pass_rate:'日大グループ合算で年間100人超（全国1位 ※複数学部・学科の合計値）',
     dorm:'yes', dorm_note:'提携寮あり',
     exam:'N全学統一・A個別・C共通テスト利用・総合型・推薦型', exam_subjects:'英語・数学・物理（N全学で一括出願可）',
     open_campus:'8月（駿河台キャンパス）',
@@ -1132,7 +1194,7 @@ function renderCard(d) {
   const urlStr = d.url ? `<a href="${d.url}" target="_blank" rel="noopener">公式サイト →</a>` : '';
   const cityTag = d.city_level ? `<span class="city-chip">${cityLabel[d.city_level]||''}</span>` : '';
   return `
-  <div class="card">
+  <div class="card ${compareSet.has(d.id)?'compare-selected':''}" data-card-id="${d.id}">
     <div class="card-header">
       <div class="card-rank">${d.deviation||'—'}</div>
       <div class="card-title-block">
@@ -1178,6 +1240,10 @@ function renderCard(d) {
       ${urlStr ? `<div class="info-row"><span class="info-label">公式</span><span class="info-val">${urlStr}</span></div>` : ''}
       <div class="tags">${tags}</div>
       <div class="point-box"><strong>▶ 選ぶポイント</strong>${d.points}</div>
+      <label class="card-compare-toggle">
+        <input type="checkbox" ${compareSet.has(d.id)?'checked':''} onchange="toggleCompare(${d.id},this.checked)">
+        比較リストに追加
+      </label>
     </div>
   </div>`;
 }
@@ -1220,6 +1286,7 @@ function getFiltered() {
 function update() {
   const items=getFiltered();
   document.getElementById('result-count').textContent=`${items.length}校 表示中`;
+  renderActiveFilters();
   renderCard_view(items);
   renderTable_view(items);
 }
@@ -1715,6 +1782,110 @@ function renderExamGuide() {
 </div>`;
 }
 
+// ─── ACTIVE FILTERS ───
+const qfLabel={'dorm':'★ 寮あり','kokko':'国公立のみ','hensa60':'偏差値60以上','toshi':'都市部（政令市）'};
+function renderActiveFilters() {
+  const af=document.getElementById('active-filters');
+  const chips=[];
+  if (currentArea!=='all') chips.push(`<span class="af-chip">エリア: ${areaLabel[currentArea]}<button onclick="removeAreaFilter()" title="解除">×</button></span>`);
+  if (currentType!=='all') chips.push(`<span class="af-chip">設置: ${typeLabel[currentType]}<button onclick="removeTypeFilter()" title="解除">×</button></span>`);
+  if (currentSearch) chips.push(`<span class="af-chip">🔍 ${currentSearch}<button onclick="removeSearch()" title="解除">×</button></span>`);
+  quickFilters.forEach(qf=>{
+    chips.push(`<span class="af-chip">${qfLabel[qf]||qf}<button onclick="removeQF('${qf}')" title="解除">×</button></span>`);
+  });
+  if (chips.length>0) {
+    af.innerHTML=chips.join('')+'<button class="af-reset" onclick="resetAllFilters()">すべてリセット</button>';
+    af.classList.add('show');
+  } else {
+    af.innerHTML='';
+    af.classList.remove('show');
+  }
+}
+function removeAreaFilter(){currentArea='all';document.querySelectorAll('#area-filters .filter-btn').forEach(b=>{b.classList.toggle('active',b.dataset.area==='all')});update();}
+function removeTypeFilter(){currentType='all';document.querySelectorAll('#type-filters .filter-btn').forEach(b=>{b.classList.toggle('active',b.dataset.type==='all')});update();}
+function removeSearch(){currentSearch='';document.getElementById('search').value='';update();}
+function removeQF(qf){quickFilters.delete(qf);document.querySelectorAll('.qf-btn').forEach(b=>{if(b.dataset.qf===qf)b.classList.remove('active')});update();}
+function resetAllFilters(){
+  currentArea='all';currentType='all';currentSearch='';quickFilters.clear();
+  document.getElementById('search').value='';
+  document.querySelectorAll('#area-filters .filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.area==='all'));
+  document.querySelectorAll('#type-filters .filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.type==='all'));
+  document.querySelectorAll('.qf-btn').forEach(b=>b.classList.remove('active'));
+  update();
+}
+
+// ─── COMPARE ───
+let compareSet=new Set(); // id set
+function toggleCompare(id, checked) {
+  if (checked) {
+    if (compareSet.size>=3) { alert('比較できるのは最大3校です'); return; }
+    compareSet.add(id);
+  } else {
+    compareSet.delete(id);
+  }
+  renderCompareBar();
+  // update card outline
+  document.querySelectorAll('[data-card-id]').forEach(el=>{
+    el.classList.toggle('compare-selected', compareSet.has(+el.dataset.cardId));
+  });
+}
+function renderCompareBar() {
+  const bar=document.getElementById('compare-bar');
+  const slots=document.getElementById('compare-slots');
+  if (compareSet.size===0) { bar.classList.remove('show'); return; }
+  bar.classList.add('show');
+  slots.innerHTML=[...compareSet].map(id=>{
+    const d=DATA.find(x=>x.id===id);
+    return `<span class="compare-slot">${d?d.univ:'?'}<button onclick="toggleCompare(${id},false);document.querySelector('[data-card-id=\\'${id}\\']')&&(document.querySelector('[data-card-id=\\'${id}\\']').querySelector('input[type=checkbox]').checked=false)">×</button></span>`;
+  }).join('');
+}
+function clearCompare(){
+  compareSet.clear();
+  renderCompareBar();
+  document.querySelectorAll('[data-card-id]').forEach(el=>{
+    el.classList.remove('compare-selected');
+    const cb=el.querySelector('input[type=checkbox]');
+    if (cb) cb.checked=false;
+  });
+}
+function openCompare() {
+  if (compareSet.size<2) { alert('2校以上選択してください'); return; }
+  const items=[...compareSet].map(id=>DATA.find(x=>x.id===id)).filter(Boolean);
+  const rows=[
+    ['大学名', d=>`<strong>${d.univ}</strong><br><small style="color:var(--text-light)">${d.dept}</small>`],
+    ['エリア', d=>areaLabel[d.area]||d.area],
+    ['設置', d=>typeLabel[d.type]||d.type],
+    ['偏差値（目安）', d=>`<strong>${d.deviation}</strong>`],
+    ['初年度学費（万）', d=>`${d.tuition_1st}万円`],
+    ['4年間学費（万）', d=>`${d.tuition_4y}万円`],
+    ['都市度', d=>cityLabel[d.city_level]||'—'],
+    ['家賃目安（1K）', d=>`${d.rent}万円/月`],
+    ['寮', d=>d.dorm==='yes'?'★ 直営寮あり':d.dorm==='part'?'◐ 提携寮':d.dorm==='no'?'× なし':'—'],
+    ['一級建築士合格実績', d=>d.pass_rate||'非公表'],
+    ['入試方式', d=>d.exam],
+    ['入試科目', d=>d.exam_subjects],
+    ['アクセス', d=>d.access],
+    ['選ぶポイント', d=>`<span style="font-size:12px;line-height:1.6">${d.points}</span>`],
+  ];
+  const cols=items.length;
+  let html=`<colgroup><col style="width:120px">`;
+  items.forEach(()=>{html+=`<col style="width:${Math.floor((600/cols))}px">`});
+  html+='</colgroup><thead><tr><th></th>';
+  items.forEach(d=>{html+=`<td class="compare-univ-head">${d.univ}</td>`});
+  html+='</tr></thead><tbody>';
+  rows.forEach(([label,fn])=>{
+    html+=`<tr><th>${label}</th>`;
+    items.forEach(d=>{html+=`<td>${fn(d)}</td>`});
+    html+='</tr>';
+  });
+  html+='</tbody>';
+  document.getElementById('compare-table').innerHTML=html;
+  document.getElementById('compare-modal-overlay').classList.add('open');
+}
+document.getElementById('compare-modal-overlay').addEventListener('click',e=>{
+  if(e.target===document.getElementById('compare-modal-overlay')) document.getElementById('compare-modal-overlay').classList.remove('open');
+});
+
 // ─── BIND ───
 document.getElementById('area-filters').addEventListener('click',e=>{
   const btn=e.target.closest('.filter-btn');
@@ -1749,17 +1920,7 @@ document.querySelector('.quick-filters').addEventListener('click',e=>{
   update();
 });
 
-// TABLE SORT
-document.getElementById('univ-table').querySelector('thead').addEventListener('click',e=>{
-  const th=e.target.closest('th[data-col]');
-  if (!th) return;
-  const col=th.dataset.col;
-  if (sortCol===col) sortDir*=-1;
-  else { sortCol=col; sortDir=(col==='deviation'||col==='tuition_1st'||col==='tuition_4y')?-1:1; }
-  document.querySelectorAll('.univ-table th').forEach(t=>t.classList.remove('sort-asc','sort-desc'));
-  th.classList.add(sortDir===1?'sort-asc':'sort-desc');
-  renderTable_view(getFiltered());
-});
+// (TABLE SORT は上部で登録済み)
 
 // MODAL CLOSE
 document.getElementById('modal-close').addEventListener('click',()=>document.getElementById('modal-overlay').classList.remove('open'));
@@ -1767,7 +1928,10 @@ document.getElementById('modal-overlay').addEventListener('click',e=>{
   if (e.target===document.getElementById('modal-overlay')) document.getElementById('modal-overlay').classList.remove('open');
 });
 document.addEventListener('keydown',e=>{
-  if (e.key==='Escape') document.getElementById('modal-overlay').classList.remove('open');
+  if (e.key==='Escape') {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.getElementById('compare-modal-overlay').classList.remove('open');
+  }
 });
 
 // EXAM GUIDE injection
