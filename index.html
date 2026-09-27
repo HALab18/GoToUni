@@ -147,7 +147,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .no-result{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--text-muted)}
 
 /* TABLE VIEW */
-.tbl-wrap{overflow-x:auto}
+.tbl-wrap{overflow-x:auto;overflow-y:auto;max-height:calc(100vh - var(--filter-bar-h,160px));}
 table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
 .univ-table colgroup col:nth-child(1){width:200px}
 .univ-table colgroup col:nth-child(2){width:64px}
@@ -158,8 +158,8 @@ table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout
 .univ-table colgroup col:nth-child(7){width:64px}
 .univ-table colgroup col:nth-child(8){width:64px}
 .univ-table colgroup col:nth-child(9){width:auto}
-.univ-table th{background:var(--bg-muted);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.05em;padding:7px 9px;text-align:left;border-bottom:2px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap;overflow:hidden;position:sticky;top:var(--tbl-header-top,0px);z-index:2}
-.univ-table th:nth-child(1){position:sticky;top:var(--tbl-header-top,0px);left:0;z-index:3;background:var(--bg-muted)}
+.univ-table th{background:var(--bg-muted);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.05em;padding:7px 9px;text-align:left;border-bottom:2px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap;overflow:hidden;position:sticky;top:0;z-index:2}
+.univ-table th:nth-child(1){position:sticky;top:0;left:0;z-index:3;background:var(--bg-muted)}
 .univ-table th:hover{color:var(--accent)}
 .univ-table th.sort-asc::after{content:' ▲';font-size:10px}
 .univ-table th.sort-desc::after{content:' ▼';font-size:10px}
@@ -1938,27 +1938,15 @@ document.addEventListener('keydown',e=>{
 // EXAM GUIDE injection
 document.querySelector('.note').insertAdjacentHTML('beforebegin', renderExamGuide());
 
-// テーブルヘッダーの sticky top を filter-bar の底辺に合わせる
+// 一覧表は .tbl-wrap 内でスクロールさせる（th は top:0 で固定）
+// .tbl-wrap の最大高さ = 画面高 − 固定フィルターバー高 − 余白
 function adjustTableHeaderTop() {
   const bar = document.querySelector('.filter-bar');
   if (!bar) return;
-  // getBoundingClientRect().bottom はスクロール位置に依存するため、
-  // scrollY=0 の状態で bottom = offsetTop + offsetHeight になる。
-  // filter-bar は sticky で常に同じ位置に表示されるため、
-  // ページ最上部にいる時の bottom 値 = filter-bar の sticky 位置の高さ になる。
-  // scrollY を加味した上で "スクロールしても常に filter-bar の下" を計算:
-  const rect = bar.getBoundingClientRect();
-  document.documentElement.style.setProperty('--tbl-header-top', rect.bottom + 'px');
+  document.documentElement.style.setProperty('--filter-bar-h', (bar.offsetHeight + 24) + 'px');
 }
-// ページロード時・リサイズ時・スクロール時（throttle）に更新
 adjustTableHeaderTop();
 window.addEventListener('resize', adjustTableHeaderTop);
-let _thtThrottle = false;
-window.addEventListener('scroll', () => {
-  if (_thtThrottle) return;
-  _thtThrottle = true;
-  requestAnimationFrame(() => { adjustTableHeaderTop(); _thtThrottle = false; });
-}, { passive: true });
 
 update();
 </script>
