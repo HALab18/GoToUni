@@ -1,4 +1,10 @@
 <title>建築系大学 比較ガイド</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<meta name="theme-color" content="#2B5F8E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GoToUni">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
 
 <style>
@@ -384,6 +390,76 @@ body {
   color: var(--text-muted);
 }
 
+/* ─── VIEW TABS ─── */
+.view-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 16px;
+}
+.view-tab {
+  padding: 8px 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+.view-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.view-tab:hover:not(.active) { color: var(--text); }
+
+/* ─── TABLE VIEW ─── */
+#table-view { display: none; padding-bottom: 48px; }
+#table-view.visible { display: block; }
+#grid-view { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; padding-bottom: 48px; }
+#grid-view.hidden-view { display: none; }
+
+.tbl-wrap { overflow-x: auto; }
+table.univ-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.univ-table th {
+  background: var(--bg-muted);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.univ-table th:hover { color: var(--accent); }
+.univ-table th.sort-asc::after  { content: ' ▲'; font-size: 10px; }
+.univ-table th.sort-desc::after { content: ' ▼'; font-size: 10px; }
+.univ-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  vertical-align: middle;
+}
+.univ-table tr:hover td { background: var(--bg-muted); }
+.td-name { white-space: normal; min-width: 160px; }
+.td-name strong { color: var(--text); font-size: 13px; display: block; }
+.td-name small { color: var(--text-light); font-size: 11px; }
+.td-num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
+.td-dorm-yes  { color: var(--gold); font-weight: 700; }
+.td-dorm-part { color: var(--accent); }
+.td-dorm-no   { color: var(--text-light); }
+
 /* ─── NOTE ─── */
 .note {
   font-size: 12px;
@@ -444,7 +520,32 @@ body {
   <input type="search" id="search" placeholder="大学名・都市名・キーワードで検索…" autocomplete="off">
 </div>
 
-<div class="grid" id="grid"></div>
+<div class="view-tabs">
+  <button class="view-tab active" id="tab-card" onclick="switchView('card')">🗂 カード表示</button>
+  <button class="view-tab" id="tab-table" onclick="switchView('table')">📋 一覧表示</button>
+</div>
+
+<div id="grid-view"></div>
+
+<div id="table-view">
+  <div class="tbl-wrap">
+    <table class="univ-table" id="univ-table">
+      <thead>
+        <tr>
+          <th data-col="univ">大学・学部</th>
+          <th data-col="area">エリア</th>
+          <th data-col="type">設置</th>
+          <th data-col="deviation" class="sort-desc">偏差値</th>
+          <th data-col="tuition_1st">初年度(万)</th>
+          <th data-col="tuition_4y">4年間(万)</th>
+          <th data-col="dorm">寮</th>
+          <th data-col="exam" style="min-width:180px;white-space:normal">入試方式</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
 
 <p class="note">
   <strong>⚠️ データ出典・注意事項：</strong>
@@ -1045,14 +1146,25 @@ function renderCard(d) {
   </div>`;
 }
 
-// ─── FILTER LOGIC ───
+// ─── STATE ───
 let currentArea = 'all';
 let currentType = 'all';
 let currentSearch = '';
+let currentView = 'card';
+let sortCol = 'deviation';
+let sortDir = -1; // -1=降順, 1=昇順
 
-function update() {
-  const grid = document.getElementById('grid');
-  const items = DATA.filter(d => {
+const areaOrder = ['tohoku','kanto','koshinetsu','hokuriku','tokai','kansai','chugoku','kyushu','hokkaido'];
+const areaLabel = {
+  tohoku:'東北', kanto:'関東', koshinetsu:'甲信越', hokuriku:'北陸',
+  tokai:'東海', kansai:'関西', chugoku:'中国', kyushu:'九州', hokkaido:'北海道'
+};
+const typeLabel = { national:'国立', public:'公立', private:'私立' };
+const dormLabel = d => d === 'yes' ? '★ 直営' : d === 'part' ? '◐ 提携' : '×';
+const dormClass = d => d === 'yes' ? 'td-dorm-yes' : d === 'part' ? 'td-dorm-part' : 'td-dorm-no';
+
+function getFiltered() {
+  return DATA.filter(d => {
     if (d.hidden) return false;
     if (!d.one_aa) return false;
     if (currentArea !== 'all' && d.area !== currentArea) return false;
@@ -1063,30 +1175,30 @@ function update() {
     }
     return true;
   });
+}
 
-  // エリア順に並べる
-  const areaOrder = ['tohoku','kanto','koshinetsu','hokuriku','tokai','kansai','chugoku','kyushu','hokkaido'];
-  items.sort((a,b) => {
+function update() {
+  const items = getFiltered();
+  document.getElementById('result-count').textContent = `${items.length}校 表示中`;
+  renderCard_view(items);
+  renderTable_view(items);
+}
+
+// ─── CARD VIEW ───
+function renderCard_view(items) {
+  const grid = document.getElementById('grid-view');
+  const sorted = [...items].sort((a,b) => {
     const ai = areaOrder.indexOf(a.area), bi = areaOrder.indexOf(b.area);
     if (ai !== bi) return ai - bi;
     return b.deviation - a.deviation;
   });
-
-  document.getElementById('result-count').textContent = `${items.length}校 表示中`;
-
-  if (items.length === 0) {
-    grid.innerHTML = '<div class="no-result">条件に一致する大学がありません</div>';
+  if (sorted.length === 0) {
+    grid.innerHTML = '<div class="no-result" style="grid-column:1/-1">条件に一致する大学がありません</div>';
     return;
   }
-
-  // エリアごとに区切りを入れる
-  const areaLabel = {
-    tohoku:'東北', kanto:'関東', koshinetsu:'甲信越', hokuriku:'北陸',
-    tokai:'東海', kansai:'関西', chugoku:'中国', kyushu:'九州', hokkaido:'北海道'
-  };
   let html = '';
   let lastArea = '';
-  for (const d of items) {
+  for (const d of sorted) {
     if (d.area !== lastArea) {
       html += `<div class="section-divider" style="grid-column:1/-1"><h2>${areaLabel[d.area]}</h2></div>`;
       lastArea = d.area;
@@ -1094,6 +1206,54 @@ function update() {
     html += renderCard(d);
   }
   grid.innerHTML = html;
+}
+
+// ─── TABLE VIEW ───
+function renderTable_view(items) {
+  const tbody = document.getElementById('table-body');
+  const sorted = [...items].sort((a,b) => {
+    let av = a[sortCol], bv = b[sortCol];
+    if (typeof av === 'string') av = av.toLowerCase(), bv = bv.toLowerCase();
+    if (av < bv) return -sortDir;
+    if (av > bv) return sortDir;
+    return 0;
+  });
+  tbody.innerHTML = sorted.map(d => `
+    <tr>
+      <td class="td-name"><strong>${d.univ}</strong><small>${d.dept}</small></td>
+      <td>${areaLabel[d.area]}</td>
+      <td><span class="card-type-badge type-${d.type}">${typeLabel[d.type]}</span></td>
+      <td class="td-num">${d.deviation}</td>
+      <td class="td-num">${d.tuition_1st}</td>
+      <td class="td-num">${d.tuition_4y}</td>
+      <td class="${dormClass(d.dorm)}">${dormLabel(d.dorm)}</td>
+      <td style="white-space:normal;min-width:180px;font-size:12px">${d.exam}</td>
+    </tr>`).join('');
+}
+
+// ─── TABLE SORT ───
+document.getElementById('univ-table').querySelector('thead').addEventListener('click', e => {
+  const th = e.target.closest('th[data-col]');
+  if (!th) return;
+  const col = th.dataset.col;
+  if (sortCol === col) {
+    sortDir *= -1;
+  } else {
+    sortCol = col;
+    sortDir = (col === 'deviation' || col === 'tuition_1st' || col === 'tuition_4y') ? -1 : 1;
+  }
+  document.querySelectorAll('.univ-table th').forEach(t => t.classList.remove('sort-asc','sort-desc'));
+  th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+  renderTable_view(getFiltered());
+});
+
+// ─── VIEW SWITCH ───
+function switchView(v) {
+  currentView = v;
+  document.getElementById('grid-view').classList.toggle('hidden-view', v !== 'card');
+  document.getElementById('table-view').classList.toggle('visible', v === 'table');
+  document.getElementById('tab-card').classList.toggle('active', v === 'card');
+  document.getElementById('tab-table').classList.toggle('active', v === 'table');
 }
 
 // ─── BIND ───

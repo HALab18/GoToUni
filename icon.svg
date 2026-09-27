@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#2B5F8E"/>
+  <!-- 建物シルエット -->
+  <rect x="96" y="240" width="320" height="180" fill="#F5F3EF"/>
+  <!-- 屋根（三角形） -->
+  <polygon points="72,240 256,100 440,240" fill="#C8A96E"/>
+  <!-- ドア -->
+  <rect x="216" y="320" width="80" height="100" rx="40" fill="#2B5F8E"/>
+  <!-- 窓左 -->
+  <rect x="128" y="270" width="60" height="55" rx="6" fill="#2B5F8E"/>
+  <!-- 窓右 -->
+  <rect x="324" y="270" width="60" height="55" rx="6" fill="#2B5F8E"/>
+  <!-- GoToUni テキスト -->
+  <text x="256" y="465" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="52" fill="#F5F3EF" letter-spacing="2">GoToUni</text>
+</svg>
