@@ -1941,8 +1941,7 @@ document.querySelector('.note').insertAdjacentHTML('beforebegin', renderExamGuid
 function adjustTableHeaderTop() {
   const bar = document.querySelector('.filter-bar');
   if (bar) {
-    const h = bar.getBoundingClientRect().height;
-    document.documentElement.style.setProperty('--tbl-header-top', h + 'px');
+    document.documentElement.style.setProperty('--tbl-header-top', bar.offsetHeight + 'px');
   }
 }
 adjustTableHeaderTop();
