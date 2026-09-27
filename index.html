@@ -1,0 +1,1124 @@
+<title>建築系大学 比較ガイド</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+
+<style>
+:root {
+  --bg: #F5F3EF;
+  --bg-card: #FFFFFF;
+  --bg-muted: #E8E4DC;
+  --text: #1A1A1A;
+  --text-muted: #5A5A5A;
+  --text-light: #888888;
+  --accent: #2B5F8E;
+  --accent-light: #D6E4F0;
+  --gold: #C8A96E;
+  --gold-light: #F5EDD8;
+  --border: #D8D4CC;
+  --national: #2B5F8E;
+  --national-bg: #D6E4F0;
+  --public: #3A7D6E;
+  --public-bg: #D4EDE8;
+  --private: #8E4A2B;
+  --private-bg: #F0DDD6;
+  --tag-radius: 4px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111;
+    --bg-card: #1E1E1E;
+    --bg-muted: #2A2A2A;
+    --text: #F0EDE8;
+    --text-muted: #AAAAAA;
+    --text-light: #777777;
+    --accent: #5A9BC8;
+    --accent-light: #1A2E3E;
+    --gold: #D4B57A;
+    --gold-light: #2A2010;
+    --border: #383838;
+    --national: #5A9BC8;
+    --national-bg: #1A2E3E;
+    --public: #5AB8A8;
+    --public-bg: #1A2E2B;
+    --private: #C87B5A;
+    --private-bg: #2E1A12;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --bg-card: #1E1E1E;
+  --bg-muted: #2A2A2A;
+  --text: #F0EDE8;
+  --text-muted: #AAAAAA;
+  --text-light: #777777;
+  --accent: #5A9BC8;
+  --accent-light: #1A2E3E;
+  --gold: #D4B57A;
+  --gold-light: #2A2010;
+  --border: #383838;
+  --national: #5A9BC8;
+  --national-bg: #1A2E3E;
+  --public: #5AB8A8;
+  --public-bg: #1A2E2B;
+  --private: #C87B5A;
+  --private-bg: #2E1A12;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  padding-inline: 16px;
+}
+
+/* ─── HEADER ─── */
+.site-header {
+  padding-block: 32px 20px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 24px;
+}
+.site-header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.site-header .subtitle {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.site-header .badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--tag-radius);
+  font-size: 12px;
+  font-weight: 500;
+}
+.badge-national { background: var(--national-bg); color: var(--national); }
+.badge-public   { background: var(--public-bg);   color: var(--public);   }
+.badge-private  { background: var(--private-bg);  color: var(--private);  }
+.badge-dorm     { background: var(--gold-light);  color: var(--gold);     }
+
+/* ─── FILTERS ─── */
+.filter-bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  padding-block: 12px;
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  margin-bottom: 20px;
+}
+.filter-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.filter-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.filter-btn {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.result-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+/* ─── SEARCH ─── */
+.search-wrap {
+  margin-bottom: 16px;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+.search-wrap input:focus { border-color: var(--accent); }
+.search-wrap input::placeholder { color: var(--text-light); }
+
+/* ─── GRID ─── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  padding-bottom: 48px;
+}
+
+/* ─── CARD ─── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
+.card-header {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.card-rank {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 36px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  padding-top: 3px;
+}
+.card-title-block { flex: 1; min-width: 0; }
+.card-univ {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+  text-wrap: balance;
+}
+.card-dept {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.card-type-badge {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: var(--tag-radius);
+  font-size: 11px;
+  font-weight: 700;
+}
+.type-national { background: var(--national-bg); color: var(--national); }
+.type-public   { background: var(--public-bg);   color: var(--public);   }
+.type-private  { background: var(--private-bg);  color: var(--private);  }
+
+/* ─── STATS ROW ─── */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.stat-cell {
+  padding: 10px 12px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.stat-val.accent { color: var(--accent); }
+.stat-val.gold   { color: var(--gold);   }
+.stat-lbl {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 3px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── CARD BODY ─── */
+.card-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.info-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 13px;
+}
+.info-label {
+  min-width: 56px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+  padding-top: 1px;
+  white-space: nowrap;
+}
+.info-val { color: var(--text-muted); line-height: 1.5; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+.tag {
+  padding: 2px 8px;
+  border-radius: var(--tag-radius);
+  font-size: 11px;
+  background: var(--bg-muted);
+  color: var(--text-muted);
+}
+.tag-blue   { background: var(--accent-light); color: var(--accent); }
+.tag-gold   { background: var(--gold-light);   color: var(--gold);   }
+.tag-green  { background: var(--public-bg);    color: var(--public); }
+
+/* ─── POINT BOX ─── */
+.point-box {
+  background: var(--bg-muted);
+  border-left: 3px solid var(--gold);
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.point-box strong {
+  color: var(--text);
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+}
+
+/* ─── DORM PILL ─── */
+.dorm-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.dorm-yes  { background: var(--gold-light);  color: var(--gold);       }
+.dorm-part { background: var(--accent-light); color: var(--accent);    }
+.dorm-no   { background: var(--bg-muted);    color: var(--text-light); }
+
+/* ─── SECTION DIVIDER ─── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-block: 28px 16px;
+}
+.section-divider h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--text);
+}
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── NO RESULT ─── */
+.no-result {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--text-muted);
+}
+
+/* ─── NOTE ─── */
+.note {
+  font-size: 12px;
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+  padding-block: 16px 32px;
+  line-height: 1.8;
+}
+.note strong { color: var(--text-muted); }
+
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr 1fr 1fr; }
+  .stat-val { font-size: 15px; }
+  .card-rank { font-size: 18px; }
+}
+</style>
+
+<!-- ═══════════════ HTML ═══════════════ -->
+
+<header class="site-header">
+  <h1>一級建築士受験資格取得可能な建築系大学 総合ガイド</h1>
+  <p class="subtitle">仙台（宮城）からの進学を軸に — 偏差値・学費・寮・入試方式・選ぶポイントを一覧で比較</p>
+  <div class="badge-row">
+    <span class="badge badge-national">■ 国立大学</span>
+    <span class="badge badge-public">■ 公立大学</span>
+    <span class="badge badge-private">■ 私立大学</span>
+    <span class="badge badge-dorm">★ 直営寮あり</span>
+  </div>
+</header>
+
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <span class="filter-label">エリア</span>
+    <div class="filter-group" id="area-filters">
+      <button class="filter-btn active" data-area="all">すべて</button>
+      <button class="filter-btn" data-area="tohoku">東北</button>
+      <button class="filter-btn" data-area="kanto">関東</button>
+      <button class="filter-btn" data-area="koshinetsu">甲信越</button>
+      <button class="filter-btn" data-area="hokuriku">北陸</button>
+      <button class="filter-btn" data-area="tokai">東海</button>
+      <button class="filter-btn" data-area="kansai">関西</button>
+      <button class="filter-btn" data-area="chugoku">中国</button>
+      <button class="filter-btn" data-area="kyushu">九州</button>
+      <button class="filter-btn" data-area="hokkaido">北海道</button>
+    </div>
+    <span class="filter-label" style="margin-left:8px">設置</span>
+    <div class="filter-group" id="type-filters">
+      <button class="filter-btn active" data-type="all">すべて</button>
+      <button class="filter-btn" data-type="national">国立</button>
+      <button class="filter-btn" data-type="public">公立</button>
+      <button class="filter-btn" data-type="private">私立</button>
+    </div>
+    <span class="result-count" id="result-count"></span>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <input type="search" id="search" placeholder="大学名・都市名・キーワードで検索…" autocomplete="off">
+</div>
+
+<div class="grid" id="grid"></div>
+
+<p class="note">
+  <strong>⚠️ データ出典・注意事項：</strong>
+  偏差値は be Architect（総合資格学院）・河合塾Kei-Net 2027年度入試予想値（目安）。学費は2026年度入学者用データをベースとし、国立大学は文部科学省告示標準額（入学金28.2万＋授業料53.58万）。
+  寮費・入試方式は各大学公式HP・河合塾Kei-Netより調査（2026年9月時点）。
+  一級建築士受験資格の可否は入学年度・履修単位により異なる場合があります。<strong>必ず各大学の最新募集要項で確認してください。</strong>
+  学費・入試科目・寮の条件は年度ごとに変更されることがあります。
+</p>
+
+<script>
+const DATA = [
+  // ─── 東北 ───
+  {
+    id:1, area:'tohoku', type:'national', univ:'東北大学', dept:'工学部 建築・社会環境工学科',
+    pref:'宮城県仙台市', deviation:66, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営学寮6棟＋ユニバーシティハウス。月4,300円台（光熱費別）',
+    exam:'一般前期／AO II期（共テ不要）／AO III期', exam_subjects:'前期：数学・理科・英語（筆記）。AOは面接・書類',
+    one_aa:true, access:'仙台市内（川内・青葉山キャンパス）',
+    points:'東北随一の国立。大手ゼネコン・官公庁・研究職への就職実績トップ。AO II期は共通テスト不要で面接・書類勝負。大学院進学率も高い。',
+    tags:['研究型','大手就職◎','院進率高','AO可'],
+  },
+  {
+    id:2, area:'tohoku', type:'national', univ:'山形大学', dept:'工学部 建築・デザイン学科',
+    pref:'山形県山形市', deviation:52, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'清明寮・北辰寮・紫苑寮あり（国立標準学費水準）',
+    exam:'一般前期／総合型選抜II', exam_subjects:'前期：共通テスト＋面接・口頭試問のみ（筆記なし）',
+    one_aa:true, access:'仙台から新幹線約25分。山形市内',
+    points:'仙台から最も近い国立建築系。個別試験が面接のみで数学・理科の筆記なし。工学・デザイン両面から学べる。文系コース出身者でも挑戦しやすい国立。',
+    tags:['面接のみ◎','仙台近い','文系OK','デザイン系'],
+  },
+  {
+    id:3, area:'tohoku', type:'private', univ:'東北芸術工科大学', dept:'デザイン工学部 建築・環境デザイン学科',
+    pref:'山形県山形市', deviation:58, tuition_1st:162, tuition_4y:570,
+    dorm:'part', dorm_note:'準学生寮＋家賃補助（最大月4万円）。直営寮なし',
+    exam:'総合型選抜（専願・併願）／一般選抜／学校推薦型', exam_subjects:'一般：デッサン または 英・国・数（実技なしで受験可）。総合型：ミニ講義＋レポート＋面接',
+    one_aa:true, access:'仙台から高速バス約1時間。山形市内',
+    points:'東北私立最上位の建築デザイン系。設計・意匠・デザイン事務所就職に強い。実技なし選択肢あり。家賃補助制度が充実。建築＋芸術の融合カリキュラム。',
+    tags:['デザイン重視','家賃補助◎','実技なし可','意匠系就職◎'],
+  },
+  {
+    id:4, area:'tohoku', type:'private', univ:'東北工業大学', dept:'建築学部 建築学科',
+    pref:'宮城県仙台市', deviation:48, tuition_1st:165, tuition_4y:576,
+    dorm:'no', dorm_note:'直営寮なし。提携学生会館あり',
+    exam:'一般A・B日程／共通テスト利用（1・2期）／学校推薦型・総合型', exam_subjects:'一般A：英・数・国/理から3教科。B：2教科。9都市で受験可',
+    one_aa:true, access:'仙台市内（八木山・長町キャンパス）',
+    points:'東北工学系私立でトップクラスの就職率（99%超）。東北の建設・施工会社中心に就職。一般B日程は2教科で受験可。仙台在住なら自宅通学可能。',
+    tags:['就職率99%','仙台市内','2教科可','地域就職◎'],
+  },
+  {
+    id:5, area:'tohoku', type:'private', univ:'東北学院大学', dept:'工学部 環境建設工学科',
+    pref:'宮城県多賀城市', deviation:48, tuition_1st:175, tuition_4y:622,
+    dorm:'part', dorm_note:'提携専用寮（ドーミー等）＋家賃割引。2027年4月TG Global House新設予定',
+    exam:'一般前期A・B日程／共通テスト利用／学校推薦型・総合型', exam_subjects:'全方式Web出願。詳細は公式HP確認',
+    one_aa:true, access:'仙台市内（五橋）または多賀城キャンパス。仙台近郊',
+    points:'東北の伝統私立。幅広い就職先。提携寮の家賃割引制度あり。2027年に国際交流寮新設予定。',
+    tags:['仙台近郊','伝統校','提携寮割引'],
+  },
+  {
+    id:6, area:'tohoku', type:'private', univ:'東北文化学園大学', dept:'工学部 建築環境学科',
+    pref:'宮城県仙台市', deviation:46, tuition_1st:130, tuition_4y:420,
+    dorm:'no', dorm_note:'直営寮なし。提携学生会館あり',
+    exam:'一般選抜／共通テスト利用／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認',
+    one_aa:true, access:'仙台市内（八木山キャンパス）',
+    points:'私立の中では学費が比較的抑えめ。仙台市内で自宅通学可能。少人数制で丁寧な指導。',
+    tags:['学費抑えめ','仙台市内','少人数制'],
+  },
+  {
+    id:7, area:'tohoku', type:'private', univ:'日本大学（工学部）', dept:'工学部 建築学科',
+    pref:'福島県郡山市', deviation:49, tuition_1st:155, tuition_4y:540,
+    dorm:'yes', dorm_note:'大学直営寮あり',
+    exam:'一般・N全学統一・共通テスト利用・推薦型・総合型', exam_subjects:'N全学統一で一括受験可',
+    one_aa:true, access:'福島県郡山市。仙台から東北新幹線で約25分',
+    points:'日大グループの一級建築士合格者数は全国1位（年間100人超）。一括受験制度が充実。仙台から新幹線通学も選択肢。',
+    tags:['一級合格者数No.1','新幹線圏内','一括受験','直営寮あり'],
+  },
+  {
+    id:8, area:'tohoku', type:'public', univ:'宮城大学', dept:'事業構想学群 価値創造デザイン学類',
+    pref:'宮城県大和町', deviation:50, tuition_1st:82, tuition_4y:242,
+    dorm:'no', dorm_note:'直営寮なし',
+    exam:'一般前期・後期／共通テスト利用／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認。⚠️要注意：指定科目の取得が必要',
+    one_aa:true, access:'宮城県大和町。仙台から電車＋バス約1時間',
+    points:'⚠️注意：建築学科ではなくデザイン系の総合学類のため、一級受験資格を得るには指定科目の履修が必要で厳しい可能性あり。入学前に大学へ要確認。公立大学として学費は国立並み。',
+    tags:['公立＝学費安い','⚠️資格要確認'],
+  },
+  {
+    id:9, area:'tohoku', type:'public', univ:'秋田県立大学', dept:'システム科学技術学部 建築環境システム学科',
+    pref:'秋田県秋田市', deviation:49, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'学生寮あり（公立水準）',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'共通テスト＋個別試験（詳細公式HP確認）',
+    one_aa:true, access:'秋田市内。仙台から新幹線約1.5時間',
+    points:'環境・設備工学に強い建築系。公立で学費が安い。東北北部地域への就職に有利。',
+    tags:['公立＝学費安い','環境工学','寮あり'],
+  },
+  {
+    id:10, area:'tohoku', type:'private', univ:'八戸工業大学', dept:'工学部 土木建築工学科',
+    pref:'青森県八戸市', deviation:45, tuition_1st:130, tuition_4y:430,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般A・B／共通テスト利用／学校推薦型・総合型', exam_subjects:'一般：2〜3教科',
+    one_aa:true, access:'青森県八戸市。仙台から新幹線約1時間',
+    points:'東北北部の建設業就職に強い。土木・建築一体のカリキュラム。偏差値帯が低めで入りやすい。直営寮あり。',
+    tags:['偏差値低め','寮あり','土木建築一体'],
+  },
+  {
+    id:11, area:'tohoku', type:'private', univ:'郡山女子大学', dept:'家政学部 建築デザインコース',
+    pref:'福島県郡山市', deviation:45, tuition_1st:130, tuition_4y:435,
+    dorm:'yes', dorm_note:'学生寮あり',
+    exam:'一般選抜／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認',
+    one_aa:true, access:'福島県郡山市。仙台から新幹線約25分',
+    points:'女子大学。インテリア・住宅・生活空間デザインに強みがある建築系。仙台から新幹線圏内。',
+    tags:['女子大学','インテリア系','新幹線圏内','寮あり'],
+  },
+
+  // ─── 関東 ───
+  {
+    id:12, area:'kanto', type:'national', univ:'東京科学大学（旧東工大）', dept:'環境・社会理工学院 建築学科',
+    pref:'東京都目黒区', deviation:67, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営学生寮あり（すずかけ台・大岡山）',
+    exam:'一般前期／学校推薦型', exam_subjects:'共通テスト＋数学・理科・英語（筆記）',
+    one_aa:true, access:'東急目黒線 大岡山駅直結',
+    points:'旧東工大。理工系トップ国立。建築・構造・設備の研究で国内最高峰。大学院進学率が非常に高い。研究・設計の最前線を学びたい人向け。',
+    tags:['最難関','研究型','院進率最高','構造・設備◎'],
+  },
+  {
+    id:13, area:'kanto', type:'national', univ:'横浜国立大学', dept:'都市科学部 建築学科',
+    pref:'神奈川県横浜市', deviation:67, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり（常盤台キャンパス近辺）',
+    exam:'一般前期・後期／総合型選抜', exam_subjects:'前期：共通テスト＋理科・数学・英語。総合型：空間感受性重視の選考',
+    one_aa:true, access:'横浜市保土ケ谷区。相鉄線 和田町駅徒歩10分',
+    points:'世界トップクラスの建築家が指導。意匠・設計中心のカリキュラム。院に大学院建築都市スクールY-GSA（設計特化）あり。横浜市フィールドの地域連携演習が特徴。',
+    tags:['意匠◎','Y-GSA','世界的建築家指導','総合型あり'],
+  },
+  {
+    id:14, area:'kanto', type:'national', univ:'筑波大学', dept:'理工学群 工学システム学類',
+    pref:'茨城県つくば市', deviation:64, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営学生宿舎多数あり（つくばキャンパス内）',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'茨城県つくば市。TX つくば駅バス',
+    points:'建築＋都市計画・芸術専門学群と連携できる独自のカリキュラム体制。学生宿舎が充実しており、キャンパス内で生活が完結。研究・スポーツ・芸術と建築を組み合わせた学習が可能。',
+    tags:['学生宿舎充実','総合大学','芸術連携','都市計画◎'],
+  },
+  {
+    id:15, area:'kanto', type:'national', univ:'東京藝術大学', dept:'美術学部 建築学科',
+    pref:'東京都台東区', deviation:58, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'学生宿舎あり',
+    exam:'一般前期', exam_subjects:'共通テスト＋鉛筆デッサン・立体表現・面接',
+    one_aa:true, access:'東京上野。JR・東京メトロ',
+    points:'⚠️実技試験必須（デッサン・立体表現）。意匠・芸術的感性を重視した日本唯一の芸大建築。卒業生が著名建築家・アーティストに多い。芸術×建築を極めたい人向け。',
+    tags:['実技必須','芸術×建築','少人数精鋭','意匠最高峰'],
+  },
+  {
+    id:16, area:'kanto', type:'national', univ:'埼玉大学', dept:'工学部 環境社会デザイン学科',
+    pref:'埼玉県さいたま市', deviation:55, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'学生宿舎あり',
+    exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科',
+    one_aa:true, access:'埼玉県さいたま市。JR北浦和駅バス',
+    points:'環境・都市・建築を総合的に学ぶ。比較的入りやすい関東国立。大宮・東京へのアクセスも良好。',
+    tags:['関東国立','環境工学','入りやすい'],
+  },
+  {
+    id:17, area:'kanto', type:'national', univ:'宇都宮大学', dept:'地域デザイン科学部 建築都市デザイン学科',
+    pref:'栃木県宇都宮市', deviation:52, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'学生宿舎あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・英語or面接',
+    one_aa:true, access:'栃木県宇都宮市。JR宇都宮大学駅前',
+    points:'建築×都市デザイン×地域計画の融合学科。仙台から新幹線1時間圏内。地域に根ざした実践的教育。',
+    tags:['都市デザイン◎','地域計画','仙台から近め','国立'],
+  },
+  {
+    id:18, area:'kanto', type:'public', univ:'東京都立大学', dept:'都市環境学部 建築学科',
+    pref:'東京都南大沢市', deviation:63, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'学生宿舎あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'東京都八王子市南大沢。京王相模原線 南大沢駅',
+    points:'首都圏公立大学の雄。都市・環境建築の研究に強み。学費が国立同様。東京都のプロジェクト連携が多い。',
+    tags:['首都圏公立','都市環境◎','学費安い','公立'],
+  },
+  {
+    id:19, area:'kanto', type:'public', univ:'前橋工科大学', dept:'工学部 建築学群',
+    pref:'群馬県前橋市', deviation:50, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'学生宿舎あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・面接',
+    one_aa:true, access:'群馬県前橋市。JR前橋駅バス',
+    points:'公立で学費が安い。比較的入りやすい首都圏近郊の建築系。',
+    tags:['公立＝学費安い','入りやすい','首都圏近郊'],
+  },
+  {
+    id:20, area:'kanto', type:'private', univ:'早稲田大学', dept:'創造理工学部 建築学科',
+    pref:'東京都新宿区', deviation:67, tuition_1st:185, tuition_4y:660,
+    dorm:'yes', dorm_note:'直営・提携寮多数',
+    exam:'一般選抜（共通テスト＋独自問題）／AO（創成入試）', exam_subjects:'数学・理科・英語＋建築に関する記述・面接',
+    one_aa:true, access:'東京 西早稲田。東西線 早稲田駅',
+    points:'設計・意匠系の私立最高峰。大手設計事務所・ゼネコン就職トップ。大学院進学率70%超。建築家を目指す人の第一志望校として長年の実績。',
+    tags:['私立最難関','意匠◎','大手設計◎','院進率高'],
+  },
+  {
+    id:21, area:'kanto', type:'private', univ:'東京理科大学', dept:'工学部 建築学科',
+    pref:'東京都葛飾区', deviation:65, tuition_1st:175, tuition_4y:620,
+    dorm:'yes', dorm_note:'直営・提携寮あり',
+    exam:'一般B方式・C方式（共通テスト）・グローバル', exam_subjects:'英語・数学・物理が中心',
+    one_aa:true, access:'東京葛飾区金町（工学部）',
+    points:'一級建築士合格者数2位（年間110人超）。構造・設備・環境工学が強い。ゼネコン・設計会社への就職実績トップクラス。厳しい進級制度で実力が身につく。',
+    tags:['一級合格2位','構造◎','就職実績◎','理工系最強'],
+  },
+  {
+    id:22, area:'kanto', type:'private', univ:'芝浦工業大学', dept:'建築学部 建築学科',
+    pref:'東京都江東区', deviation:64, tuition_1st:170, tuition_4y:600,
+    dorm:'yes', dorm_note:'直営・提携寮あり',
+    exam:'一般A・B日程／共通テスト利用／AO型', exam_subjects:'英語・数学・物理または化学',
+    one_aa:true, access:'東京豊洲（建築学部）',
+    points:'一級建築士合格者数1位（2025年度103人）。AP・SA・UAの3コースで専門性を早期に選択。大手ゼネコン・設計事務所への就職率が非常に高い。豊洲キャンパスで最新設備完備。',
+    tags:['一級合格1位','就職最強','コース選択早期','設備最新'],
+  },
+  {
+    id:23, area:'kanto', type:'private', univ:'明治大学', dept:'理工学部 建築学科',
+    pref:'神奈川県川崎市', deviation:64, tuition_1st:170, tuition_4y:610,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般選抜（学部別・全学部）／共通テスト利用', exam_subjects:'英語・数学・物理または化学',
+    one_aa:true, access:'神奈川県川崎市 生田キャンパス',
+    points:'設計・計画・構造・環境をバランスよく学べる。関東私立の安定した就職実績。多摩丘陵の緑豊かなキャンパス。',
+    tags:['バランス型','関東私立有力','緑のキャンパス'],
+  },
+  {
+    id:24, area:'kanto', type:'private', univ:'法政大学', dept:'デザイン工学部 建築学科',
+    pref:'東京都千代田区', deviation:60, tuition_1st:165, tuition_4y:600,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般T方式・英語外部利用・共通テスト利用', exam_subjects:'英語・数学・物理',
+    one_aa:true, access:'東京市ヶ谷（デザイン工学部）',
+    points:'デザイン工学部として建築×デザインの統合教育。都心キャンパスで立地抜群。',
+    tags:['デザイン×建築','都心立地','法政ブランド'],
+  },
+  {
+    id:25, area:'kanto', type:'private', univ:'工学院大学', dept:'建築学部 建築学科',
+    pref:'東京都新宿区', deviation:59, tuition_1st:170, tuition_4y:580,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般（2月・3月）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    one_aa:true, access:'東京新宿（新宿キャンパス）',
+    points:'一級建築士合格支援プログラムが非常に充実（学内専門校）。合格者数上位常連。ファースト・ステップ（一級補習）制度が強み。',
+    tags:['一級サポート最強','合格者上位','新宿立地'],
+  },
+  {
+    id:26, area:'kanto', type:'private', univ:'日本大学（理工学部）', dept:'理工学部 建築学科',
+    pref:'東京都千代田区', deviation:57, tuition_1st:155, tuition_4y:560,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'N全学統一・A個別・C共通テスト利用・総合型・推薦型', exam_subjects:'英語・数学・物理（N全学で一括出願可）',
+    one_aa:true, access:'東京駿河台（1年）→船橋（2年〜）',
+    points:'一級建築士合格者数全国1位のグループ。規模が大きく設備充実。N全学統一で複数学科まとめて出願でき、受験コストが低い。',
+    tags:['一級合格者数No.1G','N全学一括','スケール大','コスパ◎'],
+  },
+  {
+    id:27, area:'kanto', type:'private', univ:'東京電機大学', dept:'未来科学部 建築学科',
+    pref:'東京都足立区', deviation:56, tuition_1st:160, tuition_4y:560,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般（前期・後期）／共通テスト利用／推薦型', exam_subjects:'英語・数学・理科または国語',
+    one_aa:true, access:'東京千住（東京千住キャンパス）',
+    points:'ICT・デジタル技術と建築の融合教育。BIM・デジタルファブリケーション教育に力を入れている。',
+    tags:['BIM◎','デジタル建築','IT×建築'],
+  },
+  {
+    id:28, area:'kanto', type:'private', univ:'神奈川大学', dept:'建築学部 建築学科',
+    pref:'神奈川県横浜市', deviation:54, tuition_1st:155, tuition_4y:530,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般（給費・A・B）／共通テスト利用／推薦型', exam_subjects:'英語・数学・物理または国語',
+    one_aa:true, access:'横浜市神奈川区 横浜キャンパス',
+    points:'2021年に建築学部として独立。給費生入試で成績優秀者は授業料無料。関東中堅私立で安定した就職実績。',
+    tags:['建築学部独立','給費生制度','関東中堅'],
+  },
+  {
+    id:29, area:'kanto', type:'private', univ:'千葉工業大学', dept:'創造工学部 建築学科',
+    pref:'千葉県習志野市', deviation:54, tuition_1st:155, tuition_4y:530,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    one_aa:true, access:'千葉県習志野市。JR津田沼駅5分',
+    points:'関東私立の中でコストパフォーマンスが高い。環境建築・サステナブルデザインに強み。駅近で通いやすい。',
+    tags:['コスパ◎','環境建築','駅近'],
+  },
+  {
+    id:30, area:'kanto', type:'private', univ:'東洋大学', dept:'理工学部 建築学科',
+    pref:'東京都文京区', deviation:52, tuition_1st:150, tuition_4y:530,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般（前期・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    one_aa:true, access:'埼玉県川越市（建築専攻）',
+    points:'関東中堅で入りやすい。建築計画・都市計画の教育が充実。川越キャンパスで落ち着いた環境。',
+    tags:['中堅','入りやすい','都市計画'],
+  },
+
+  // ─── 甲信越 ───
+  {
+    id:31, area:'koshinetsu', type:'national', univ:'信州大学', dept:'工学部 建築学科',
+    pref:'長野県長野市', deviation:58, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'こまくさ寮（1年生中心）・修己寮あり（国立水準の低廉な費用）',
+    exam:'一般前期・後期／学校推薦型I／総合型選抜I', exam_subjects:'前期：共通テスト＋数学・理科。後期：共通テスト＋数学。推薦・総合型：面接・調査書',
+    one_aa:true, access:'長野市。JR長野駅バス30分',
+    points:'偏差値対比の一級建築士合格率（コスパ）が高く評価されている。長野・東京圏の設計・施工会社に就職。推薦・総合型は面接のみで受験可能。長野の厳しい気候が環境建築の研究に活かされる。',
+    tags:['一級コスパ◎','推薦面接のみ','国立','環境建築'],
+  },
+  {
+    id:32, area:'koshinetsu', type:'national', univ:'新潟大学', dept:'工学部 建築学プログラム',
+    pref:'新潟県新潟市', deviation:56, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮（五十嵐寮 月4,300円／六花寮 月13,000円）＋光熱費別。倍率2〜3倍',
+    exam:'一般前期（個別学力重視型・共通テスト重視型）／後期（共通テスト＋面接）', exam_subjects:'前期：共通テスト＋数学・理科・英語。後期：共通テスト＋面接のみ',
+    one_aa:true, access:'新潟市西区 五十嵐キャンパス。JR内野駅バス',
+    points:'後期入試は共通テスト＋面接のみで受験可能。国立で学費が安く、直営寮の費用も格安。新潟・東京圏の建設・設計会社に就職。',
+    tags:['国立','後期＝面接のみ','直営寮格安','新潟地域就職'],
+  },
+  {
+    id:33, area:'koshinetsu', type:'public', univ:'長岡造形大学', dept:'造形学部 建築・環境デザイン学科',
+    pref:'新潟県長岡市', deviation:56, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり（公立水準）',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'詳細は公式HP確認',
+    one_aa:true, access:'新潟県長岡市。JR長岡駅バス',
+    points:'公立の造形大学として全国唯一。建築×デザイン×アートを融合した教育。学費は国立並みで公立大学のコスパが高い。長岡市の豪雪地帯立地が寒冷地建築・雪国設計の実践的教育に繋がる。',
+    tags:['公立造形大学','デザイン×建築','コスパ◎','雪国建築'],
+  },
+  {
+    id:34, area:'koshinetsu', type:'private', univ:'新潟工科大学', dept:'工学部 工学科',
+    pref:'新潟県柏崎市', deviation:46, tuition_1st:130, tuition_4y:440,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般・共通テスト利用・推薦型・総合型', exam_subjects:'2〜3教科',
+    one_aa:true, access:'新潟県柏崎市。JR柏崎駅バス',
+    points:'比較的入りやすい新潟の工学系大学。地域の建設業就職に直結。直営寮完備。',
+    tags:['入りやすい','直営寮','地域就職'],
+  },
+
+  // ─── 北陸 ───
+  {
+    id:35, area:'hokuriku', type:'national', univ:'金沢大学', dept:'理工学域 地球社会基盤学類 建築学',
+    pref:'石川県金沢市', deviation:54, tuition_1st:82, tuition_4y:242,
+    dorm:'no', dorm_note:'⚠️直営寮（白梅寮）は2023年3月に閉寮済み。民間アパート・提携寮を利用',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語（詳細公式HP確認）',
+    one_aa:true, access:'石川県金沢市。JR金沢駅バス',
+    points:'北陸の国立総合大学。金沢という文化都市での学びが建築の感性を磨く。⚠️直営寮廃止済みのため、居住費は市場価格になる点に注意。',
+    tags:['国立','文化都市','⚠️寮なし注意','北陸拠点'],
+  },
+  {
+    id:36, area:'hokuriku', type:'national', univ:'福井大学', dept:'工学部 建築・都市環境工学科',
+    pref:'福井県福井市', deviation:56, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり（国立水準）',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'福井県福井市。JR福井駅バス',
+    points:'北陸の国立大学。建築×都市環境工学の一体的な教育。北陸新幹線延伸で東京・関西へのアクセスが向上（2024年〜）。コンパクトシティ福井での実践的フィールドワーク。',
+    tags:['国立','新幹線延伸◎','都市環境','直営寮あり'],
+  },
+  {
+    id:37, area:'hokuriku', type:'private', univ:'金沢工業大学', dept:'建築学部 建築学科',
+    pref:'石川県野々市市', deviation:49, tuition_1st:172, tuition_4y:620,
+    dorm:'no', dorm_note:'直営寮なし。大学指定アパート斡旋あり',
+    exam:'一般A・B日程／共通テスト利用（1〜2教科）／学校推薦型・総合型', exam_subjects:'一般A：英語＋数学or国語（2教科）。共通テスト利用：1〜2教科',
+    one_aa:true, access:'石川県野々市市。IRいしかわ鉄道 野々市工大前駅',
+    points:'夢考房（ものづくり実習施設）が充実。工学系実習教育で有名。共通テスト1〜2教科で受験可能なため入りやすい。特別奨学生制度（成績優秀者学費免除）あり。',
+    tags:['夢考房◎','2教科可','奨学金制度','工学実習充実'],
+  },
+  {
+    id:38, area:'hokuriku', type:'private', univ:'福井工業大学', dept:'工学部 建築土木工学科',
+    pref:'福井県福井市', deviation:46, tuition_1st:135, tuition_4y:480,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般・共通テスト利用・推薦型・総合型', exam_subjects:'2〜3教科',
+    one_aa:true, access:'福井県福井市。JR福井駅バス',
+    points:'比較的入りやすい北陸の工学系。土木・建築一体のカリキュラム。直営寮完備で地元就職に強い。',
+    tags:['入りやすい','直営寮','土木建築一体','北陸就職'],
+  },
+
+  // ─── 東海 ───
+  {
+    id:39, area:'tokai', type:'national', univ:'名古屋大学', dept:'工学部 環境土木・建築学科',
+    pref:'愛知県名古屋市', deviation:64, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'名古屋市千種区。名城線 名古屋大学駅',
+    points:'東海国立の雄。建築学と環境土木工学を融合した学科。旧帝大ブランドで就職・研究ともにトップ水準。',
+    tags:['旧帝大','東海トップ','研究型','大手就職◎'],
+  },
+  {
+    id:40, area:'tokai', type:'national', univ:'名古屋工業大学', dept:'工学部 社会工学科 建築・デザイン分野',
+    pref:'愛知県名古屋市', deviation:65, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'名古屋市昭和区。JR鶴舞駅すぐ',
+    points:'工学系国立として建築・デザイン教育に強み。一級建築士合格率が国立トップ水準。実践的な設計演習と構造工学の両立。駅近で通いやすい。',
+    tags:['国立工業大','一級合格率◎','構造◎','駅近'],
+  },
+  {
+    id:41, area:'tokai', type:'private', univ:'名城大学', dept:'理工学部 建築学科',
+    pref:'愛知県名古屋市', deviation:59, tuition_1st:155, tuition_4y:570,
+    dorm:'yes', dorm_note:'直営・提携寮あり',
+    exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理',
+    one_aa:true, access:'名古屋市天白区。名城線 天白公園・植田駅',
+    points:'一級建築士合格者数で中部・東海エリアNo.1クラスの実績。名古屋の大手建設・設計会社への就職実績が安定。中部圏で建築を学ぶ私立としてトップ。',
+    tags:['中部私立トップ','一級合格◎','名古屋就職◎'],
+  },
+
+  // ─── 関西 ───
+  {
+    id:42, area:'kansai', type:'national', univ:'京都大学', dept:'工学部 建築学科',
+    pref:'京都府京都市', deviation:69, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり（熊野寮ほか）',
+    exam:'一般前期のみ', exam_subjects:'共通テスト＋数学・理科・英語・国語（二次配点が高い）',
+    one_aa:true, access:'京都市左京区。市バス 京大正門前',
+    points:'国内最高峰の建築学科。歴史的建造物が並ぶ京都での学びが建築観を培う。研究・設計・理論すべてで国内最高水準。大学院進学率が非常に高い。一般前期のみのため合否一発勝負。',
+    tags:['国内最難関','研究最高峰','歴史的環境','院進必須'],
+  },
+  {
+    id:43, area:'kansai', type:'national', univ:'神戸大学', dept:'工学部 建築学科',
+    pref:'兵庫県神戸市', deviation:68, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'神戸市灘区。阪急 六甲駅バス',
+    points:'関西難関国立。一級建築士合格者数で国立トップクラス（年間50人）。神戸の港湾都市・復興建築の実例を教材にした教育。後期入試あり。',
+    tags:['関西難関国立','一級合格◎','神戸都市建築','後期あり'],
+  },
+  {
+    id:44, area:'kansai', type:'national', univ:'大阪大学', dept:'工学部 地球総合工学科 建築工学科目',
+    pref:'大阪府吹田市', deviation:65, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'大阪府吹田市。阪急 石橋阪大前駅バス',
+    points:'旧帝大。建築工学として構造・環境・設備に強み。大手ゼネコン・設備設計会社への就職実績が高い。理工系総合大学の強みを活かした研究環境。',
+    tags:['旧帝大','構造◎','設備工学','大手就職◎'],
+  },
+  {
+    id:45, area:'kansai', type:'public', univ:'大阪公立大学', dept:'工学部 建築学科',
+    pref:'大阪府大阪市', deviation:67, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'大阪市住吉区。大阪メトロ 我孫子道駅',
+    points:'旧大阪市大系統。公立大学として学費は国立並み。都市・建築・都市計画の総合的な教育が強み。大阪市・関西圏の再開発プロジェクトと連携した実践的な学び。',
+    tags:['公立＝学費安い','都市計画◎','大阪市連携','関西有力'],
+  },
+  {
+    id:46, area:'kansai', type:'national', univ:'京都工芸繊維大学', dept:'工芸科学部 デザイン・建築学課程',
+    pref:'京都府京都市', deviation:58, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'京都市左京区。地下鉄 松ヶ崎駅',
+    points:'デザイン×建築×工芸の融合教育が特徴。国立でデザイン寄りの建築を学べる数少ない大学。京都という歴史・文化環境が学びに直結。',
+    tags:['デザイン×建築','国立','京都環境','工芸融合'],
+  },
+  {
+    id:47, area:'kansai', type:'private', univ:'早稲田大学（関西）', dept:'— (参考:関西志望者向け)', // 削除して代替
+    pref:'', deviation:0, tuition_1st:0, tuition_4y:0,
+    dorm:'no', dorm_note:'',
+    exam:'', exam_subjects:'',
+    one_aa:false, access:'',
+    points:'', tags:[], hidden:true,
+  },
+  {
+    id:48, area:'kansai', type:'private', univ:'立命館大学', dept:'理工学部 建築都市デザイン学科',
+    pref:'滋賀県草津市', deviation:62, tuition_1st:160, tuition_4y:580,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般（学部個別・全学統一・共通テスト）／推薦型・総合型', exam_subjects:'英語・数学・物理',
+    one_aa:true, access:'滋賀県草津市。JR南草津駅バス',
+    points:'関西有力私立。都市デザイン・建築の統合的な教育。全学統一入試で一括受験が可能。関西エリアの大手ゼネコン・設計事務所への実績。',
+    tags:['関西私立有力','都市デザイン','一括受験可'],
+  },
+  {
+    id:49, area:'kansai', type:'private', univ:'関西大学', dept:'環境都市工学部 建築学科',
+    pref:'大阪府吹田市', deviation:61, tuition_1st:158, tuition_4y:580,
+    dorm:'yes', dorm_note:'提携寮あり',
+    exam:'一般（3教科・2教科）／共通テスト利用／推薦型・総合型', exam_subjects:'英語・数学・物理または国語',
+    one_aa:true, access:'大阪府吹田市。阪急 関大前駅',
+    points:'関西大学の建築学科は環境都市工学部として独立。関西有力私立の就職実績。阪急沿線で関西主要都市へのアクセス良好。',
+    tags:['関西私立','独立学部','阪急沿線'],
+  },
+
+  // ─── 中国 ───
+  {
+    id:50, area:'chugoku', type:'national', univ:'広島大学', dept:'工学部 第四類（建設・環境系）',
+    pref:'広島県東広島市', deviation:58, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり（東広島キャンパス内）',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'広島県東広島市。JR西条駅バス',
+    points:'国立大学で一級建築士合格率が約69%と全国最高水準。偏差値対比のコスパが抜群。キャンパス内に直営寮があり生活環境が整っている。地方国立ながら大手就職実績も高い。',
+    tags:['一級合格率69%◎','コスパ最高','直営寮充実','全国トップ合格率'],
+  },
+
+  // ─── 九州 ───
+  {
+    id:51, area:'kyushu', type:'national', univ:'九州大学', dept:'工学部 建築学科',
+    pref:'福岡県福岡市', deviation:60, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'福岡市西区 伊都キャンパス。福岡市地下鉄・バス',
+    points:'九州の国立建築系最高峰。旧帝大。福岡・九州の建設・設計会社への就職はもちろん、大手全国企業への実績も高い。',
+    tags:['旧帝大','九州最高峰','大手就職◎'],
+  },
+  {
+    id:52, area:'kyushu', type:'national', univ:'鹿児島大学', dept:'工学部 建築学科',
+    pref:'鹿児島県鹿児島市', deviation:54, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'鹿児島市郡元キャンパス。市電 工学部前',
+    points:'九州南部の国立建築系。比較的入りやすい国立。南方建築・亜熱帯地域の環境設計に強み。',
+    tags:['国立','九州南部','環境設計','比較的入りやすい'],
+  },
+  {
+    id:53, area:'kyushu', type:'public', univ:'北九州市立大学', dept:'国際環境工学部 建築デザイン学科',
+    pref:'福岡県北九州市', deviation:51, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科or英語',
+    one_aa:true, access:'北九州市若松区。JR若松線',
+    points:'公立で学費が安い。建築デザイン＋国際環境工学の融合カリキュラムが独自。北九州市の産業都市ならではの実践的フィールドワーク。',
+    tags:['公立＝学費安い','建築デザイン','国際環境','産業都市連携'],
+  },
+  {
+    id:54, area:'kyushu', type:'private', univ:'九州産業大学', dept:'建築都市工学部 建築学科',
+    pref:'福岡県福岡市', deviation:48, tuition_1st:148, tuition_4y:520,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'2〜3教科',
+    one_aa:true, access:'福岡市東区 松崎キャンパス。JR九産大前駅',
+    points:'九州私立の建築系では比較的評価が高い。就職率が安定。直営寮完備。設計・施工両面のバランス型教育。',
+    tags:['直営寮','九州私立','就職安定','バランス型'],
+  },
+
+  // ─── 北海道 ───
+  {
+    id:55, area:'hokkaido', type:'national', univ:'北海道大学', dept:'工学部 環境社会工学科 建築都市コース',
+    pref:'北海道札幌市', deviation:66, tuition_1st:82, tuition_4y:242,
+    dorm:'yes', dorm_note:'直営学生寮多数（恵迪寮ほか）。月数千円台',
+    exam:'一般前期・後期／学校推薦型・総合型', exam_subjects:'前期：共通テスト＋数学・理科・英語',
+    one_aa:true, access:'札幌市北区。地下鉄 北12条駅',
+    points:'旧帝大。北方建築・寒冷地工学の研究で世界的に著名。雪・寒冷地・自然環境を活かした建築工学の最前線。大規模キャンパスで直営寮が充実。北海道・全国大手への就職実績が高い。',
+    tags:['旧帝大','寒冷地建築◎','直営寮充実','雪国工学'],
+  },
+  {
+    id:56, area:'hokkaido', type:'private', univ:'北海学園大学', dept:'工学部 建築学科',
+    pref:'北海道札幌市', deviation:47, tuition_1st:140, tuition_4y:480,
+    dorm:'yes', dorm_note:'直営寮あり',
+    exam:'一般（前・後期）／共通テスト利用／推薦型・総合型', exam_subjects:'2〜3教科',
+    one_aa:true, access:'札幌市豊平区。地下鉄 学園前駅直結',
+    points:'北海道私立の建築系。地下鉄直結で通いやすい。北海道の建設会社への就職実績あり。',
+    tags:['地下鉄直結','北海道就職','直営寮'],
+  },
+];
+
+// ─── RENDER ───
+function dormPill(d, note) {
+  if (d === 'yes') return `<span class="dorm-pill dorm-yes">★ 直営寮あり</span>`;
+  if (d === 'part') return `<span class="dorm-pill dorm-part">◐ 提携寮あり</span>`;
+  return `<span class="dorm-pill dorm-no">× 直営寮なし</span>`;
+}
+function typeBadge(t) {
+  const map = { national:'国立', public:'公立', private:'私立' };
+  return `<span class="card-type-badge type-${t}">${map[t]}</span>`;
+}
+
+function renderCard(d) {
+  const tags = d.tags.map(t => {
+    let cls = 'tag';
+    if (t.includes('◎') || t.includes('No.1') || t.includes('最')) cls = 'tag tag-gold';
+    else if (t.includes('面接') || t.includes('AO') || t.includes('推薦') || t.includes('合格')) cls = 'tag tag-blue';
+    else if (t.includes('寮') || t.includes('安い') || t.includes('コスパ')) cls = 'tag tag-green';
+    return `<span class="${cls}">${t}</span>`;
+  }).join('');
+
+  return `
+  <div class="card" data-area="${d.area}" data-type="${d.type}" data-univ="${d.univ}" data-pref="${d.pref}" data-tags="${d.tags.join(' ')}">
+    <div class="card-header">
+      <div class="card-rank">${d.deviation}</div>
+      <div class="card-title-block">
+        <div class="card-univ">${d.univ}</div>
+        <div class="card-dept">${d.dept}</div>
+      </div>
+      ${typeBadge(d.type)}
+    </div>
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="stat-val accent">${d.deviation}</div>
+        <div class="stat-lbl">偏差値</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">${d.tuition_1st}</div>
+        <div class="stat-lbl">初年度（万円）</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val gold">${d.tuition_4y}</div>
+        <div class="stat-lbl">4年間（万円）</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="info-row">
+        <span class="info-label">所在地</span>
+        <span class="info-val">${d.pref} / ${d.access}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">寮</span>
+        <span class="info-val">${dormPill(d.dorm)} ${d.dorm_note}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">入試方式</span>
+        <span class="info-val">${d.exam}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">試験科目</span>
+        <span class="info-val">${d.exam_subjects}</span>
+      </div>
+      <div class="tags">${tags}</div>
+      <div class="point-box"><strong>▶ 選ぶポイント</strong>${d.points}</div>
+    </div>
+  </div>`;
+}
+
+// ─── FILTER LOGIC ───
+let currentArea = 'all';
+let currentType = 'all';
+let currentSearch = '';
+
+function update() {
+  const grid = document.getElementById('grid');
+  const items = DATA.filter(d => {
+    if (d.hidden) return false;
+    if (!d.one_aa) return false;
+    if (currentArea !== 'all' && d.area !== currentArea) return false;
+    if (currentType !== 'all' && d.type !== currentType) return false;
+    if (currentSearch) {
+      const q = currentSearch.toLowerCase();
+      if (!`${d.univ}${d.dept}${d.pref}${d.area}${d.tags.join('')}${d.access}${d.points}`.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+
+  // エリア順に並べる
+  const areaOrder = ['tohoku','kanto','koshinetsu','hokuriku','tokai','kansai','chugoku','kyushu','hokkaido'];
+  items.sort((a,b) => {
+    const ai = areaOrder.indexOf(a.area), bi = areaOrder.indexOf(b.area);
+    if (ai !== bi) return ai - bi;
+    return b.deviation - a.deviation;
+  });
+
+  document.getElementById('result-count').textContent = `${items.length}校 表示中`;
+
+  if (items.length === 0) {
+    grid.innerHTML = '<div class="no-result">条件に一致する大学がありません</div>';
+    return;
+  }
+
+  // エリアごとに区切りを入れる
+  const areaLabel = {
+    tohoku:'東北', kanto:'関東', koshinetsu:'甲信越', hokuriku:'北陸',
+    tokai:'東海', kansai:'関西', chugoku:'中国', kyushu:'九州', hokkaido:'北海道'
+  };
+  let html = '';
+  let lastArea = '';
+  for (const d of items) {
+    if (d.area !== lastArea) {
+      html += `<div class="section-divider" style="grid-column:1/-1"><h2>${areaLabel[d.area]}</h2></div>`;
+      lastArea = d.area;
+    }
+    html += renderCard(d);
+  }
+  grid.innerHTML = html;
+}
+
+// ─── BIND ───
+document.getElementById('area-filters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('#area-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentArea = btn.dataset.area;
+  update();
+});
+
+document.getElementById('type-filters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('#type-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentType = btn.dataset.type;
+  update();
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  currentSearch = e.target.value.trim();
+  update();
+});
+
+update();
+</script>
