@@ -460,6 +460,55 @@ table.univ-table {
 .td-dorm-part { color: var(--accent); }
 .td-dorm-no   { color: var(--text-light); }
 
+.univ-table tbody tr { cursor: pointer; }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--bg-card);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  margin: 12px 12px 0 0;
+  background: var(--bg-muted);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text-muted);
+  line-height: 32px;
+  text-align: center;
+  z-index: 1;
+}
+.modal-close:hover { background: var(--border); }
+.modal-card { padding: 0; }
+.modal-card .card {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 /* ─── NOTE ─── */
 .note {
   font-size: 12px;
@@ -526,6 +575,14 @@ table.univ-table {
 </div>
 
 <div id="grid-view"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">×</button>
+    <div class="modal-card" id="modal-card"></div>
+  </div>
+</div>
 
 <div id="table-view">
   <div class="tbl-wrap">
@@ -1219,7 +1276,7 @@ function renderTable_view(items) {
     return 0;
   });
   tbody.innerHTML = sorted.map(d => `
-    <tr>
+    <tr data-id="${d.id}">
       <td class="td-name"><strong>${d.univ}</strong><small>${d.dept}</small></td>
       <td>${areaLabel[d.area]}</td>
       <td><span class="card-type-badge type-${d.type}">${typeLabel[d.type]}</span></td>
@@ -1229,6 +1286,16 @@ function renderTable_view(items) {
       <td class="${dormClass(d.dorm)}">${dormLabel(d.dorm)}</td>
       <td style="white-space:normal;min-width:180px;font-size:12px">${d.exam}</td>
     </tr>`).join('');
+
+  // 行クリックでモーダル表示
+  tbody.querySelectorAll('tr').forEach(tr => {
+    tr.addEventListener('click', () => {
+      const d = DATA.find(x => x.id === +tr.dataset.id);
+      if (!d) return;
+      document.getElementById('modal-card').innerHTML = `<div style="padding:0">${renderCard(d)}</div>`;
+      document.getElementById('modal-overlay').classList.add('open');
+    });
+  });
 }
 
 // ─── TABLE SORT ───
@@ -1278,6 +1345,18 @@ document.getElementById('type-filters').addEventListener('click', e => {
 document.getElementById('search').addEventListener('input', e => {
   currentSearch = e.target.value.trim();
   update();
+});
+
+// ─── MODAL CLOSE ───
+document.getElementById('modal-close').addEventListener('click', () => {
+  document.getElementById('modal-overlay').classList.remove('open');
+});
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-overlay'))
+    document.getElementById('modal-overlay').classList.remove('open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('modal-overlay').classList.remove('open');
 });
 
 update();
