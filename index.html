@@ -158,8 +158,8 @@ table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout
 .univ-table colgroup col:nth-child(7){width:64px}
 .univ-table colgroup col:nth-child(8){width:64px}
 .univ-table colgroup col:nth-child(9){width:auto}
-.univ-table th{background:var(--bg-muted);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.05em;padding:7px 9px;text-align:left;border-bottom:2px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap;overflow:hidden;position:sticky;top:0;z-index:2}
-.univ-table th:nth-child(1){position:sticky;top:0;left:0;z-index:3;background:var(--bg-muted)}
+.univ-table th{background:var(--bg-muted);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.05em;padding:7px 9px;text-align:left;border-bottom:2px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap;overflow:hidden;position:sticky;top:var(--tbl-header-top,0px);z-index:2}
+.univ-table th:nth-child(1){position:sticky;top:var(--tbl-header-top,0px);left:0;z-index:3;background:var(--bg-muted)}
 .univ-table th:hover{color:var(--accent)}
 .univ-table th.sort-asc::after{content:' ▲';font-size:10px}
 .univ-table th.sort-desc::after{content:' ▼';font-size:10px}
@@ -1936,6 +1936,17 @@ document.addEventListener('keydown',e=>{
 
 // EXAM GUIDE injection
 document.querySelector('.note').insertAdjacentHTML('beforebegin', renderExamGuide());
+
+// テーブルヘッダーの sticky top を filter-bar 高さに合わせる
+function adjustTableHeaderTop() {
+  const bar = document.querySelector('.filter-bar');
+  if (bar) {
+    const h = bar.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--tbl-header-top', h + 'px');
+  }
+}
+adjustTableHeaderTop();
+window.addEventListener('resize', adjustTableHeaderTop);
 
 update();
 </script>
