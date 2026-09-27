@@ -1380,6 +1380,7 @@ function switchView(v) {
     document.getElementById('tab-'+id).classList.toggle('active', v===id);
   });
   if (v==='timeline') renderTimeline();
+  if (v==='table') requestAnimationFrame(adjustTableHeaderTop);
 }
 
 // ─── TIMELINE ───
@@ -1937,15 +1938,27 @@ document.addEventListener('keydown',e=>{
 // EXAM GUIDE injection
 document.querySelector('.note').insertAdjacentHTML('beforebegin', renderExamGuide());
 
-// テーブルヘッダーの sticky top を filter-bar 高さに合わせる
+// テーブルヘッダーの sticky top を filter-bar の底辺に合わせる
 function adjustTableHeaderTop() {
   const bar = document.querySelector('.filter-bar');
-  if (bar) {
-    document.documentElement.style.setProperty('--tbl-header-top', bar.offsetHeight + 'px');
-  }
+  if (!bar) return;
+  // getBoundingClientRect().bottom はスクロール位置に依存するため、
+  // scrollY=0 の状態で bottom = offsetTop + offsetHeight になる。
+  // filter-bar は sticky で常に同じ位置に表示されるため、
+  // ページ最上部にいる時の bottom 値 = filter-bar の sticky 位置の高さ になる。
+  // scrollY を加味した上で "スクロールしても常に filter-bar の下" を計算:
+  const rect = bar.getBoundingClientRect();
+  document.documentElement.style.setProperty('--tbl-header-top', rect.bottom + 'px');
 }
+// ページロード時・リサイズ時・スクロール時（throttle）に更新
 adjustTableHeaderTop();
 window.addEventListener('resize', adjustTableHeaderTop);
+let _thtThrottle = false;
+window.addEventListener('scroll', () => {
+  if (_thtThrottle) return;
+  _thtThrottle = true;
+  requestAnimationFrame(() => { adjustTableHeaderTop(); _thtThrottle = false; });
+}, { passive: true });
 
 update();
 </script>
