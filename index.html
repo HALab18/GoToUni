@@ -323,8 +323,13 @@ table.univ-table{width:100%;border-collapse:collapse;font-size:13px;table-layout
   <span class="quick-label">クイック</span>
   <button class="qf-btn" data-qf="dorm">★ 寮あり</button>
   <button class="qf-btn" data-qf="kokko">国公立のみ</button>
-  <button class="qf-btn" data-qf="hensa60">偏差値60以上</button>
   <button class="qf-btn" data-qf="toshi">都市部</button>
+  <span class="quick-label" style="margin-left:8px">偏差値</span>
+  <button class="qf-btn" data-qf="h_u49">〜49</button>
+  <button class="qf-btn" data-qf="h_50">50〜54</button>
+  <button class="qf-btn" data-qf="h_55">55〜59</button>
+  <button class="qf-btn" data-qf="h_60">60〜64</button>
+  <button class="qf-btn" data-qf="h_65">65以上</button>
 </div>
 <div class="active-filters" id="active-filters"></div>
 
@@ -1253,6 +1258,7 @@ let currentArea='all', currentType='all', currentSearch='';
 let currentView='card';
 let sortCol='deviation', sortDir=-1;
 let quickFilters=new Set();
+const HENSA_BANDS={h_u49:[0,49],h_50:[50,54],h_55:[55,59],h_60:[60,64],h_65:[65,99]};
 let cardSortMode='dev_desc';
 
 const areaOrder=['tohoku','kanto','koshinetsu','hokuriku','tokai','kansai','chugoku','kyushu','hokkaido'];
@@ -1273,7 +1279,9 @@ function getFiltered() {
     // Quick filters
     if (quickFilters.has('dorm') && d.dorm==='no') return false;
     if (quickFilters.has('kokko') && d.type==='private') return false;
-    if (quickFilters.has('hensa60') && d.deviation < 60) return false;
+    // 偏差値帯: 選んだ帯のどれかに入っていればOK（帯同士はOR）
+    const bands=[...quickFilters].filter(q=>HENSA_BANDS[q]);
+    if (bands.length && !bands.some(q=>d.deviation>=HENSA_BANDS[q][0] && d.deviation<=HENSA_BANDS[q][1])) return false;
     if (quickFilters.has('toshi') && d.city_level!=='seirei') return false;
     if (currentSearch) {
       const q=currentSearch.toLowerCase();
@@ -1784,7 +1792,7 @@ function renderExamGuide() {
 }
 
 // ─── ACTIVE FILTERS ───
-const qfLabel={'dorm':'★ 寮あり','kokko':'国公立のみ','hensa60':'偏差値60以上','toshi':'都市部（政令市）'};
+const qfLabel={'dorm':'★ 寮あり','kokko':'国公立のみ','toshi':'都市部（政令市）','h_u49':'偏差値〜49','h_50':'偏差値50〜54','h_55':'偏差値55〜59','h_60':'偏差値60〜64','h_65':'偏差値65以上'};
 function renderActiveFilters() {
   const af=document.getElementById('active-filters');
   const chips=[];
